@@ -24,11 +24,8 @@
         "components/jquery": "^3.1",
         "doctrine/doctrine-bundle": "^1.6",
         "doctrine/orm": "^2.5",
-<<<<<<< HEAD
         "egeloen/ckeditor-bundle": "^6.0",
-=======
         "friendsofsymfony/user-bundle": "~2.0",
->>>>>>> 414c766d738c270e61a833e9cea140e6bfe2c4d9
         "incenteev/composer-parameter-handler": "^2.0",
         "oyejorge/less.php": "v1.7.0.14",
         "sensio/distribution-bundle": "^5.0.19",

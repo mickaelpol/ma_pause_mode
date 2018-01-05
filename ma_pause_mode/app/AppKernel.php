@@ -17,7 +17,11 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new AppBundle\AppBundle(),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
+<<<<<<< HEAD
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
+=======
+            new FOS\UserBundle\FOSUserBundle(),
+>>>>>>> 414c766d738c270e61a833e9cea140e6bfe2c4d9
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

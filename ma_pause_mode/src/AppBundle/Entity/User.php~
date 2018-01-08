@@ -104,6 +104,29 @@ class User extends BaseUser
         return $this->firstName;
     }
 
+    /**
+     * Set rank
+     *
+     * @param integer $rank
+     *
+     * @return User
+     */
+    public function setRank($rank)
+    {
+        $this->rank = $rank;
+
+        return $this;
+    }
+
+    /**
+     * Get rank
+     *
+     * @return int
+     */
+    public function getRank()
+    {
+        return $this->rank;
+    }
 
     /**
      * Set pseudo
@@ -223,29 +246,5 @@ class User extends BaseUser
     public function getSiret()
     {
         return $this->siret;
-    }
-
-    /**
-     * Set isBan
-     *
-     * @param boolean $isBan
-     *
-     * @return User
-     */
-    public function setIsBan($isBan)
-    {
-        $this->isBan = $isBan;
-
-        return $this;
-    }
-
-    /**
-     * Get isBan
-     *
-     * @return boolean
-     */
-    public function getIsBan()
-    {
-        return $this->isBan;
     }
 }

@@ -1,12 +1,30 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Article creation</h1>
+<div class="container">
+    <h1 class="text-center">Article creation</h1>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+
+    <div class="row">
+        <div class="col-xs-12">
+            {{ form_start(form) }}
+                <p class="text-center">{{ form_label(form.title) }}</p>
+                {{ form_widget(form.title, { 'attr': {'class': 'form-control', 'rows': '15'} }) }}
+        </div>
+        <div class="col-xs-12">
+            <p class="text-center">{{ form_label(form.content) }}</p>
+            {{ form_widget(form.content, { 'attr': {'class': 'form-control', 'rows': '20'} }) }}
+        </div>
+        <div class="col-xs-12">
+            <p class="text-center">{{ form_label(form.description) }}</p>
+            {{ form_widget(form.description, { 'attr': {'class': 'form-control'} }) }}
+        </div>
+    </div>
+
+
+    <input type="submit" value="Create" />
+</div>    
+        {{ form_end(form) }}
 
     <ul>
         <li>

@@ -5,27 +5,27 @@
         <title>
             {% block title %}Ma-Pause-Mode{% endblock %}
         </title>
-        {% block stylesheets %}
-        {% endblock %}
+        {% block stylesheets %}{% endblock %}
         <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+        <link rel="icon" type="image/x-icon" href="{{ asset('ico.png') }}"/>
+        <link rel="stylesheet" href="{{ asset('css/register.css') }}">
         <link rel="stylesheet" href="{{ asset('css/marge.css') }}">
         <link rel="stylesheet" href="{{ asset('css/fontSize.css') }}">
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+        <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
     </head>
+    
     <body>
+    
+        <div class='container-fluid'>
+            <div class='col-md-offset-2 col-md-8'>
+                {% include('navbar.html.twig') %}
+            </div>
+            
+        </div>
         
-        <!-- Début NavBar -->
 
-        {% block navbar %}
-            {% include('navbar.html.twig') %}
-        {% endblock %}
-
-        <!-- fin NavBar -->
-
-        
-        {% block body %} {% endblock %}
-        
-        
+        {% block body %}{% endblock %}
 
         {% block javascripts %}
             <script src="{{ asset('js/jquery.min.js') }}"></script>

@@ -1,25 +1,55 @@
-{% block navbar %}
+{% block navbar %} {# logo du site #}
+<div class="text-center">
+    <img src="{{ asset('img/ma-p-m.PNG') }}" width="246" height="253" alt="logo">
+</div>
+{# fin logo du site #}
 
-<nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">WebSiteName</a>
-        </div>
-        <ul class="nav navbar-nav">
-            <li class="active">
-                <a href=" {{ path('homepage') }} ">Home</a>
+<!-- Début NavBar -->
+<nav class="navbar navbar" role="navigation">
+    <div class="navbar-header"></div>
+    <div class="navbar-collapse collapse">
+        <ul class="list-unstyled list-inline">
+            <li>
+                <a href="{{ path('homepage') }}" class="btn-nav">Accueil</a>
             </li>
             <li>
-                <a href=" {{ path('article_index') }} ">Article</a>
+                <a href="#" class="btn-nav">Center</a>
             </li>
             <li>
-                <a href="#">Page 2</a>
+                <a href="#" class="btn-nav">Center</a>
             </li>
             <li>
-                <a href="#">Page 3</a>
+                <a href="#" class="btn-nav">Center</a>
             </li>
+            <li>
+                <a href="#" class="btn-nav">Center</a>
+            </li>
+            <li>
+                <a href="#" class="btn-nav">Center</a>
+            </li>
+        
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            
+            <li>
+            <a href="#" class="btn-nav">{{ app.user.username }}</a></li>
+            <li>
+                <a href="{{ path('fos_user_security_logout') }}" class="btn-nav">
+                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                </a>
+            </li>
+            {% else %}
+            <li>
+                <a href="{{ path('fos_user_registration_register') }}" class="btn-nav">Register</a>
+            </li>
+            <li>
+                <a href="{{ path('fos_user_security_login') }}" class="btn-nav">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+            </li>
+            {% endif %}
+
         </ul>
     </div>
 </nav>
+
+<!-- fin NavBar -->
 
 {% endblock %}

@@ -12,8 +12,13 @@
 <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
     </head>
     <body>
-
-        {% include('navbar.html.twig') %}
+        <div class='container-fluid'>
+            <div class='col-md-offset-2 col-md-8'>
+                {% include('navbar.html.twig') %}
+            </div>
+            
+        </div>
+        
 
         {% block body %}{% endblock %}
 

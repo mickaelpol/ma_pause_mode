@@ -1,58 +1,55 @@
-{% block navbar %}
+{% block navbar %} {# logo du site #}
+<div class="text-center">
+    <img src="{{ asset('img/ma-p-m.PNG') }}" width="246" height="253" alt="logo">
+</div>
+{# fin logo du site #}
 
-    {# logo du site #}
-    <div class="text-center">
-        <img src="{{ asset('img/ma-p-m.PNG') }}" width="246" height="253" alt="logo">
+<!-- Début NavBar -->
+<nav class="navbar navbar" role="navigation">
+    <div class="navbar-header"></div>
+    <div class="navbar-collapse collapse">
+        <ul class="list-unstyled list-inline">
+            <li>
+                <a href="{{ path('homepage') }}" class="btn-nav">Accueil</a>
+            </li>
+            <li>
+                <a href="#" class="btn-nav">Center</a>
+            </li>
+            <li>
+                <a href="#" class="btn-nav">Center</a>
+            </li>
+            <li>
+                <a href="#" class="btn-nav">Center</a>
+            </li>
+            <li>
+                <a href="#" class="btn-nav">Center</a>
+            </li>
+            <li>
+                <a href="#" class="btn-nav">Center</a>
+            </li>
+        
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            
+            <li>
+            <a href="#" class="btn-nav">{{ app.user.username }}</a></li>
+            <li>
+                <a href="{{ path('fos_user_security_logout') }}" class="btn-nav">
+                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                </a>
+            </li>
+            {% else %}
+            <li>
+                <a href="{{ path('fos_user_registration_register') }}" class="btn-nav">Register</a>
+            </li>
+            <li>
+                <a href="{{ path('fos_user_security_login') }}" class="btn-nav">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+            </li>
+            {% endif %}
+
+        </ul>
     </div>
-    {# fin logo du site #}
+</nav>
 
-    <!-- Début NavBar -->
-    <nav class="navbar navbar" role="navigation">
-        <div class="navbar-header"></div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-center">
-
-                <div></div>
-
-                <li>
-                    <a href="#" id="btn-nav">Accueil</a>
-                </li>
-                <li>
-                    <a href="#" id="btn-nav">Center</a>
-                </li>
-                <li>
-                    <a href="#" id="btn-nav">Center</a>
-                </li>
-                <li>
-                    <a href="#" id="btn-nav">Center</a>
-                </li>
-                <li>
-                    <a href="#" id="btn-nav">Center</a>
-                </li>
-                <li>
-                    <a href="#" id="btn-nav">Center</a>
-                </li>
-                <li>
-                    <a href="#" id="btn-nav">Center</a>
-                </li>
-                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                    {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}
-                    |
-                    <li>
-                        <a href="{{ path('fos_user_security_logout') }}" id="btn-nav">
-                            {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-                        </a>
-                    </li>
-                {% else %}
-                    <li>
-                        <a href="{{ path('fos_user_security_login') }}" id="btn-nav">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
-                    </li>
-                {% endif %}
-
-            </ul>
-        </div>
-    </nav>
-
-    <!-- fin NavBar -->
+<!-- fin NavBar -->
 
 {% endblock %}

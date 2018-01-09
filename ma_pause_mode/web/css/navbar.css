@@ -1,0 +1,24 @@
+.navbar{
+    color: black;
+    background-color: transparent;
+}
+
+#btn-nav{
+    color: black;
+}
+
+#btn-nav:hover{
+    
+    color: #eb0046;
+    background-color: transparent;
+    
+}
+
+@media (min-width: 768px) {
+    .navbar-nav.navbar-center {
+        position: absolute;
+        left: 50%;
+        transform: translatex(-50%);
+    }
+}
+

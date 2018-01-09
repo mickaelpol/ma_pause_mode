@@ -17,6 +17,7 @@ class RegistrationType extends AbstractType
         ->add('address', null, array('label' => 'Addresse', 'translation_domain' => 'FOSUserBundle'))
         ->add('city', null, array('label' => 'Ville', 'translation_domain' => 'FOSUserBundle'))
         ->add('pc', null, array('label' => 'Code postal', 'translation_domain' => 'FOSUserBundle'));
+
     }
 
     public function getParent()

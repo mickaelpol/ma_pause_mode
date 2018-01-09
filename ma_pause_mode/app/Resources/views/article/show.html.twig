@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="container">
+    <h1 class="text-center page-header">
+            {{article.title|raw}}
+    </h1>
+
+    <div class="row">
+        <div class="col-xs-12">
+            {% autoescape %}
+                {{ article.content|raw}}
+            {% endautoescape %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            {% if article.date %}
+                <p>article créer le : {{ article.date|date('d-F-Y à H:i') }}</p>
+            {% endif %}
+            {% if article.dateUpdate %}
+                <p>article éditer le : {{ article.dateUpdate|date('d-F-Y à H:i') }}</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<table>
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ article.id }}</td>
+        </tr>
+        <tr>
+            <th>Title</th>
+            {% autoescape %}
+            <td>{{ article.title|raw }}</td>
+            {% endautoescape %}
+        </tr>
+        <tr>
+            <th>Content</th>
+
+        </tr>
+        <tr>
+            <th>Date</th>
+            <td></td>
+        </tr>
+        <tr>
+            <th>Dateupdate</th>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+
+    <ul>
+        <li>
+            <a href="{{ path('article_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('article_edit', { 'id': article.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

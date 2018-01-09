@@ -56,12 +56,6 @@ class Article
      */
     private $dateUpdate;
 
-    public function __construct()
-    {
-        $this->date = new \DateTime('now');
-        $this->dateUpdate = new \DateTime('now');
-    }
-
 
     /**
      * Get id
@@ -168,28 +162,5 @@ class Article
     {
         return $this->dateUpdate;
     }
-
-    /**
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return Article
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * Get description
-     *
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
 }
+

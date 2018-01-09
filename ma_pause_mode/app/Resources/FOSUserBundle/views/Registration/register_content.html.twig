@@ -1,0 +1,93 @@
+{% block body %}
+
+{% trans_default_domain '@FOSUserBundle' %}
+
+<h1 class="text-center page-header titre-regi">Création de compte</h1>
+
+    {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-xs-offset-2 col-xs-4">
+                {{ form_label(form.firstName) }}
+                {{ form_errors(form.firstName) }}
+                {{ form_widget(form.firstName,{ 'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="col-xs-4">
+                {{ form_label(form.username) }}
+                {{ form_errors(form.username) }}
+                {{ form_widget(form.username,{ 'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+    </div>
+
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-xs-offset-2 col-xs-4">
+                {{ form_label(form.email) }}
+                {{ form_errors(form.email) }}
+                {{ form_widget(form.email,{ 'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="col-xs-4">
+                {{ form_label(form.pseudo) }}
+                {{ form_errors(form.pseudo) }}
+                {{ form_widget(form.pseudo,{ 'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+    </div>
+
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-xs-offset-2 col-xs-4">
+                {{ form_label(form.siret) }}
+                {{ form_errors(form.siret) }}
+                {{ form_widget(form.siret,{ 'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="col-xs-4">
+                {{ form_label(form.address) }}
+                {{ form_errors(form.address) }}
+                {{ form_widget(form.address,{ 'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+    </div>
+
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-xs-offset-2 col-xs-4">
+                {{ form_label(form.pc) }}
+                {{ form_errors(form.pc) }}
+                {{ form_widget(form.pc,{ 'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="col-xs-4">
+                {{ form_label(form.city) }}
+                {{ form_errors(form.city) }}
+                {{ form_widget(form.city,{ 'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+    </div>
+
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-xs-offset-2 col-xs-4">
+                {{ form_label(form.plainPassword.first) }}
+                {{ form_errors(form.plainPassword.first) }}
+                {{ form_widget(form.plainPassword.first,{ 'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="col-xs-4">
+                {{ form_label(form.plainPassword.second) }}
+                {{ form_errors(form.plainPassword.second) }}
+                {{ form_widget(form.plainPassword.second,{ 'attr': {'class': 'form-control'}}) }}
+            </div>
+
+            <div class="col-xs-offset-2 col-xs-8">
+                <div class="text-center">
+                    <input class="btn btn-block btn-regi" type="submit" value="{{ 'registration.submit'|trans }}"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{ form_widget(form) }}
+
+    {{ form_end(form) }}
+{% endblock %}

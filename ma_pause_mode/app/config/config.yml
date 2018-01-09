@@ -145,3 +145,22 @@ fos_user:
         form:
             type: AppBundle\Form\RegistrationType
 
+ivory_ck_editor:
+    configs:
+        my_config_1:
+            toolbar: "my_toolbar_1"
+            uiColor: "#cac2bd"
+            height: "200px"
+            language: "fr"
+
+        my_config_2:
+            toolbar: "my_toolbar_2"
+            uiColor: "#cac2bd"
+            height: "500px" 
+            language: "fr"           
+
+    toolbars:
+        configs:
+            my_toolbar_1: [ [ "Source", "Preview", "-", 'Bold', 'Italic', 'Underline', 'Format', 'Font', 'FontSize', 'TextColor','JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', 'Smiley', 'About',] ]
+
+            my_toolbar_2: [ ["Source","Preview","Templates", 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo',"-"], "/", ['Bold', 'Italic', 'Underline', "Strike", "-", 'NumberedList', 'BulletedList', 'Blockquote', "-", 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl',"-", 'Link', 'Unlink', 'Anchor', "-", 'Image', 'Table', 'HorizontalRule', 'SpecialChar', 'Smiley'], "/", ['Styles', 'Format', 'Font', 'FontSize', 'TextColor', "-", "Maximize", 'ShowBlocks'] ]

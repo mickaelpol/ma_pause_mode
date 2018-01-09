@@ -21,8 +21,11 @@
     {% for article in articles %}
 
     <div class="row">
-        <ul>
-            <li>{{ article.title }}</li>
+        <ul class="list-unstyled">
+            <li>{% autoescape %}
+                    {{ article.title|raw }}
+                {% endautoescape %}
+            </li>
             <li>{{ article.description }}</li>
             <li>{% if article.date %}{{ article.date|date('Y-m-d H:i:s') }}{% endif %}</li>
             <li>{% if article.dateUpdate %}{{ article.dateUpdate|date('Y-m-d H:i:s') }}{% endif %}</li>

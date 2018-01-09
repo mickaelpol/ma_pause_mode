@@ -56,6 +56,12 @@ class Article
      */
     private $dateUpdate;
 
+    public function __construct()
+    {
+        $this->date = new \DateTime('now');
+        $this->dateUpdate = new \DateTime('now');
+    }
+
 
     /**
      * Get id

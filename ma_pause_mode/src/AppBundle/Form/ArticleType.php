@@ -9,6 +9,8 @@ use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+
 
 
 class ArticleType extends AbstractType
@@ -19,22 +21,18 @@ class ArticleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('title', CKEditorType::class, array(
-            'label' => 'titre',
-            'config' => array(
-                'toolbar' => 'basic'
-            )
+            'label' => 'Titre de l\'article',
+            'config_name' => 'my_config_1',
         ))
 
         ->add('content', CKEditorType::class, array(
-            'label' => 'contenu',
-            'config' => array(
-            'class' => 'ckeditor', 'class' => 'form-control',
-        )))
-        ->add('description', TextType::class , array('label' => 'description', 'translation_domain' => 'FOSUserBundle'));
-        // ->add('ville', null, array('label' => 'Ville', 'translation_domain' => 'FOSUserBundle'));
-        // ->add('date')
-        // ->add('dateUpdate');
-    }/**
+            'label' => 'Contenu de l\'article',
+            'config_name' => 'my_config_2',
+        ))
+        ->add('description', TextType::class , array('label' => 'Description de l\'article', 'translation_domain' => 'FOSUserBundle'));
+    }
+    
+    /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)

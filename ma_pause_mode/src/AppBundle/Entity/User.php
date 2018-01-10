@@ -28,13 +28,6 @@ class User extends BaseUser
     private $firstName;
 
     /**
-     * @var boolean
-     *
-     * @ORM\Column(name="usr_isBan", type="boolean")
-     */
-    private $isBan = 0;
-
-    /**
      * @var int
      *
      * @ORM\Column(name="usr_siret", type="integer", unique=true)
@@ -231,27 +224,38 @@ class User extends BaseUser
         return $this->siret;
     }
 
+
     /**
-     * Set isBan
+     * Add article
      *
-     * @param boolean $isBan
+     * @param \AppBundle\Entity\Article $article
      *
      * @return User
      */
-    public function setIsBan($isBan)
+    public function addArticle(\AppBundle\Entity\Article $article)
     {
-        $this->isBan = $isBan;
+        $this->articles[] = $article;
 
         return $this;
     }
 
     /**
-     * Get isBan
+     * Remove article
      *
-     * @return boolean
+     * @param \AppBundle\Entity\Article $article
      */
-    public function getIsBan()
+    public function removeArticle(\AppBundle\Entity\Article $article)
     {
-        return $this->isBan;
+        $this->articles->removeElement($article);
+    }
+
+    /**
+     * Get articles
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getArticles()
+    {
+        return $this->articles;
     }
 }

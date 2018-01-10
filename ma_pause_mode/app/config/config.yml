@@ -167,7 +167,7 @@ ivory_ck_editor:
 
 easy_admin:
     list:
-        max_results: 30
+        max_results: 31
     site_name: 'Ma pause mode'
     design:
         brand_color: '#eb0046'

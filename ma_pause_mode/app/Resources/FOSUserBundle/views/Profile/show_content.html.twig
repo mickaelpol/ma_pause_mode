@@ -1,0 +1,70 @@
+{% block body %}
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="container margeTop5 font22 text-center">
+    <div class="col-xs-8 col-xs-offset-2">
+        <div class="fos_user_user_show">
+            <div class="row">
+                <div class="col-xs-6">
+                    {{ 'profile.show.username'|trans }}: {{ user.username }}
+                </div>
+                <div class="col-xs-6">
+                    {{ 'firstname'|trans }}: {{ user.firstname }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    {{ 'pseudo'|trans }}: {{ user.pseudo }}
+                </div>
+                <div class="col-xs-6">
+                    {{ 'profile.show.email'|trans }} : {{ user.email }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    {{ 'adresse'|trans }} : {{ user.address }}
+                </div>
+                <div class="col-xs-6">
+                    {{ 'ville'|trans }} : {{ user.city }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    {{ 'code postal'|trans }} : {{ user.pc }}
+                </div>
+                <div class="col-xs-6">
+                    {{ 'n° Siret'|trans }} : {{ user.siret }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-8 col-xs-offset-2 margeTop5">
+        <a class="font15 btn btn-success btn-md text-center pull-left" href=" {{ path('fos_user_profile_edit') }} ">Editer mon profil </a>
+        
+        <button type="button" class="font15 btn btn-danger btn-md pull-right" data-toggle="modal" data-target="#myModal">Supprimer mon compte</button>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+        
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h3 class="modal-title text-danger">Voulez-vous supprimer votre compte?</h3>
+                    </div>
+                    <p class="text-danger">Cette action est irréversible.</p>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <a class="btn btn-md btn-danger" href="#">Supprimer</a>
+                    </div>
+                </div>
+        
+            </div>
+        </div>
+    </div>        
+</div>
+
+
+{% endblock %}

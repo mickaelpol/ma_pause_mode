@@ -28,13 +28,6 @@ class User extends BaseUser
     private $firstName;
 
     /**
-     * @var boolean
-     *
-     * @ORM\Column(name="usr_isBan", type="boolean")
-     */
-    private $isBan = 0;
-
-    /**
      * @var int
      *
      * @ORM\Column(name="usr_siret", type="integer", unique=true)
@@ -68,6 +61,12 @@ class User extends BaseUser
      * @ORM\Column(name="usr_pc", type="string", length=255)
      */
     private $pc;
+
+    /**
+     * One User has Many Articles.
+     * @ORM\OneToMany(targetEntity="Article", mappedBy="user")
+     */
+    private $articles;
 
 
     /**
@@ -104,29 +103,6 @@ class User extends BaseUser
         return $this->firstName;
     }
 
-    /**
-     * Set rank
-     *
-     * @param integer $rank
-     *
-     * @return User
-     */
-    public function setRank($rank)
-    {
-        $this->rank = $rank;
-
-        return $this;
-    }
-
-    /**
-     * Get rank
-     *
-     * @return int
-     */
-    public function getRank()
-    {
-        return $this->rank;
-    }
 
     /**
      * Set pseudo
@@ -247,4 +223,6 @@ class User extends BaseUser
     {
         return $this->siret;
     }
+
 }
+

@@ -2,8 +2,22 @@
     color: #373737;
     background-color: transparent;
 }
+.btn-navXs {
+    color: black;
+}
 
-
+.navbar-brand {
+    top: -15px;
+    left: -75px;
+    transform: translateX(-20%);
+    position: absolute;
+}
+.navbar-brand>img {
+    background-color: white;
+    width: 20%;
+    height: 250%;
+    border-radius: 50%;
+}
 .span-black {
     background-color: white;
 }
@@ -19,14 +33,17 @@
 .btn-white {
     color: white;
 }
+.btn-black {
+    color: #373737;
+}
 
 .navbarSmall {
-    color: black;
+    color: #373737;
     background-color: transparent;
 }
 
 .btn-nav{
-    color: black;
+    color: #373737;
     text-decoration: none;
 }
 
@@ -38,26 +55,45 @@
 }
 
 
+
+
 @media (min-width: 768px) {
-    .navbar-nav.navbar-center {
-        font-size: 5px;
-        position: absolute;
-        left: 50%;
-        transform: translatex(-50%);
+    ul>li .btn-nav {
+        color: black;
+        font-size: 19px;        
+    }
+    ul>li .btn-nav:hover,
+    ul>li .btn-nav:focus {
+        font-size: 19px;
     }
 }
 @media (max-width: 768px) {
+
+    ul>li .btn-nav {
+        color: black;
+        font-size: 13px;      
+    }
+    ul>li .btn-nav:hover,
+    ul>li .btn-nav:focus {
+        font-size: 13px;
+    }
+}
+
+
+@media (max-width: 425px) {
     .navbarMod {
         background-color: #eb0046;
     }
-    .btn-nav {
-        color: #ffffff;
+    ul>li .btn-nav {
+        color: white;
+        font-size: 18px;
     }
     ul>li .btn-nav:hover,
     ul>li .btn-nav:focus{
         color: #ffffff;
         text-decoration: none;
         background-color: #eb0046;
+        font-size: 18px;        
     }
 }
 

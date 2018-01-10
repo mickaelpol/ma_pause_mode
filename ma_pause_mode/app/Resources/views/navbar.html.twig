@@ -1,5 +1,5 @@
 {% block navbar %} {# logo du site #}
-<div class="container">
+<div class="container hidden-xs">
     <div class="row">
         <img class="center-block img-responsive" src="{{ asset('img/ma-p-m.PNG') }}" width="246" height="253" alt="logo">
     </div>
@@ -10,8 +10,8 @@
 
 {# /////////////////////////////////////////////////// #}
 
-<div class="container-fluid">
-        <nav class="navbar navbarMod margeTop5 font20  hidden-sm hidden-xs">
+
+        <nav class="navbar navbar-center navbarMod margeTop5 font20  hidden-sm hidden-xs">
             <div class="container-fluid text-uppercase">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navLg">
@@ -20,7 +20,7 @@
                         <span class="icon-bar"></span>
                     </button>
                 </div>
-                <div class="col-md-12">
+                <div class="col-sm-12 col-lg-9 col-lg-offset-3">
                     <div class="collapse navbar-collapse" id="navLg">
                         <ul class="nav navbar-nav">
                             <li class="active">
@@ -66,12 +66,9 @@
                         </ul>
                     </div>
                 </div>
-                
             </div>
         </nav>
-        
-    
-</div>
+
 
 
 {# Fin navbar md et lg #}
@@ -86,12 +83,14 @@
                 <span class="icon-bar span-black"></span>
                 <span class="icon-bar span-black"></span>
             </button>
-            <a class="navbar-brand visible-xs btn-nav" href="#">Ma pause mode</a>
+            <a class="navbar-brand visible-xs" href="{{ path('homepage') }}">
+                <img class="center-block img-responsive" src="{{ asset('img/ma-p-m.PNG') }}" alt="logo">
+            </a>
         </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
                     <li class="active">
-                        <a class="btn-nav" href="#">Accueil</a>
+                        <a class="btn-nav" href=" {{ path('homepage') }} ">Accueil</a>
                     </li>
                     <li>
                         <a class="btn-nav" href="#">Mode</a>
@@ -115,31 +114,22 @@
                     <li>
                         <a class="btn-nav" href="#">Contact</a>
                     </li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle btn-nav" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user">
-                            <span class="caret"></span>
+                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        
+                        <li>
+                            <a href="#" class="black">{{ app.user.username }}</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('fos_user_security_logout') }}" class="black">
+                                {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                            </a>
+                        </li>
+                        {% else %}
+                        <li>
+                            <a href="{{ path('fos_user_security_login') }}" class="btn-nav">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+                        </li>
+                        {% endif %}
                         </a>
-                        <ul class="dropdown-menu">
-                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                            
-                            <li>
-                                <a href="#" class="btn-nav">{{ app.user.username }}</a>
-                            </li>
-                            <li>
-                                <a href="{{ path('fos_user_security_logout') }}" class="btn-nav">
-                                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-                                </a>
-                            </li>
-                            {% else %}
-                            <li>
-                                <a href="{{ path('fos_user_registration_register') }}" class="btn-nav">Register</a>
-                            </li>
-                            <li>
-                                <a href="{{ path('fos_user_security_login') }}" class="btn-nav">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
-                            </li>
-                            {% endif %}
-                        </ul>
-                    </li>
                 </ul>
             </div>
         </div>

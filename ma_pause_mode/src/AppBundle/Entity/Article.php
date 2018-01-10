@@ -56,6 +56,14 @@ class Article
      */
     private $dateUpdate;
 
+    /**
+     * Many Articles have One User.
+     * Many Features have One Product.
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="articles")
+     * @ORM\JoinColumn(name="usr_oid", referencedColumnName="usr_oid")
+     */
+    private $user;
+
     public function __construct()
     {
         $this->date = new \DateTime('now');

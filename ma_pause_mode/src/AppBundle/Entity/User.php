@@ -69,6 +69,12 @@ class User extends BaseUser
      */
     private $pc;
 
+    /**
+     * One User has Many Articles.
+     * @ORM\OneToMany(targetEntity="Article", mappedBy="user")
+     */
+    private $articles;
+
 
     /**
      * Get id

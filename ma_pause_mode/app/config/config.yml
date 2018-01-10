@@ -164,3 +164,11 @@ ivory_ck_editor:
             my_toolbar_1: [ [ "Source", "Preview", "-", 'Bold', 'Italic', 'Underline', 'Format', 'Font', 'FontSize', 'TextColor','JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', 'Smiley', 'About',] ]
 
             my_toolbar_2: [ ["Source","Preview","Templates", 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo',"-"], "/", ['Bold', 'Italic', 'Underline', "Strike", "-", 'NumberedList', 'BulletedList', 'Blockquote', "-", 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl',"-", 'Link', 'Unlink', 'Anchor', "-", 'Image', 'Table', 'HorizontalRule', 'SpecialChar', 'Smiley'], "/", ['Styles', 'Format', 'Font', 'FontSize', 'TextColor', "-", "Maximize", 'ShowBlocks'] ]
+
+easy_admin:
+    entities:
+        - AppBundle\Entity\Article
+        - AppBundle\Entity\Category
+        - AppBundle\Entity\Comment
+        - AppBundle\Entity\Section
+        - AppBundle\Entity\User

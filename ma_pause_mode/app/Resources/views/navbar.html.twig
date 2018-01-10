@@ -50,13 +50,20 @@
                             </li>
                             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                     
-                            <li>
-                                <a href="#" class="btn-nav">{{ app.user.username }}</a>
-                            </li>
-                            <li>
-                                <a href="{{ path('fos_user_security_logout') }}" class="btn-nav">
-                                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                            <li class="dropdown">
+                                <a class="dropdown-toggle btn-nav" data-toggle="dropdown" href="#">{{ app.user.username }}
+                                    <span class="caret"></span>
                                 </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="btn-nav" href="#">Mon Profil</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('fos_user_security_logout') }}" class="btn-nav">
+                                            {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
                             {% else %}
                             <li>
@@ -115,14 +122,20 @@
                         <a class="btn-nav" href="#">Contact</a>
                     </li>
                         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                        
-                        <li>
-                            <a href="#" class="black">{{ app.user.username }}</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('fos_user_security_logout') }}" class="black">
-                                {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                        <li class="dropdown">
+                            <a class="dropdown-toggle btn-nav" data-toggle="dropdown" href="#">{{ app.user.username }}
+                                <span class="caret"></span>
                             </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="btn-nav" href="#">Mon Profil</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('fos_user_security_logout') }}" class="btn-nav">
+                                        {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                         {% else %}
                         <li>

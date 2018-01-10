@@ -14,3 +14,10 @@
 {
     font-size: 15px;
 }
+
+
+@media (min-width: 768px) {
+    .font20 {
+        font-size: 15px;
+    }
+}

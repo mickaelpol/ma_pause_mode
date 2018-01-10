@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>
             {% block title %}Ma-Pause-Mode{% endblock %}
         </title>
@@ -17,12 +18,7 @@
     
     <body>
     
-        <div class='container-fluid'>
-            <div class='col-md-offset-2 col-md-8'>
-                {% include('navbar.html.twig') %}
-            </div>
-            
-        </div>
+        {% include('navbar.html.twig') %}
         
 
         {% block body %}{% endblock %}

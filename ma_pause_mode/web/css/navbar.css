@@ -1,7 +1,28 @@
-.navbar{
+.navbarMod{
+    color: #373737;
+    background-color: transparent;
+}
+
+
+.span-black {
+    background-color: white;
+}
+.butonBord {
+    border: 2px solid white;
+    border-radius: 15%;
+}
+
+.bord {
+    border : 1px solid black;
+}
+
+.btn-white {
+    color: white;
+}
+
+.navbarSmall {
     color: black;
     background-color: transparent;
-    font-size: 22px;
 }
 
 .btn-nav{
@@ -9,20 +30,36 @@
     text-decoration: none;
 }
 
-li .btn-nav:hover{
-    
+    ul>li .btn-nav:hover,
+    ul>li .btn-nav:focus {
     color: #eb0046;
     text-decoration: none;
-    
-    
+    background-color: transparent;
 }
 
 
-/* @media (min-width: 768px) {
+@media (min-width: 768px) {
     .navbar-nav.navbar-center {
+        font-size: 5px;
         position: absolute;
         left: 50%;
         transform: translatex(-50%);
     }
-} */
+}
+@media (max-width: 768px) {
+    .navbarMod {
+        background-color: #eb0046;
+    }
+    .btn-nav {
+        color: #ffffff;
+    }
+    ul>li .btn-nav:hover,
+    ul>li .btn-nav:focus{
+        color: #ffffff;
+        text-decoration: none;
+        background-color: #eb0046;
+    }
+}
+
+
 

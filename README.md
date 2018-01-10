@@ -38,7 +38,7 @@
 -------
 
 6 ieme jour :  
-    Parametrage de l'editeur de texte wysiwyg  
+    Configuration de l'editeur de texte wysiwyg  
     Design du site  
     Gestion ajout/edition/suppression/vu d'un article  
 

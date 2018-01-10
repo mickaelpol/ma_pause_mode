@@ -1,30 +1,50 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>
-            {% block title %}Ma-Pause-Mode{% endblock %}
-        </title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
-        <link rel="icon" type="image/x-icon" href="{{ asset('ico.png') }}"/>
-        <link rel="stylesheet" href="{{ asset('css/register.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/marge.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/fontSize.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
-    </head>
-    
-    <body>
-    
-        {% include('navbar.html.twig') %}
-        
+{# Script pour cookies #}
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css"
+/>
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+<script>
+    window.addEventListener("load", function () {
+        window.cookieconsent.initialise({
+            "palette": {
+                "popup": {
+                    "background": "#000"
+                },
+                "button": {
+                    "background": "#f1d600"
+                }
+            },
+            "content": {
+                "message": "En utilisant Ma-Pause-Mode, vous acceptez que nous appliquions des cookies afin de vous offrir une expérience optimale."
+            }
+        })
+    });
+</script>
+</script>
+{# Fin script cookie #}
 
-        {% block body %}{% endblock %}
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+        {% block title %}Ma-Pause-Mode{% endblock %}
+    </title>
+    {% block stylesheets %}{% endblock %}
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('ico.png') }}" />
+    <link rel="stylesheet" href="{{ asset('css/register.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/marge.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/fontSize.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
+</head>
 
-        {% block javascripts %}
-            <script src="{{ asset('js/jquery.min.js') }}"></script>
-            <script src="{{ asset('js/bootstrap.js') }}"></script>
-        {% endblock %}
-    </body>
+<body>
+
+    {% include('navbar.html.twig') %} {% block body %}{% endblock %} {% block javascripts %}
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.js') }}"></script>
+    {% endblock %}
+</body>
+
 </html>

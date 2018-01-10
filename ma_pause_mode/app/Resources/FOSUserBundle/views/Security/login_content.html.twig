@@ -22,13 +22,16 @@
         <div class="checkbox text-center">
             <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
         </div>
-            <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
-    
+            <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>   
     </div>
     <div class="text-center">
         <input class="btn btn-regi" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
     </div>
-            <br>
+    <br>
+        <div class="text-center">
+            <a title="créer un compte" href="{{ path('fos_user_registration_register') }}" class="btn-nav">Pas encore de compte ?</a>
+        </div>
+    <br>
     </form>
 </div>
 

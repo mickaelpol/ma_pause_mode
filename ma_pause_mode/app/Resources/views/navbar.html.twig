@@ -11,7 +11,7 @@
 {# /////////////////////////////////////////////////// #}
 
 <div class="container-fluid">
-        <nav class="navbar navbarMod margeTop5 font20 hidden-sm hidden-xs">
+        <nav class="navbar navbarMod margeTop5 font20  hidden-sm hidden-xs">
             <div class="container-fluid text-uppercase">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navLg">
@@ -59,9 +59,6 @@
                                 </a>
                             </li>
                             {% else %}
-                            <li>
-                                <a href="{{ path('fos_user_registration_register') }}" class="btn-nav">Register</a>
-                            </li>
                             <li>
                                 <a href="{{ path('fos_user_security_login') }}" class="btn-nav">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
                             </li>

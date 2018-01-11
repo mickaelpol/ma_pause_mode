@@ -1,48 +1,98 @@
 {% block body %}
 {% trans_default_domain 'FOSUserBundle' %}
 
-<div class="container margeTop5 font22 text-center">
-    <div class="col-xs-8 col-xs-offset-2">
+<div class="container margeTop5">
+    <div class="row">
+        <h1 class="text-center page-header text-uppercase">Mon profil</h1>
+    </div>
+</div>
+
+<div class="container margeTop5 margeBot20 cadreUser font25 text-center">
+    <div class="col-xs-8 col-xs-offset-2 margeTop10 margeBot10">
         <div class="fos_user_user_show">
+
             <div class="row">
-                <div class="col-xs-6">
-                    {{ 'profile.show.username'|trans }}: {{ user.username }}
+                <div class="col-xs-4">
+                    <a title="Editer mon profil" class="aSansBleu text-center" href=" {{ path('fos_user_profile_edit') }} ">Editer mon profil</a>
                 </div>
-                <div class="col-xs-6">
-                    {{ 'firstname'|trans }}: {{ user.firstname }}
+                <div class="col-xs-4">
+                    Nom : 
+                </div>
+                <div class="col-xs-4">
+                    {{ user.username }}
                 </div>
             </div>
-            <div class="row">
-                <div class="col-xs-6">
-                    {{ 'pseudo'|trans }}: {{ user.pseudo }}
+
+            <div class="row margeTop5">
+                <div class="col-xs-4">
+                    <a title="Supprimer mon compte" type="button" class="aSansBleu" data-toggle="modal" data-target="#myModal">Supprimer</a>
                 </div>
-                <div class="col-xs-6">
-                    {{ 'profile.show.email'|trans }} : {{ user.email }}
+                <div class="col-xs-4">
+                    Prenom :
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-6">
-                    {{ 'adresse'|trans }} : {{ user.address }}
-                </div>
-                <div class="col-xs-6">
-                    {{ 'ville'|trans }} : {{ user.city }}
+                <div class="col-xs-4">
+                    {{ user.firstname }}
                 </div>
             </div>
-            <div class="row">
-                <div class="col-xs-6">
-                    {{ 'code postal'|trans }} : {{ user.pc }}
+
+            <div class="row margeTop5">
+                <div class="col-xs-4">
+                    <a href=" {{ path('fos_user_change_password') }} " title="Changez mot passe" class="aSansBleu">Changez le mot de passe</a>
                 </div>
-                <div class="col-xs-6">
-                    {{ 'n° Siret'|trans }} : {{ user.siret }}
+                <div class="col-xs-4 ">
+                    Adresse :
+                </div>
+                <div class="col-xs-4">
+                    {{ user.address }}
+                </div>
+            </div>
+
+            <div class="row margeTop5">
+                <div class="col-xs-4 col-xs-offset-4">
+                    Code Postal :
+                </div>
+                <div class="col-xs-4">
+                    {{ user.pc }}
+                </div>
+            </div>
+
+            <div class="row margeTop5">
+                <div class="col-xs-4 col-xs-offset-4">
+                    Ville :
+                </div>
+                <div class="col-xs-4">
+                    {{ user.city }}
+                </div>
+            </div>
+
+            <div class="row margeTop5">
+                <div class="col-xs-4 col-xs-offset-4">
+                    Region :
+                </div>
+                <div class="col-xs-4">
+                    {# {{ user.region }} {{ user.departement}} #}
+                </div>
+            </div>
+
+            <div class="row margeTop5">
+                <div class="col-xs-4 col-xs-offset-4">
+                    Nom de mon entreprise :
+                </div>
+                <div class="col-xs-4">
+                    {# {{ user.region }} {{ user.departement}} #}
+                </div>
+            </div>
+            
+            <div class="row margeTop5">
+                <div class="col-xs-4 col-xs-offset-4">
+                    N° de Siret :
+                </div>
+                <div class="col-xs-4">
+                    {{ user.siret }}
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="col-xs-8 col-xs-offset-2 margeTop5">
-        <a class="font15 btn btn-success btn-md text-center pull-left" href=" {{ path('fos_user_profile_edit') }} ">Editer mon profil </a>
-        
-        <button type="button" class="font15 btn btn-danger btn-md pull-right" data-toggle="modal" data-target="#myModal">Supprimer mon compte</button>
         
         <!-- Modal -->
         <div class="modal fade" id="myModal" role="dialog">

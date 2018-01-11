@@ -5,9 +5,17 @@
     color: #ffffff;
 }
 
-.aSansBleu {
+.black {
+    color: black;
+}
+
+.white {
     color: white;
+}
+
+.aSansBleu {
     cursor: pointer;
+    color: black;
 }
 .aSansBleu:hover, .aSansBleu:focus {
     color: rgb(66, 66, 66);
@@ -16,3 +24,11 @@
 .aSansBleu:link {
     text-decoration: none;    
 }
+
+    .details li {
+        list-style: none;
+    }
+
+    li {
+        margin-bottom: 10px;
+    }

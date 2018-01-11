@@ -3,9 +3,12 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Article;
+use AppBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Article controller.
@@ -45,6 +48,11 @@ class ArticleController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $user = $this->getUser()->getId();
+            $usr = $this->getDoctrine()
+                ->getRepository(User::class)
+                ->find($user);
+            $article->setUser($usr);
             $em->persist($article);
             $em->flush();
 

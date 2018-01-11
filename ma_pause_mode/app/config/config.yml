@@ -172,8 +172,16 @@ easy_admin:
     design:
         brand_color: '#eb0046'
     entities:
-        - AppBundle\Entity\Article
-        - AppBundle\Entity\Category
-        - AppBundle\Entity\Comment
-        - AppBundle\Entity\Section
-        - AppBundle\Entity\User
+        Category:
+            class: AppBundle\Entity\Category
+        Comment:
+            class: AppBundle\Entity\Comment
+        Section: 
+            class: AppBundle\Entity\Section
+        Article:
+            class: AppBundle\Entity\Article
+            form:
+                fields:
+                    - description
+                    - { property: 'title', type: 'ckeditor' }
+                    - { property: 'content', type: 'ckeditor', type_options: { 'config_name': 'my_config_2' }} 

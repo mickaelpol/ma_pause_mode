@@ -172,6 +172,8 @@ easy_admin:
     design:
         brand_color: '#eb0046'
     entities:
+        User:
+            class: AppBundle\Entity\User
         Category:
             class: AppBundle\Entity\Category
         Comment:

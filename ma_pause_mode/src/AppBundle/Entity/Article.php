@@ -3,12 +3,15 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * Article
  *
  * @ORM\Table(name="art_article")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ArticleRepository")
+ * @Vich\Uploadable
  */
 class Article
 {
@@ -63,6 +66,26 @@ class Article
      * @ORM\JoinColumn(name="usr_oid", referencedColumnName="usr_oid")
      */
     private $user;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @var string
+     */
+    private $image;
+
+    /**
+     * @Vich\UploadableField(mapping="image", fileNameProperty="image")
+     * @var File
+     */
+    private $imageFile;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     * @var \DateTime
+     */
+    private $updatedAt;
+
+    
 
     public function __construct()
     {
@@ -223,5 +246,56 @@ class Article
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * 
+     * @param File $image
+     */
+    public function setImageFile(File $image = null)
+    {
+        $this->imageFile = $image;
+        if ($image) {
+            $this->updatedAt = new \DateTime('now');
+        }
+    }
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return Article
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
     }
 }

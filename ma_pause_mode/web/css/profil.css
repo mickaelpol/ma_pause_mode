@@ -1,0 +1,34 @@
+.cadreUser {
+    background: linear-gradient(0deg, rgba(197, 197, 197, 0.8), rgba(197, 197, 197, 0.8));
+    border-radius: 20px;
+    box-shadow: inset 0.2em 0.2em #E5334F, 0.2em 0.2em #E5334F, 1px 10px 10px 10px rgba(2, 2, 32, 0.397);
+    color: #ffffff;
+}
+
+.black {
+    color: black;
+}
+
+.white {
+    color: white;
+}
+
+.aSansBleu {
+    cursor: pointer;
+    color: black;
+}
+.aSansBleu:hover, .aSansBleu:focus {
+    color: rgb(66, 66, 66);
+    text-decoration: none;    
+}
+.aSansBleu:link {
+    text-decoration: none;    
+}
+
+    .details li {
+        list-style: none;
+    }
+
+    li {
+        margin-bottom: 10px;
+    }

@@ -1,0 +1,91 @@
+{% block body %}
+{% trans_default_domain 'FOSUserBundle' %}
+
+
+<div class="fos_user_user_show">
+<div class="container margeTop5 margeBot10">
+    <div class="jumbotron cadreUser black">
+        <div class="row">
+            <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4 margeTop20">
+                <img src="https://www.svgimages.com/svg-image/s5/man-passportsize-silhouette-icon-256x256.png" alt="stack photo" class="img">
+            </div>
+            <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
+                <div class="container">
+                    <h1> {{ user.username }} {{ user.firstName}} </h1>
+                </div>
+                <hr>
+                <ul class="container details margeTop10">
+                    <li>
+                        <p>
+                            <span class="glyphicon glyphicon-user" style="width:50px;"></span>{{ user.pseudo }}</p>
+                    </li>
+                    <li>
+                        <p>
+                            <span class="glyphicon glyphicon-earphone one" style="width:50px;"></span>+91 90000 00000</p>
+                    </li>
+                    <li>
+                        <p>
+                            <span class="glyphicon glyphicon-envelope one" style="width:50px;"></span>{{user.email}}</p>
+                    </li>
+                    <li>
+                        <p>
+                            <span class="glyphicon glyphicon-map-marker one" style="width:50px;"></span>
+                            {{ user.address }} {{ user.pc }} {{ user.city }}
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <span class="glyphicon glyphicon-briefcase" style="width:50px;"></span>
+                            Nom entreprise
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <span class="glyphicon glyphicon-asterisk" style="width:50px;"></span>
+                            N° Siret {{ user.siret }}
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <span class="glyphicon glyphicon-new-window one" style="width:50px;"></span>
+                            <a href="#">site web </a>
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row margeTop5">
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                <a class="btn btn-block btn-info black" title="Editer mon profil" class="aSansBleu text-center" href=" {{ path('fos_user_profile_edit') }} ">Editer mon profil</a>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                <a class="btn btn-block btn-info black" href=" {{ path('fos_user_change_password') }} " title="Changez mot passe" class="aSansBleu">Changez le mot de passe</a>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                <a class="btn btn-block btn-danger black" title="Supprimer mon compte" type="button" class="aSansBleu" data-toggle="modal" data-target="#myModal">Supprimer mon compte</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+    
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3 class="modal-title text-danger text-center">Voulez-vous supprimer votre compte?</h3>
+                </div>
+                <p class="text-danger text-center font15">Cette action est irréversible.</p>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <a class="btn btn-md btn-danger" href="#">Supprimer</a>
+                </div>
+            </div>
+    
+        </div>
+    </div>
+
+
+{% endblock %}

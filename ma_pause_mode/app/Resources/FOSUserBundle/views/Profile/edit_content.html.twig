@@ -1,0 +1,38 @@
+{% block body %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+<div class="fos_user_user_profile">
+<div class="container margeTop5 cadreUser">
+    <div class="row">
+        <div class="col-xs-10 col-xs-offset-1">
+            <h1 class="text-center page-header text-uppercase">Mon profil</h1>
+        </div>
+    </div>
+</div>
+
+<div class="container cadreUser margeTop5 margeBot20 font22 text-center black">
+    {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}                      
+    {{ dump(form) }}
+    {{ form_widget(form) }}
+    
+    {# {{ form_label(form.pseudo, null, {'label_attr': {'class': 'black'}}) }}
+    {{ form_widget(form.pseudo,{ 'attr': {'class': 'form-control'}}) }}
+    {% do form.pseudo.setRendered %}
+    {% if not form.pseudo.vars.valid %}
+
+        {% for error in form.pseudo.vars.errors %}
+
+        <p class="text-danger"> {{ error.message }} </p>
+        
+        {% endfor %}
+        
+    {% endif %} #}
+    
+
+        <div>
+            <input class="btn btn-lg btn-success" type="submit" value="{{ 'profile.edit.submit'|trans }}" />
+        </div>
+    {{ form_end(form) }}
+</div>
+
+{% endblock %}

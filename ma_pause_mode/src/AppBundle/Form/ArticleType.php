@@ -30,6 +30,7 @@ class ArticleType extends AbstractType
             'config_name' => 'my_config_2',
         ))
         ->add('description', TextType::class , array('label' => 'Description de l\'article', 'translation_domain' => 'FOSUserBundle'));
+        
     }
     
     /**

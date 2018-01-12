@@ -7,7 +7,7 @@ imports:
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: fr
-
+    app.path.article_images: /uploads/images/Article
 framework:
     #esi: ~
     translator: { fallbacks: ['%locale%'] }
@@ -169,9 +169,15 @@ ivory_ck_editor:
             my_toolbar_2: [ ["Source","Preview","Templates", 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo',"-"], "/", ['Bold', 'Italic', 'Underline', "Strike", "-", 'NumberedList', 'BulletedList', 'Blockquote', "-", 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl',"-", 'Link', 'Unlink', 'Anchor', "-", 'Image', 'Table', 'HorizontalRule', 'SpecialChar', 'Smiley'], "/", ['Styles', 'Format', 'Font', 'FontSize', 'TextColor', "-", "Maximize", 'ShowBlocks'] ]
 
 easy_admin:
+    
     list:
         max_results: 31
-    site_name: 'Ma pause mode'
+    site_name: '<a href="/"><div class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i>Ma pause mode</div></a>'
+    assets:
+        css:
+            - '/bundles/css/navbar.css'
+        js:
+            - '/bundles/js/bootstrap.js'
     design:
         brand_color: '#eb0046'
     entities:
@@ -180,13 +186,19 @@ easy_admin:
             list:
                 fields: 
                     - username
+                    - { property: 'username', label: 'Nom' }
                     - firstName
+                    - { property: 'firstName', label: 'Prénom' }
                     - pseudo
+                    - { property: 'pseudo', label: 'Pseudo' }
                     - email
+                    - { property: 'email', label: 'Email' }
                     - city
+                    - { property: 'city', label: 'Ville' }
                     - lastLogin
+                    - { property: 'lastLogin', label: 'Dernière connexion' }
                     - enabled
-                    - { property: 'roles', type: 'choice', type_options: { multiple: true, choices: { 'ROLE_USER': 'ROLE_USER', 'ROLE_ADMIN': 'ROLE_ADMIN' } } }
+                    - { property: 'enabled', label: 'Valide' }
         Category:
             class: AppBundle\Entity\Category
         Comment:
@@ -195,8 +207,26 @@ easy_admin:
             class: AppBundle\Entity\Section
         Article:
             class: AppBundle\Entity\Article
+            list:
+                fields:
+                    - title
+                    - date
+                    - description
+                    - user
+                    - { property: 'image', type: 'image', base_path: '%app.path.article_images%' }
+            show:
+                fields:
+                    - { property: 'image', type: 'image', base_path: '%app.path.article_images%' } 
             form:
                 fields: 
                     - description
                     - { property: 'title', type: 'ckeditor' }
-                    - { property: 'content', type: 'ckeditor', type_options: { 'config_name': 'my_config_2' }} 
+                    - { property: 'content', type: 'ckeditor', type_options: { 'config_name': 'my_config_2' }}
+                    - { property: 'imageFile', type: 'file' }
+
+vich_uploader:
+    db_driver: orm        
+    mappings:
+        image:
+            uri_prefix:         '%app.path.article_images%'
+            upload_destination: '%kernel.root_dir%/../web/uploads/images/Article'   

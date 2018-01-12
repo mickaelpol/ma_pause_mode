@@ -9,6 +9,28 @@ use AppBundle\Entity\User;
 
 class AdminController extends BaseAdminController
 {
+
+
+    public function createNewUserEntity()
+    {
+        return $this->get('fos_user.user_manager')->createUser();
+    }
+
+    public function persistUserEntity($user)
+    {
+        $this->get('fos_user.user_manager')->updateUser($user, false);
+        parent::persistUserEntity($user);
+    }
+
+    public function updateUserEntity($user)
+    {
+        $this->get('fos_user.user_manager')->updateUser($user, false);
+        parent::updateUserEntity($user);
+    }
+
+
+
+
     protected function newAction()
     {
         $this->dispatch(EasyAdminEvents::PRE_NEW);
@@ -31,7 +53,6 @@ class AdminController extends BaseAdminController
                     ->getRepository(User::class)
                     ->find($user);
                 $entity->setUser($usr);
-              
             }
             $this->dispatch(EasyAdminEvents::PRE_PERSIST, array('entity' => $entity));
 

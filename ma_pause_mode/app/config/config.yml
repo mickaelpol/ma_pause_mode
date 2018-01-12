@@ -169,9 +169,15 @@ ivory_ck_editor:
             my_toolbar_2: [ ["Source","Preview","Templates", 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo',"-"], "/", ['Bold', 'Italic', 'Underline', "Strike", "-", 'NumberedList', 'BulletedList', 'Blockquote', "-", 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl',"-", 'Link', 'Unlink', 'Anchor', "-", 'Image', 'Table', 'HorizontalRule', 'SpecialChar', 'Smiley'], "/", ['Styles', 'Format', 'Font', 'FontSize', 'TextColor', "-", "Maximize", 'ShowBlocks'] ]
 
 easy_admin:
+    
     list:
         max_results: 31
-    site_name: 'Ma pause mode'
+    site_name: '<a href="/"><div class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i>Ma pause mode</div></a>'
+    assets:
+        css:
+            - '/bundles/css/navbar.css'
+        js:
+            - '/bundles/js/bootstrap.js'
     design:
         brand_color: '#eb0046'
     entities:

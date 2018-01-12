@@ -54,7 +54,10 @@
     background-color: transparent;
 }
 
-
+#yolo{
+    color: red;
+    
+}
 
 
 @media (min-width: 768px) {

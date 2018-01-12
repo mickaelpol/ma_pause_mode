@@ -135,6 +135,11 @@
                                 <li>
                                     <a class="btn-nav" href="#">Mon Profil</a>
                                 </li>
+                                {% if is_granted('ROLE_SUPER_ADMIN') %}
+                                    <li>
+                                        <a class="btn-nav" href=" {{ path('easyadmin') }} ">Administrer le site</a>
+                                    </li>
+                                {% endif %}
                                 <li>
                                     <a href="{{ path('fos_user_security_logout') }}" class="btn-nav">
                                         {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}

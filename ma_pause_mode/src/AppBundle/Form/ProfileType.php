@@ -10,12 +10,30 @@ use Symfony\Component\Form\FormBuilderInterface;
 class ProfileType extends AbstractType
 {
 
-    public function buildUserForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        parent::buildUserForm($builder, $options);
         $builder
-            ->add('FirstName')
-            ->add('Pseudo');
+            ->add('firstname', null, array('label' => 'Prenom', 'attr' => array(
+            'class' => 'form-control'
+            )))
+            ->add('username', null, array('label' => 'Nom', 'attr' => array(
+            'class' => 'form-control'
+            )))
+            ->add('pseudo', null , array('label' => 'Pseudonyme', 'attr' => array(
+                'class' => 'form-control'
+            )))
+            ->add('siret', null, array('label' => 'N° Siret', 'attr' => array(
+                'class' => 'form-control'
+            )))
+            ->add('address', null, array('label' => 'Addresse', 'attr' => array(
+                'class' => 'form-control'
+            )))
+            ->add('pc', null, array('label' => 'Code Postal', 'attr' => array(
+                'class' => 'form-control'
+            )))
+            ->add('city', null, array('label' => 'Ville', 'attr' => array(
+                'class' => 'form-control'
+            )));
     }
 
     public function getParent() 

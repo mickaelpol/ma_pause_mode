@@ -7,7 +7,7 @@ imports:
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: fr
-
+    app.path.article_images: /uploads/images/Article
 framework:
     #esi: ~
     translator: { fallbacks: ['%locale%'] }
@@ -207,8 +207,26 @@ easy_admin:
             class: AppBundle\Entity\Section
         Article:
             class: AppBundle\Entity\Article
+            list:
+                fields:
+                    - title
+                    - date
+                    - description
+                    - user
+                    - { property: 'image', type: 'image', base_path: '%app.path.article_images%' }
+            show:
+                fields:
+                    - { property: 'image', type: 'image', base_path: '%app.path.article_images%' } 
             form:
                 fields: 
                     - description
                     - { property: 'title', type: 'ckeditor' }
-                    - { property: 'content', type: 'ckeditor', type_options: { 'config_name': 'my_config_2' }} 
+                    - { property: 'content', type: 'ckeditor', type_options: { 'config_name': 'my_config_2' }}
+                    - { property: 'imageFile', type: 'file' }
+
+vich_uploader:
+    db_driver: orm        
+    mappings:
+        image:
+            uri_prefix:         '%app.path.article_images%'
+            upload_destination: '%kernel.root_dir%/../web/uploads/images/Article'   

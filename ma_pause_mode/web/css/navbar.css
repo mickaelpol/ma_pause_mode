@@ -54,11 +54,6 @@
     background-color: transparent;
 }
 
-#yolo{
-    color: red;
-    
-}
-
 
 @media (min-width: 768px) {
     ul>li .btn-nav {

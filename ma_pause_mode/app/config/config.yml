@@ -177,13 +177,19 @@ easy_admin:
             list:
                 fields: 
                     - username
+                    - { property: 'username', label: 'Nom' }
                     - firstName
+                    - { property: 'firstName', label: 'Prénom' }
                     - pseudo
+                    - { property: 'pseudo', label: 'Pseudo' }
                     - email
+                    - { property: 'email', label: 'Email' }
                     - city
+                    - { property: 'city', label: 'Ville' }
                     - lastLogin
+                    - { property: 'lastLogin', label: 'Dernière connexion' }
                     - enabled
-                    - { property: 'roles', type: 'choice', type_options: { multiple: true, choices: { 'ROLE_USER': 'ROLE_USER', 'ROLE_ADMIN': 'ROLE_ADMIN' } } }
+                    - { property: 'enabled', label: 'Valide' }
         Category:
             class: AppBundle\Entity\Category
         Comment:

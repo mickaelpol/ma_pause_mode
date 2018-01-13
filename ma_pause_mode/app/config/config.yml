@@ -171,8 +171,11 @@ ivory_ck_editor:
 easy_admin:
     
     list:
+        actions:
+            - { name: 'show', icon: 'search' }
+            - { name: 'edit', icon: 'pencil' }
         max_results: 31
-    site_name: '<a href="/"><div class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i>Ma pause mode</div></a>'
+    site_name: '<a href="/"><div class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Ma pause mode</div></a>'
     assets:
         css:
             - '/bundles/css/navbar.css'
@@ -180,6 +183,7 @@ easy_admin:
             - '/bundles/js/bootstrap.js'
     design:
         brand_color: '#eb0046'
+        form_theme: 'vertical'
     entities:
         User:
             class: AppBundle\Entity\User

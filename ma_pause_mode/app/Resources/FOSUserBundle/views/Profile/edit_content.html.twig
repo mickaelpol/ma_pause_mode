@@ -111,14 +111,29 @@
 
                     {# Text input #}
                     <div class="form-group">
-                        <label class="col-md-4 control-label" for="entreprise">entreprise</label>
+                        <label class="col-md-4 control-label" for="entreprise">{{ form_label(form.entreprise) }}</label>
                         <div class="col-md-4">
                             <div class="input-group">
                                 <div class="input-group-addon">
                                     <i class="glyphicon glyphicon-briefcase"></i>
                     
                                 </div>
-                                <input id="Mother" name="Mother" type="text" placeholder="Nom de l'entreprise" class="form-control input-md">
+                                {{ form_widget(form.entreprise) }}
+                            </div>
+                    
+                        </div>
+                    </div>
+                    
+                    {# Text input #}
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="entreprise">{{ form_label(form.siteWeb) }}</label>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="glyphicon glyphicon-globe"></i>
+                    
+                                </div>
+                                {{ form_widget(form.siteWeb) }}
                             </div>
                     
                         </div>
@@ -141,14 +156,14 @@
                     
                     {# Text input #}
                     <div class="form-group">
-                        <label class="col-md-4 control-label" for="entreprise">Téléphone</label>
+                        <label class="col-md-4 control-label" for="entreprise">{{ form_label(form.phoneNumber) }}</label>
                         <div class="col-md-4">
                             <div class="input-group">
                                 <div class="input-group-addon">
                                     <i class="glyphicon glyphicon-earphone"></i>
                     
                                 </div>
-                                <input id="Mother" name="Mother" type="text" placeholder="Numero entreprise" class="form-control input-md">
+                                {{ form_widget(form.phoneNumber) }}
                             </div>
                     
                         </div>

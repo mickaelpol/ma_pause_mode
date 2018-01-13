@@ -2,44 +2,90 @@
 
 {% block body %}
 
-<div class="container">
+<div class="container margeBot25">
+<div class="">
     <div class="row text-center">
         <h1>Mode</h1>
     </div>
 
-    <div class="row">
-        <ul class="list-inline text-center">
-            <li>Titre</li>
-            <li>Description</li>
-            <li>Date</li>
-            <li>Mise à jour</li>
-            <li>Voir</li>
-            <li>Editer</li>
-        </ul>
-    </div>
-
     {% for article in articles %}
 
-    <div class="row">
-        <ul class="list-unstyled">
-            <li>{% autoescape %}
+    {% dump(article) %}
+    
+    {# <div class="row margeBot25">
+        <ul class="list-inline text-center w3-display-bottommiddle w3-container">
+            <li>
+                <a href="{{ path('article_show', { 'id': article.id }) }}">
+                    <img src="{{ asset('uploads/images/Article/' ~ article.image) }}" height="300px" width="800px">
+                </a>
+            </li>
+            <li>
+                <p class="w3-display-bottommiddle w3-container">
                     {{ article.title|raw }}
-                {% endautoescape %}
+                </p>
             </li>
             <li>{{ article.description }}</li>
             <li>{% if article.date %}{{ article.date|date('Y-m-d H:i:s') }}{% endif %}</li>
             <li>{% if article.dateUpdate %}{{ article.dateUpdate|date('Y-m-d H:i:s') }}{% endif %}</li>
-            <li><a href="{{ path('article_show', { 'id': article.id }) }}">Voir l'article</a></li>
-            <li><a href="{{ path('article_edit', { 'id': article.id }) }}">Editer l'article</a></li>
+            <li></li>
         </ul>
-    </div>
+    </div> #}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <aside>
+                            <img src="{{ asset('uploads/images/Article/' ~ article.image) }}"
+                                class="img-responsive">
+                            <div class="content-title">
+                                <div class="text-center">
+                                    <h3>
+                                        <a href="{{ path('article_show', { 'id': article.id }) }}">{{ article.title|raw }}</a>
+                                    </h3>
+                                </div>
+                            </div>
+                            <div class="content-footer">
+                                le {% if article.date %}{{ article.date|date('d-m-Y à H:i ') }}{% endif %}
+                                <span class="pull-right">
+                                    <a href="#" data-toggle="tooltip" data-placement="left" title="Comments">
+                                        <i class="glyphicon glyphicon-comment"></i> 30</a>
+                                </span>
+                                <div class="user-ditels">
+                                    <div class="user-img">
+                                        <img src="{{ asset('uploads/images/Article/' ~ article.image) }}"
+                                            class="img-responsive">
+                                    </div>
+                                    <span class="user-full-ditels">
+                                        <h3>
+                                            <a href="{{ path('article_show', { 'id': article.id }) }}">Lire larticle</a>
+                                        </h3>
+                                        <p>Auteur : {{ article.user }} </p>
+                                    </span>
+                                    <div class="social-icon">
+                                        <a href="#">
+                                            <i class="fa fa-facebook" data-toggle="tooltip" data-placement="bottom" title="Facebook"></i>
+                                        </a>
+                                        <a href="#">
+                                            <i class="fa fa-twitter" data-toggle="tooltip" data-placement="bottom" title="Twitter"></i>
+                                        </a>
+                                        <a href="#">
+                                            <i class="fa fa-google-plus" data-toggle="tooltip" data-placement="bottom" title="Google Plus"></i>
+                                        </a>
+                                        <a href="#">
+                                            <i class="fa fa-youtube" data-toggle="tooltip" data-placement="bottom" title="Youtube"></i>
+                                        </a>
+                                        <a href="#">
+                                            <i class="fa fa-github" data-toggle="tooltip" data-placement="bottom" title="Github"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </aside>
+                    </div>
 
     {% endfor %}
-
-    <div class="row text-center">
-        <a class="btn btn-block btn-success" href="{{ path('article_new') }}">Create a new article</a>
-    </div>
-    
-    
+</div>
 </div>
 {% endblock %}

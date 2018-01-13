@@ -13,25 +13,34 @@ class ProfileType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('firstname', null, array('label' => 'Prenom', 'attr' => array(
+            ->add('firstname', null, array('label' => 'firstname', 'attr' => array(
             'class' => 'form-control'
             )))
-            ->add('username', null, array('label' => 'Nom', 'attr' => array(
+            ->add('username', null, array('label' => 'username', 'attr' => array(
             'class' => 'form-control'
             )))
-            ->add('pseudo', null , array('label' => 'Pseudonyme', 'attr' => array(
+            ->add('pseudo', null , array('label' => 'pseudo', 'attr' => array(
                 'class' => 'form-control'
             )))
             ->add('siret', null, array('label' => 'N° Siret', 'attr' => array(
                 'class' => 'form-control'
             )))
-            ->add('address', null, array('label' => 'Addresse', 'attr' => array(
+            ->add('address', null, array('label' => 'Addresse','required' => false, 'attr' => array(
                 'class' => 'form-control'
             )))
-            ->add('pc', null, array('label' => 'Code Postal', 'attr' => array(
+            ->add('pc', null, array('label' => 'Code Postal','required' => false, 'attr' => array(
                 'class' => 'form-control'
             )))
-            ->add('city', null, array('label' => 'Ville', 'attr' => array(
+            ->add('city', null, array('label' => 'Ville','required' => false, 'attr' => array(
+                'class' => 'form-control'
+            )))
+            ->add('entreprise', null, array('label' => 'Entreprise', 'attr' => array(
+                'class' => 'form-control'
+            )))
+            ->add('phoneNumber', null, array('label' => 'Téléphone','required' => false, 'attr' => array(
+                'class' => 'form-control'
+            )))
+            ->add('siteWeb', null, array('label' => 'Site web','required' => false, 'attr' => array(
                 'class' => 'form-control'
             )));
     }

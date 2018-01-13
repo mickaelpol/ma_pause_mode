@@ -21,7 +21,7 @@
                     </li>
                     <li>
                         <p>
-                            <span class="glyphicon glyphicon-earphone one" style="width:50px;"></span>+91 90000 00000</p>
+                            <span class="glyphicon glyphicon-earphone one" style="width:50px;"></span>{{ user.phoneNumber }}</p>
                     </li>
                     <li>
                         <p>
@@ -36,7 +36,7 @@
                     <li>
                         <p>
                             <span class="glyphicon glyphicon-briefcase" style="width:50px;"></span>
-                            Nom entreprise
+                            {{ user.entreprise }}
                         </p>
                     </li>
                     <li>
@@ -48,7 +48,7 @@
                     <li>
                         <p>
                             <span class="glyphicon glyphicon-new-window one" style="width:50px;"></span>
-                            <a href="#">site web </a>
+                            <a target="blank" href="{{ user.lienSiteWeb }}">{{ user.siteWeb }}</a>
                         </p>
                     </li>
                 </ul>
@@ -80,7 +80,7 @@
                 <p class="text-danger text-center font15">Cette action est irréversible.</p>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <a class="btn btn-md btn-danger" href="#">Supprimer</a>
+                    <a class="btn btn-md btn-danger" href=" {{ path('app_user_delete', { 'id': user.id }) }}">Supprimer</a>
                 </div>
             </div>
     

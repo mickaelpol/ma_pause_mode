@@ -1,11 +1,12 @@
 {% block body %}
 
 {% trans_default_domain '@FOSUserBundle' %}
+<div class="container cadreUser margeTop5 margeBot10 black">
 
-<h1 class="text-center page-header titre-regi">Création de compte</h1>
-
+    <h1 class="text-center page-header titre-regi">Création de compte</h1>
+    
     {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
-
+    
     <div class="container text-center">
         <div class="row">
             <div class="col-xs-offset-2 col-xs-4">
@@ -20,7 +21,7 @@
             </div>
         </div>
     </div>
-
+    
     <div class="container text-center">
         <div class="row">
             <div class="col-xs-offset-2 col-xs-4">
@@ -35,7 +36,7 @@
             </div>
         </div>
     </div>
-
+    
     <div class="container text-center">
         <div class="row">
             <div class="col-xs-offset-2 col-xs-4">
@@ -65,7 +66,36 @@
             </div>
         </div>
     </div>
-
+    
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-xs-offset-2 col-xs-4">
+                {{ form_label(form.entreprise) }}
+                {{ form_errors(form.entreprise) }}
+                {{ form_widget(form.entreprise,{ 'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="col-xs-4">
+                {{ form_label(form.phoneNumber) }}
+                {{ form_errors(form.phoneNumber) }}
+                {{ form_widget(form.phoneNumber,{ 'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+    </div>
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-xs-offset-2 col-xs-4">
+                {{ form_label(form.siteWeb) }}
+                {{ form_errors(form.siteWeb) }}
+                {{ form_widget(form.siteWeb,{ 'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="col-xs-4">
+                {{ form_label(form.lienSiteWeb) }}
+                {{ form_errors(form.lienSiteWeb) }}
+                {{ form_widget(form.lienSiteWeb,{ 'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+    </div>
+    
     <div class="container text-center">
         <div class="row">
             <div class="col-xs-offset-2 col-xs-4">
@@ -78,16 +108,15 @@
                 {{ form_errors(form.plainPassword.second) }}
                 {{ form_widget(form.plainPassword.second,{ 'attr': {'class': 'form-control'}}) }}
             </div>
-
+            
             <div class="col-xs-offset-2 col-xs-8">
                 <div class="text-center">
-                    <input class="btn btn-block btn-regi margeBot5" type="submit" value="{{ 'registration.submit'|trans }}"/>
+                    <button type="submit" class="btn btn-block btn-regi margeBot5">{{ "S'enregistrer"|trans }}</button>
                 </div>
             </div>
         </div>
     </div>
-
-    {{ form_widget(form) }}
-
+    
     {{ form_end(form) }}
-{% endblock %}
+</div>
+    {% endblock %}

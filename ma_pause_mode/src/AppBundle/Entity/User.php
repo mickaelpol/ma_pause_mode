@@ -58,17 +58,53 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="usr_pc", type="string", length=255)
+     * @ORM\Column(name="usr_pc", type="string", length=255, nullable=true)
      */
     private $pc;
 
     /**
      * One User has Many Articles.
-     * @ORM\OneToMany(targetEntity="Article", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="Article", mappedBy="user", orphanRemoval=true)
      */
     private $articles;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="usr_phone_number", type="string", length=30, nullable=true)
+     */
+    private $phoneNumber;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="usr_entreprise", type="string", length=255)
+     */
+    private $entreprise;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="usr_site_web", type="string", length=255, nullable=true)
+     */
+    private $siteWeb;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="usr_lien_site_web", type="string", length=255, nullable=true)
+     */
+    private $lienSiteWeb;
 
+
+
+    public function __construct()
+    {
+        $this->siteWeb = "Site Web Indisponible (Placer votre site web ici)";
+        $this->phoneNumber  = "Téléphone Indisponible";
+        
+    }
+    
     /**
      * Get id
      *
@@ -137,6 +173,7 @@ class User extends BaseUser
      */
     public function setAddress($address)
     {
+        
         $this->address = $address;
 
         return $this;
@@ -162,7 +199,7 @@ class User extends BaseUser
     public function setCity($city)
     {
         $this->city = $city;
-
+        
         return $this;
     }
 
@@ -186,7 +223,7 @@ class User extends BaseUser
     public function setPc($pc)
     {
         $this->pc = $pc;
-
+        
         return $this;
     }
 
@@ -257,5 +294,108 @@ class User extends BaseUser
     public function getArticles()
     {
         return $this->articles;
+    }
+
+    /**
+     * Set phoneNumber
+     *
+     * @param string $phoneNumber
+     *
+     * @return User
+     */
+    public function setPhoneNumber($phoneNumber)
+    {
+        if(empty($phoneNumber)){
+            $this->phoneNumber = "Téléphone indisponible";
+        } else {
+            $this->phoneNumber = $phoneNumber;
+        }
+        return $this;
+    }
+
+    /**
+     * Get phoneNumber
+     *
+     * @return string
+     */
+    public function getPhoneNumber()
+    {
+        return $this->phoneNumber;
+    }
+
+    /**
+     * Set entreprise
+     *
+     * @param string $entreprise
+     *
+     * @return User
+     */
+    public function setEntreprise($entreprise)
+    {
+        $this->entreprise = $entreprise;
+
+        return $this;
+    }
+
+    /**
+     * Get entreprise
+     *
+     * @return string
+     */
+    public function getEntreprise()
+    {
+        return $this->entreprise;
+    }
+
+    /**
+     * Set siteWeb
+     *
+     * @param string $siteWeb
+     *
+     * @return User
+     */
+    public function setSiteWeb($siteWeb)
+    {
+        if(empty($siteWeb)){
+            $this->siteWeb = "Site indisponible";
+        } else {
+            $this->siteWeb = $siteWeb;
+        }
+        return $this;
+    }
+
+    /**
+     * Get siteWeb
+     *
+     * @return string
+     */
+    public function getSiteWeb()
+    {
+        return $this->siteWeb;
+    }
+    
+
+    /**
+     * Set lienSiteWeb
+     *
+     * @param string $lienSiteWeb
+     *
+     * @return User
+     */
+    public function setLienSiteWeb($lienSiteWeb)
+    {
+        $this->lienSiteWeb = $lienSiteWeb;
+
+        return $this;
+    }
+
+    /**
+     * Get lienSiteWeb
+     *
+     * @return string
+     */
+    public function getLienSiteWeb()
+    {
+        return $this->lienSiteWeb;
     }
 }

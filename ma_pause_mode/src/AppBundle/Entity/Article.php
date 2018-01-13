@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * Article
@@ -55,7 +56,7 @@ class Article
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="art_dateUpdate", type="datetime", nullable=true)
+     * @ORM\Column(name="art_dateUpdate", type="datetime")
      */
     private $dateUpdate;
 
@@ -90,7 +91,6 @@ class Article
     public function __construct()
     {
         $this->date = new \DateTime('now');
-        $this->dateUpdate = new \DateTime('now');
     }
 
 
@@ -185,8 +185,7 @@ class Article
      */
     public function setDateUpdate($dateUpdate)
     {
-        $this->dateUpdate = $dateUpdate;
-
+        $this->dateUpdate = new \DateTime('now');
         return $this;
     }
 

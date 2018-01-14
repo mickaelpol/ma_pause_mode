@@ -1,5 +1,9 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/articleIndex.css') }}">
+{% endblock %}
+
 {% block body %}
 
 <div class="container margeBot25">
@@ -9,8 +13,6 @@
     </div>
 
     {% for article in articles %}
-
-    {% dump(article) %}
     
     {# <div class="row margeBot25">
         <ul class="list-inline text-center w3-display-bottommiddle w3-container">

@@ -160,6 +160,7 @@ fos_user:
             from_email:
                 address:        resetting@example.com
                 sender_name:    Demo Resetting
+            template: email/reset.html.twig
 
     profile:
         form:

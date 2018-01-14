@@ -42,6 +42,9 @@ class ProfileType extends AbstractType
             )))
             ->add('siteWeb', null, array('label' => 'Site web','required' => false, 'attr' => array(
                 'class' => 'form-control'
+            )))
+            ->add('lienSiteWeb', null, array('label' => 'Lien du site web','required' => false, 'attr' => array(
+                'class' => 'form-control'
             )));
     }
 

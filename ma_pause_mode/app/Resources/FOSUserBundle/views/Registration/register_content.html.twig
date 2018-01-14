@@ -11,13 +11,25 @@
         <div class="row">
             <div class="col-xs-offset-2 col-xs-4">
                 {{ form_label(form.firstName) }}
-                {{ form_errors(form.firstName) }}
                 {{ form_widget(form.firstName,{ 'attr': {'class': 'form-control'}}) }}
+                {% do form.firstName.setRendered %} 
+                {% if not form.firstName.vars.valid %} 
+                {% for error in form.firstName.vars.errors %}
+                    <strong class="text-danger">
+                        {{ error.message }}
+                    </strong>
+                    {% endfor %} {% endif %}
             </div>
             <div class="col-xs-4">
                 {{ form_label(form.username) }}
-                {{ form_errors(form.username) }}
                 {{ form_widget(form.username,{ 'attr': {'class': 'form-control'}}) }}
+                {% do form.username.setRendered %} 
+                {% if not form.username.vars.valid %} 
+                {% for error in form.username.vars.errors %}
+                    <strong class="text-danger">
+                        {{ error.message }}
+                    </strong>
+                    {% endfor %} {% endif %}
             </div>
         </div>
     </div>
@@ -26,13 +38,25 @@
         <div class="row">
             <div class="col-xs-offset-2 col-xs-4">
                 {{ form_label(form.email) }}
-                {{ form_errors(form.email) }}
                 {{ form_widget(form.email,{ 'attr': {'class': 'form-control'}}) }}
+                {% do form.email.setRendered %} 
+                {% if not form.email.vars.valid %} 
+                {% for error in form.email.vars.errors %}
+                    <strong class="text-danger">
+                        {{ error.message }}
+                    </strong>
+                    {% endfor %} {% endif %}
             </div>
             <div class="col-xs-4">
                 {{ form_label(form.pseudo) }}
-                {{ form_errors(form.pseudo) }}
                 {{ form_widget(form.pseudo,{ 'attr': {'class': 'form-control'}}) }}
+                {% do form.pseudo.setRendered %} 
+                {% if not form.pseudo.vars.valid %} 
+                {% for error in form.pseudo.vars.errors %}
+                    <strong class="text-danger">
+                        {{ error.message }}
+                    </strong>
+                    {% endfor %} {% endif %}
             </div>
         </div>
     </div>
@@ -41,8 +65,14 @@
         <div class="row">
             <div class="col-xs-offset-2 col-xs-4">
                 {{ form_label(form.siret) }}
-                {{ form_errors(form.siret) }}
                 {{ form_widget(form.siret,{ 'attr': {'class': 'form-control'}}) }}
+                {% do form.siret.setRendered %} 
+                {% if not form.siret.vars.valid %} 
+                {% for error in form.siret.vars.errors %}
+                    <strong class="text-danger">
+                        {{ error.message }}
+                    </strong>
+                    {% endfor %} {% endif %}
             </div>
             <div class="col-xs-4">
                 {{ form_label(form.address) }}
@@ -76,8 +106,14 @@
             </div>
             <div class="col-xs-4">
                 {{ form_label(form.phoneNumber) }}
-                {{ form_errors(form.phoneNumber) }}
                 {{ form_widget(form.phoneNumber,{ 'attr': {'class': 'form-control'}}) }}
+                {% do form.phoneNumber.setRendered %} 
+                {% if not form.phoneNumber.vars.valid %} 
+                {% for error in form.phoneNumber.vars.errors %}
+                    <strong class="text-danger">
+                        {{ error.message }}
+                    </strong>
+                    {% endfor %} {% endif %}
             </div>
         </div>
     </div>
@@ -90,8 +126,14 @@
             </div>
             <div class="col-xs-4">
                 {{ form_label(form.lienSiteWeb) }}
-                {{ form_errors(form.lienSiteWeb) }}
                 {{ form_widget(form.lienSiteWeb,{ 'attr': {'class': 'form-control'}}) }}
+                {% do form.lienSiteWeb.setRendered %} 
+                {% if not form.lienSiteWeb.vars.valid %} 
+                {% for error in form.lienSiteWeb.vars.errors %}
+                    <strong class="text-danger">
+                        {{ error.message }}
+                    </strong>
+                    {% endfor %} {% endif %}
             </div>
         </div>
     </div>
@@ -100,13 +142,25 @@
         <div class="row">
             <div class="col-xs-offset-2 col-xs-4">
                 {{ form_label(form.plainPassword.first) }}
-                {{ form_errors(form.plainPassword.first) }}
                 {{ form_widget(form.plainPassword.first,{ 'attr': {'class': 'form-control'}}) }}
+                {% do form.plainPassword.first.setRendered %} 
+                {% if not form.plainPassword.first.vars.valid %} 
+                {% for error in form.plainPassword.first.vars.errors %}
+                    <strong class="text-danger">
+                        {{ error.message }}
+                    </strong>
+                    {% endfor %} {% endif %}
             </div>
             <div class="col-xs-4">
                 {{ form_label(form.plainPassword.second) }}
-                {{ form_errors(form.plainPassword.second) }}
                 {{ form_widget(form.plainPassword.second,{ 'attr': {'class': 'form-control'}}) }}
+                {% do form.plainPassword.second.setRendered %} 
+                {% if not form.plainPassword.second.vars.valid %} 
+                {% for error in form.plainPassword.second.vars.errors %}
+                    <strong class="text-danger">
+                        {{ error.message }}
+                    </strong>
+                    {% endfor %} {% endif %}
             </div>
             
             <div class="col-xs-offset-2 col-xs-8">

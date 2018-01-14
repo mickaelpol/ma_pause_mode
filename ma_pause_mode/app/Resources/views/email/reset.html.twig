@@ -1,16 +1,18 @@
 {% trans_default_domain 'FOSUserBundle' %}
 {% block subject %}
-{{ 'registration.email.subject'|trans({'%username%': user.firstname, '%confirmationUrl%': confirmationUrl}) }}
+{%- autoescape false -%}
+{{ 'resetting.email.subject'|trans({'%username%': user.username}) }}
+{%- endautoescape -%}
 {% endblock %}
 
 {% block body_text %}
 {% autoescape false %}
-{{ 'registration.email.message'|trans({'%username%': user.username, '%confirmationUrl%': confirmationUrl}) }}
+{{ 'resetting.email.message'|trans({'%username%': user.username, '%confirmationUrl%': confirmationUrl}) }}
 {% endautoescape %}
 {% endblock %}
 
-{% block body_html %}
 
+{% block body_html %}
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml">&#13; &#13;
@@ -82,9 +84,7 @@
                                             <td height="30" style="font-size: 30px; line-height: 30px;"> </td>&#13;
                                         </tr>&#13; &#13;
                                         <tr>&#13;
-                                            <td align="center" style="font-family: 'Questrial', Helvetica, sans-serif; text-align: center; color: #E7405A; mso-line-height-rule: exactly; line-height: 26px; font-size: 40px;">&#13;
-                                                Bienvenue {{ user.firstname }} {{ user.username }}
-                                                &#13;
+                                            <td align="center" style="font-family: 'Questrial', Helvetica, sans-serif; text-align: center; color: #E7405A; mso-line-height-rule: exactly; line-height: 26px; font-size: 40px;">&#13; Bonjour {{ user.firstname }} {{ user.username }} &#13;
                                             </td>&#13;
                                         </tr>&#13;
                                         <tr>&#13;
@@ -105,11 +105,7 @@
                                             <td height="30" style="font-size: 30px; line-height: 50px;"> </td>&#13;
                                         </tr>&#13; &#13;
                                         <tr>&#13;
-                                            <td align="center" style="font-family: 'Questrial', Helvetica, sans-serif; text-align: center; color: #E7405A; mso-line-height-rule: exactly; line-height: 26px;">&#13; 
-                                                {{ 'registration.email.message'|trans({'%username%': user.username, '%confirmationUrl%': confirmationUrl}) }}<br>
-                                                <p>Patientez 12h à 24h après votre validation</p>
-                                                <p>L'administrateur du site doit valider votre inscription</p>
-                                                <p>Merci de votre compréhension</p>
+                                            <td align="center" style="font-family: 'Questrial', Helvetica, sans-serif; text-align: center; color: #E7405A; mso-line-height-rule: exactly; line-height: 26px;">&#13; {{ 'resetting.email.message'|trans({'%username%': user.username, '%confirmationUrl%': confirmationUrl}) }}
                                                 &#13;
 
                                             </td>&#13;

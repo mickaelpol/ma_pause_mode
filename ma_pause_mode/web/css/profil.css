@@ -40,3 +40,11 @@
 .test {
     background: linear-gradient(0deg, rgba(197, 197, 197, 0.8), rgba(197, 197, 197, 0.8));
 }
+
+div .linkDisabled {
+    text-decoration: none;
+    color: #000000;
+}
+div .linkDisabled:hover, .linkDisabled:focus {
+    color: #eb0046;
+}

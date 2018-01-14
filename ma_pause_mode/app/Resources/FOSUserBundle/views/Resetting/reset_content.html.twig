@@ -1,0 +1,51 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{{ form_start(form, { 'action': path('fos_user_resetting_reset', {'token': token}), 'attr': { 'class': 'fos_user_resetting_reset' } }) }}
+
+
+<div class="container">
+    
+    {% dump(form) %}
+    
+    <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+
+        <div class="panel panel-default">
+            <div class="panel-heading text-center">Reinitialisation du mot de passe</div>
+
+            <div class="panel-body">
+
+
+                <div class="col-lg-6 text-center">
+                    <label for="username">{{ form_label(form.plainPassword.first) }}</label>
+                    {{ form_widget(form.plainPassword.first, { 'attr': { 'class': 'form-control'}}) }}
+                </div>
+                
+                <div class="col-lg-6 text-center">
+                    <label for="password">{{ form_label(form.plainPassword.second) }}</label>
+                    {{ form_widget(form.plainPassword.second, { 'attr': { 'class': 'form-control'}}) }}
+                </div>
+                
+                <div class="col-lg-12">
+                    <div class="text-center">
+                        <input class="btn btn-regi btn-block" type="submit" id="_submit" name="_submit" value="{{ 'resetting.reset.submit'|trans }}"
+                        />
+                    </div>
+                </div>
+    
+            </div>
+            <div class="panel-footer text-center">
+                {% do form.plainPassword.first.setRendered %} 
+                {% if not form.plainPassword.first.vars.valid %} 
+                {% for error in form.plainPassword.first.vars.errors %}
+                    <strong class="text-danger">
+                        {{ error.message }}
+                    </strong>
+                    {% endfor %} {% endif %}
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+    
+{{ form_end(form) }}

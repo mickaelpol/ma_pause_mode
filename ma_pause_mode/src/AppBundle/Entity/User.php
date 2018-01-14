@@ -100,8 +100,12 @@ class User extends BaseUser
 
     public function __construct()
     {
+        parent::__construct();
+        $this->enabled = false;
+        $this->setEnabled(false);
         $this->siteWeb = "Site Web Indisponible (Placer votre site web ici)";
         $this->phoneNumber  = "Téléphone Indisponible";
+        $this->lienSiteWeb = "Lien du Site Web Indisponible (Placer votre site web ici)";
         
     }
     

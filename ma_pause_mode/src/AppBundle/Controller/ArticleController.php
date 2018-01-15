@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Article;
 use AppBundle\Entity\User;
+use AppBundle\Entity\Section;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -31,6 +32,36 @@ class ArticleController extends Controller
 
         return $this->render('article/index.html.twig', array(
             'articles' => $articles,
+        ));
+    }
+
+
+    /**
+     *@Route("/section/{id}", name="article_section", requirements={"page"="\d+"})
+     */
+    public function sectionAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $section = $em->getRepository('AppBundle:Section')->find($id);
+
+        return $this->render('article/section.html.twig', array(
+            'section' => $section,
+        ));
+    }
+
+
+    /**
+     *@Route("/")
+     */
+    public function navBarAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $navbar = $em->getRepository('AppBundle:Section')->find($id);
+
+        return $this->render('navbar.html.twig', array(
+            'navbar' => $navbar,
         ));
     }
 

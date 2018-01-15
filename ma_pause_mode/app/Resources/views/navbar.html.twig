@@ -2,6 +2,10 @@
 
 {# {% if 'noni_admin_question_' in app.request.attributes.get('_route') %} class="active"{% endif %} #}
 
+{% for section in section %}
+{{ section.id }}
+{% endfor %}
+
 <div class="container hidden-xs">
     <div class="row">
         <img class="center-block img-responsive" src="{{ asset('img/ma-p-m.PNG') }}" width="246" height="253" alt="logo">
@@ -30,7 +34,7 @@
                                 <a href="{{ path('homepage') }}" class="btn-nav">Accueil</a>
                             </li>
                             <li>
-                                <a href=" {{ path('article_index') }} " class="btn-nav">Mode</a>
+                                <a href=" {{ path('article_section', { 'id': 1 }) }}" class="btn-nav">Mode</a>
                             </li>
                             <li>
                                 <a href="#" class="btn-nav">Tendances</a>

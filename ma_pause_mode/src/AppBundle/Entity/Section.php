@@ -59,9 +59,9 @@ class Section
     /**
      * @var string
      *
-     * @ORM\Column(name="sec_contact", type="string", length=255, unique=true)
+     * @ORM\Column(name="sec_press", type="string", length=255, unique=true)
      */
-    private $contact;
+    private $press;
 
     /**
      * @var string
@@ -69,6 +69,12 @@ class Section
      * @ORM\Column(name="sec_voyage", type="string", length=255, unique=true)
      */
     private $voyage;
+
+    /**
+     * One Section has Many Articles
+     * @ORM\OneToMany(targetEntity="Article", mappedBy="section")
+     */
+    private $articles;
 
 
     /**
@@ -202,27 +208,27 @@ class Section
     }
 
     /**
-     * Set contact
+     * Set press
      *
-     * @param string $contact
+     * @param string $press
      *
      * @return Section
      */
-    public function setContact($contact)
+    public function setPress($press)
     {
-        $this->contact = $contact;
+        $this->press = $press;
 
         return $this;
     }
 
     /**
-     * Get contact
+     * Get press
      *
      * @return string
      */
-    public function getContact()
+    public function getPress()
     {
-        return $this->contact;
+        return $this->press;
     }
 
     /**

@@ -87,11 +87,18 @@ class Article
     private $updatedAt;
 
     /**
-     * Many Article have One Section
      * @ORM\ManyToOne(targetEntity="Section", inversedBy="articles")
      * @ORM\JoinColumn(name="sec_oid", referencedColumnName="sec_oid")
      */
     private $section;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="articles")
+     * @ORM\JoinColumn(name="cat_oid", referencedColumnName="cat_oid")
+     */
+    private $category;
+
+    
 
     
 
@@ -303,5 +310,29 @@ class Article
     public function getUpdatedAt()
     {
         return $this->updatedAt;
+    }
+
+    /**
+     * Set section
+     *
+     * @param \AppBundle\Entity\Section $section
+     *
+     * @return Article
+     */
+    public function setSection(\AppBundle\Entity\Section $section = null)
+    {
+        $this->section = $section;
+
+        return $this;
+    }
+
+    /**
+     * Get section
+     *
+     * @return \AppBundle\Entity\Section
+     */
+    public function getSection()
+    {
+        return $this->section;
     }
 }

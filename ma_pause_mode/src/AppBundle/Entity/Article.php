@@ -56,7 +56,7 @@ class Article
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="art_dateUpdate", type="datetime")
+     * @ORM\Column(name="art_dateUpdate", type="datetime", nullable=true)
      */
     private $dateUpdate;
 
@@ -91,6 +91,12 @@ class Article
      * @ORM\JoinColumn(name="sec_oid", referencedColumnName="sec_oid")
      */
     private $section;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="articles")
+     * @ORM\JoinColumn(name="cat_oid", referencedColumnName="cat_oid")
+     */
+    private $category;
 
     
 
@@ -328,5 +334,29 @@ class Article
     public function getSection()
     {
         return $this->section;
+    }
+
+    /**
+     * Set category
+     *
+     * @param \AppBundle\Entity\Category $category
+     *
+     * @return Article
+     */
+    public function setCategory(\AppBundle\Entity\Category $category = null)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \AppBundle\Entity\Category
+     */
+    public function getCategory()
+    {
+        return $this->category;
     }
 }

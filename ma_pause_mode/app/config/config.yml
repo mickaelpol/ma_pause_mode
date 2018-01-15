@@ -227,6 +227,15 @@ easy_admin:
             class: AppBundle\Entity\Comment
         Section: 
             class: AppBundle\Entity\Section
+            list:
+                fields:
+                    - name   
+            show:
+                fields:
+                    - name
+            form:
+                fields: 
+                    - name
         Article:
             class: AppBundle\Entity\Article
             list:
@@ -241,6 +250,7 @@ easy_admin:
                     - { property: 'image', type: 'image', base_path: '%app.path.article_images%' } 
             form:
                 fields: 
+                    - section
                     - description
                     - { property: 'title', type: 'ckeditor' }
                     - { property: 'content', type: 'ckeditor', type_options: { 'config_name': 'my_config_2' }}

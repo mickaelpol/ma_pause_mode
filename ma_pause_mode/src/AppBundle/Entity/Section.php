@@ -77,4 +77,14 @@ class Section
     public function __toString(){
         return $this->getName();
     }
+    
+    /**
+     * Get articles
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getArticles()
+    {
+        return $this->articles;
+    }
 }

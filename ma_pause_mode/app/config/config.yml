@@ -223,6 +223,15 @@ easy_admin:
                     - { property: 'enabled', label: 'Valide' }
         Category:
             class: AppBundle\Entity\Category
+            list:
+                fields:
+                    - name   
+            show:
+                fields:
+                    - name
+            form:
+                fields: 
+                    - name
         Comment:
             class: AppBundle\Entity\Comment
         Section: 
@@ -242,7 +251,8 @@ easy_admin:
                 fields:
                     - title
                     - date
-                    - description
+                    - category
+                    - section
                     - user
                     - { property: 'image', type: 'image', base_path: '%app.path.article_images%' }
             show:
@@ -250,6 +260,7 @@ easy_admin:
                     - { property: 'image', type: 'image', base_path: '%app.path.article_images%' } 
             form:
                 fields: 
+                    - category
                     - section
                     - description
                     - { property: 'title', type: 'ckeditor' }

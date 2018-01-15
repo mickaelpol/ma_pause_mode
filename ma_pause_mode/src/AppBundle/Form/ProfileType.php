@@ -6,6 +6,8 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\FormBuilderInterface;
+use Vich\UploaderBundle\Form\Type\VichFileType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class ProfileType extends AbstractType
 {
@@ -45,7 +47,10 @@ class ProfileType extends AbstractType
             )))
             ->add('lienSiteWeb', null, array('label' => 'Lien du site web','required' => false, 'attr' => array(
                 'class' => 'form-control'
-            )));
+            )))
+            ->add('imageProfilFile', VichFileType::class, array(
+                'label' => 'Photo de profil', 'required' => false
+            ));
     }
 
     public function getParent() 

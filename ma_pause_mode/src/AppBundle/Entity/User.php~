@@ -4,10 +4,14 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraint as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="usr_user")  
+ * @ORM\Table(name="usr_user")
+ * @Vich\Uploadable 
  */
 class User extends BaseUser
 {
@@ -38,6 +42,7 @@ class User extends BaseUser
      * @var string
      *
      * @ORM\Column(name="usr_pseudo", type="string", length=255, unique=true)
+     * 
      */
     private $pseudo;
 
@@ -95,16 +100,40 @@ class User extends BaseUser
      * @ORM\Column(name="usr_lien_site_web", type="string", length=255, nullable=true)
      */
     private $lienSiteWeb;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="usr_image_profil", type="string", length=255)
+     */
+    private $imageProfil;
+
+    /**
+     * @var string
+     *
+     * @Vich\UploadableField(mapping="imageProfils", fileNameProperty="imageProfil")
+     * @var File
+     */
+    private $imageProfilFile;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     * @var \DateTime
+     */
+    private $updatedAt;
+
+    
 
 
-    public function __construct(){
 
-        if (empty($siteWeb) && empty($lienSiteWeb)) {
-            $this->siteWeb = "Site Web Indisponible (Placer votre site web ici)";
-        } else{
-            $this->siteWeb = "<a href=".$lienSiteWeb.">{{ user.siteWeb }}</a>";
-        }
+    public function __construct()
+    {
+        parent::__construct();
+        $this->enabled = false;
+        $this->setEnabled(false);
+        $this->siteWeb = "Site Web Indisponible (Placer votre site web ici)";
         $this->phoneNumber  = "Téléphone Indisponible";
+        $this->lienSiteWeb = "Lien du Site Web Indisponible (Placer votre site web ici)";
         
     }
     
@@ -377,4 +406,28 @@ class User extends BaseUser
         return $this->siteWeb;
     }
     
+
+    /**
+     * Set lienSiteWeb
+     *
+     * @param string $lienSiteWeb
+     *
+     * @return User
+     */
+    public function setLienSiteWeb($lienSiteWeb)
+    {
+        $this->lienSiteWeb = $lienSiteWeb;
+
+        return $this;
+    }
+
+    /**
+     * Get lienSiteWeb
+     *
+     * @return string
+     */
+    public function getLienSiteWeb()
+    {
+        return $this->lienSiteWeb;
+    }
 }

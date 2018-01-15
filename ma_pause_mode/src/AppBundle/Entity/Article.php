@@ -86,6 +86,13 @@ class Article
      */
     private $updatedAt;
 
+    /**
+     * Many Article have One Section
+     * @ORM\ManyToOne(targetEntity="Section", inversedBy="articles")
+     * @ORM\JoinColumn(name="sec_oid", referencedColumnName="sec_oid")
+     */
+    private $section;
+
     
 
     public function __construct()

@@ -5,12 +5,14 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * Article
  *
  * @ORM\Table(name="art_article")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ArticleRepository")
+ * @Vich\Uploadable
  */
 class Article
 {
@@ -54,7 +56,7 @@ class Article
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="art_dateUpdate", type="datetime", nullable=true)
+     * @ORM\Column(name="art_dateUpdate", type="datetime")
      */
     private $dateUpdate;
 
@@ -79,17 +81,23 @@ class Article
     private $imageFile;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      * @var \DateTime
      */
     private $updatedAt;
+
+    /**
+     * Many Article have One Section
+     * @ORM\ManyToOne(targetEntity="Section", inversedBy="articles")
+     * @ORM\JoinColumn(name="sec_oid", referencedColumnName="sec_oid")
+     */
+    private $section;
 
     
 
     public function __construct()
     {
         $this->date = new \DateTime('now');
-        $this->dateUpdate = new \DateTime('now');
     }
 
 
@@ -184,8 +192,7 @@ class Article
      */
     public function setDateUpdate($dateUpdate)
     {
-        $this->dateUpdate = $dateUpdate;
-
+        $this->dateUpdate = new \DateTime('now');
         return $this;
     }
 
@@ -247,6 +254,10 @@ class Article
         return $this->user;
     }
 
+    /**
+     * 
+     * @param File $image
+     */
     public function setImageFile(File $image = null)
     {
         $this->imageFile = $image;

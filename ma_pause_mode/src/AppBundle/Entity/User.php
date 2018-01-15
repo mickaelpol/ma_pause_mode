@@ -4,10 +4,15 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraint as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="usr_user")  
+ * @ORM\Table(name="usr_user")
+ * @Vich\Uploadable 
  */
 class User extends BaseUser
 {
@@ -38,6 +43,7 @@ class User extends BaseUser
      * @var string
      *
      * @ORM\Column(name="usr_pseudo", type="string", length=255, unique=true)
+     * 
      */
     private $pseudo;
 
@@ -95,6 +101,29 @@ class User extends BaseUser
      * @ORM\Column(name="usr_lien_site_web", type="string", length=255, nullable=true)
      */
     private $lienSiteWeb;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="usr_image_profil", type="string", length=255)
+     */
+    private $imageProfil;
+
+    /**
+     * @var string
+     *
+     * @Vich\UploadableField(mapping="imageProfils", fileNameProperty="imageProfil")
+     * @var File
+     */
+    private $imageProfilFile;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     * @var \DateTime
+     */
+    private $updatedAt;
+
+    
 
 
 
@@ -402,4 +431,70 @@ class User extends BaseUser
     {
         return $this->lienSiteWeb;
     }
+
+    /**
+     * Set imageProfil
+     *
+     * @param string $imageProfil
+     *
+     * @return User
+     */
+    public function setImageProfil($imageProfil)
+    {
+        $this->imageProfil = $imageProfil;
+
+        return $this;
+
+    }
+
+    /**
+     * Get imageProfil
+     *
+     * @return string
+     */
+    public function getImageProfil()
+    {
+        return $this->imageProfil;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return User
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    public function setImageProfilFile(File $imageProfil = null)
+    {
+        $this->imageProfilFile = $imageProfil;
+
+        if ($imageProfil) {
+           // if 'updatedAt' is not defined in your entity, use another property
+            $this->updatedAt = new \DateTime('now');
+        }
+    }
+
+    public function getImageProfilFile()
+    {
+        return $this->imageProfilFile;
+    }
+    
+    
 }

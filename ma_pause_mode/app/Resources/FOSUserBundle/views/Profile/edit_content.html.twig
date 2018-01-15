@@ -15,13 +15,7 @@
 
                     {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit form-horizontal margeTop10' } }) }}
 
-                    {% set class = '' %}
 
-                    {% if not form.username.vars.valid %}
-
-                        {% set class = 'has-error' %}
-                    
-                    {% endif %}
                     <div class="form-group">
                         <label class="col-md-8 col-md-offset-2" for="username">{{ form_label(form.username) }}</label>
                         <div class="col-md-8 col-md-offset-2">
@@ -62,6 +56,15 @@
                                 </div>
                                 {{ form_widget(form.pseudo, { 'attr': { 'class': 'form-control input-md'}}) }}
                             </div>
+                            {% do form.pseudo.setRendered %} 
+                            {% if not form.pseudo.vars.valid %} 
+                            {% for error in form.pseudo.vars.errors %}
+                    
+                            <span class="text-danger">
+                                {{ error.message }}
+                            </span>
+                    
+                            {% endfor %} {% endif %}
                         </div>
                     </div>
                     
@@ -149,8 +152,9 @@
                                 </div>
                                 {{ form_widget(form.lienSiteWeb, { 'attr': {'class': 'form-control input-md'}}) }}
                             </div>
-                            {% do form.lienSiteWeb.setRendered %} {% if not form.lienSiteWeb.vars.valid %} {% for error in form.lienSiteWeb.vars.errors
-                            %}
+                            {% do form.lienSiteWeb.setRendered %} 
+                            {% if not form.lienSiteWeb.vars.valid %} 
+                            {% for error in form.lienSiteWeb.vars.errors %}
                     
                             <span class="text-danger">
                                 {{ error.message }}
@@ -172,7 +176,15 @@
                                 </div>
                                 {{ form_widget(form.siret, { 'attr': { 'class': 'form-control input-md'}}) }}
                             </div>
+                            {% do form.siret.setRendered %} 
+                            {% if not form.siret.vars.valid %} 
+                            {% for error in form.siret.vars.errors %}
                     
+                            <span class="text-danger">
+                                {{ error.message }}
+                            </span>
+                    
+                            {% endfor %} {% endif %}
                         </div>
                     </div>
                     
@@ -187,7 +199,15 @@
                                 </div>
                                 {{ form_widget(form.phoneNumber, { 'attr': { 'class': 'form-control input-md'}}) }}
                             </div>
+                            {% do form.phoneNumber.setRendered %} 
+                            {% if not form.phoneNumber.vars.valid %} 
+                            {% for error in form.phoneNumber.vars.errors %}
                     
+                            <span class="text-danger">
+                                {{ error.message }}
+                            </span>
+                    
+                            {% endfor %} {% endif %}
                         </div>
                     </div>
 
@@ -221,13 +241,6 @@
                     </div>
                     
                     {#  Text input #}
-                    {% set class = '' %}
-
-                    {% if not form.current_password.vars.valid %}
-
-                        {% set class = 'has-error' %}
-                    
-                    {% endif %}
                     <div class="form-group">
                         <label class="col-md-8 col-md-offset-2" for="Email Address">{{ form_label(form.current_password) }}</label>
                         <div class="col-md-8 col-md-offset-2">
@@ -250,7 +263,16 @@
                                     {% endfor %}
                                 
                                 {% endif %}
+                        </div>
+                    </div>
 
+                    <div class="form-group">
+                        <label class="col-md-8 col-md-offset-2"></label>
+                        <div class="col-md-8 col-md-offset-2">
+                            <div>
+                                <label class="black" for="">{{ form_label(form.imageProfilFile) }}</label>
+                                {{ form_widget(form.imageProfilFile) }}
+                            </div>
                         </div>
                     </div>
 
@@ -262,13 +284,16 @@
                             </div>
                         </div>
                     </div>
+                    
 
                 </fieldset>
+            </div>
+            
+            <div class="col-sm-2 col-md-2 hidden-xs hidden-sm">
+                <img src="{{ asset('uploads/images/Users/' ~ app.user.imageProfil) }}" class="img-responsive img-thumbnail">
+            </div>
+
             {{ form_end(form) }}
-        </div>
-        <div class="col-sm-2 col-md-2 hidden-xs hidden-sm">
-            <img src="http://websamplenow.com/30/userprofile/images/avatar.jpg" class="img-responsive img-thumbnail ">
-        </div>
 
 
     </div>

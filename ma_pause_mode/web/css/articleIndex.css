@@ -1,39 +1,180 @@
-body {
-    background-color: #ECF0F1;
+    body {
+    height: 100%;
+    width: 100%;
+    font-family: 'Arimo', Arial, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: #010b26;
 }
 
-.navbar-inverse {
-    background-color: #34495E;
-    border-color: #34495E;
+.movie-card {
+    -webkit-transition: 300ms;
+    transition: 300ms;
 }
 
-.navbar {
+ul {
+    list-style-type: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+    font-weight: 400;
+}
+
+.btn-regi {
+    background-color: #eb0046;
+    color: white;
+    margin-top: 2%;
+}
+
+.btn-regi:hover {
+    background-color: #a10131;
+    color: white;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: 0.5s;
+}
+
+a:hover {
+    color: #eb0046;
+    text-decoration: none;
+}
+
+.container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    max-width: 100%;
+    margin-top: 10vh;
+    margin-left: auto;
+    margin-right: auto;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.movie-card {
+    background: #ffffff;
+    box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 315px;
+    margin: 2em;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+.movie-header {
+    padding: 0;
+    margin: 0;
+    height: 200px;
+    width: 100%;
+    display: block;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+
+.header-icon-container {
     position: relative;
-    min-height: 50px;
-    margin-bottom: 20px;
-    border: 0px solid transparent;
-    border-radius: 0px;
 }
 
-.navbar-brand {
-    float: left;
-    height: auto;
-    padding: 10px 10px;
-    font-size: 18px;
-    line-height: 20px;
+.header-icon {
+    width: 100%;
+    height: 367px;
+    line-height: 367px;
+    text-align: center;
+    vertical-align: middle;
+    margin: 0 auto;
+    color: #ffffff;
+    font-size: 54px;
+    text-shadow: 0px 0px 20px #6abcea, 0px 5px 20px #6ABCEA;
+    opacity: .85;
 }
 
-.navbar-brand>img {
-    width: 80%;
+.header-icon:hover {
+    background: rgba(0, 0, 0, 0.15);
+    font-size: 74px;
+    text-shadow: 0px 0px 20px #6abcea, 0px 5px 30px #6ABCEA;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    opacity: 1;
 }
 
-.navbar-inverse .navbar-nav>li>a {
-    color: #F39C12;
+.movie-card:hover {
+    -webkit-transform: scale(1.03);
+    transform: scale(1.03);
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.08);
 }
 
-.navbar-inverse .navbar-nav>li>a:hover {
-    background-color: #009688;
+.movie-content {
+    padding: 18px 18px 24px 18px;
+    margin: 0;
 }
+
+.movie-content-header,
+.movie-info {
+    display: table;
+    width: 100%;
+}
+
+.movie-title {
+    font-size: 24px;
+    margin: 0;
+    display: table-cell;
+}
+
+.movie-info {
+    margin-top: 1em;
+}
+
+.info-section {
+    display: table-cell;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.info-section:first-of-type {
+    text-align: left;
+}
+
+.info-section:last-of-type {
+    text-align: right;
+}
+
+.info-section label {
+    display: block;
+    color: rgba(0, 0, 0, 0.5);
+    margin-bottom: .5em;
+    font-size: 9px;
+}
+
+.info-section span {
+    font-weight: 700;
+    font-size: 11px;
+}
+
+@media screen and (max-width: 500px) {
+    .movie-card {
+        width: 95%;
+        max-width: 95%;
+        margin: 1em;
+        display: block;
+    }
+    .container {
+        padding: 0;
+        margin: 0;
+    }
+}
+/* ///////////////////////////////////////////////////////////  */
 
 .btn-default {
     color: #333;
@@ -60,7 +201,7 @@ body {
 }
 
 .content-title h3 a:hover {
-    color: #E52F4B;
+    color: #F39C12;
 }
 
 .content-footer {
@@ -78,7 +219,7 @@ body {
 }
 
 .content-footer span a:hover {
-    color: #E52F4B;
+    color: #F39C12;
 }
 
 aside {
@@ -98,13 +239,14 @@ aside .content-footer>img {
 
 .user-ditels {
     width: 300px;
-    top: -100px;
+    left: -300px;
+    bottom: 0;
     height: 100px;
     padding-bottom: 99px;
     position: absolute;
     border: solid 2px #fff;
     background-color: #34495E;
-    right: 25px;
+    right: 0px;
     display: none;
     z-index: 1;
 }
@@ -119,11 +261,11 @@ aside .content-footer>img {
     cursor: pointer;
 }
 
-.content-footer:hover .user-ditels {
+.movie-card:hover .user-ditels {
     display: block;
 }
 
-.content-footer .user-ditels .user-img {
+.movie-card .user-ditels .user-img {
     width: 100px;
     height: 100px;
     float: left;
@@ -229,11 +371,11 @@ aside .content-footer>img {
 
 .post-img,
 .recent-post a:hover {
-    color: #E52F4B;
+    color: #F39C12;
 }
 
 .post-img img:hover {
-    border: 5px solid #E52F4B;
+    border: 5px solid #F39C12;
 }
 
 

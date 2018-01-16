@@ -5,92 +5,72 @@
 {% endblock %}
 
 {% block body %}
-
-<div class="container margeBot25">
-<div class="">
-    <div class="row text-center">
-        <h1>{{ dump(app) }}</h1>
-    </div>
-
-{% for article in section.articles %}
-
-{% dump(article) %}
     
-    {# <div class="row margeBot25">
-        <ul class="list-inline text-center w3-display-bottommiddle w3-container">
-            <li>
-                <a href="{{ path('article_show', { 'id': article.id }) }}">
-                    <img src="{{ asset('uploads/images/Article/' ~ article.image) }}" height="300px" width="800px">
-                </a>
-            </li>
-            <li>
-                <p class="w3-display-bottommiddle w3-container">
-                    {{ article.title|raw }}
-                </p>
-            </li>
-            <li>{{ article.description }}</li>
-            <li>{% if article.date %}{{ article.date|date('Y-m-d H:i:s') }}{% endif %}</li>
-            <li>{% if article.dateUpdate %}{{ article.dateUpdate|date('Y-m-d H:i:s') }}{% endif %}</li>
-            <li></li>
-        </ul>
-    </div> #}
-
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6">
-                        <aside>
-                            <img src="{{ asset('uploads/images/Article/' ~ article.image) }}"
-                                class="img-responsive">
-                            <div class="content-title">
-                                <div class="text-center">
-                                    <h3>
-                                        <a href="{{ path('article_show', { 'id': article.id }) }}">{{ article.title|raw }}</a>
-                                    </h3>
-                                </div>
-                            </div>
-                            <div class="content-footer">
-                                le {% if article.date %}{{ article.date|date('d-m-Y à H:i ') }}{% endif %}
-                                <span class="pull-right">
-                                    <a href="#" data-toggle="tooltip" data-placement="left" title="Comments">
-                                        <i class="glyphicon glyphicon-comment"></i> 30</a>
-                                </span>
-                                <div class="user-ditels">
-                                    <div class="user-img">
-                                        <img src="{{ asset('uploads/images/Article/' ~ article.image) }}"
-                                            class="img-responsive">
-                                    </div>
-                                    <span class="user-full-ditels">
-                                        <h3>
-                                            <a href="{{ path('article_show', { 'id': article.id }) }}">Lire l'article</a>
-                                        </h3>
-                                        <p>Auteur : {{ article.user }} </p>
-                                        <p>Section : {{ article.section }} </p>
-                                    </span>
-                                    <div class="social-icon">
-                                        <a href="#">
-                                            <i class="fa fa-facebook" data-toggle="tooltip" data-placement="bottom" title="Facebook"></i>
-                                        </a>
-                                        <a href="#">
-                                            <i class="fa fa-twitter" data-toggle="tooltip" data-placement="bottom" title="Twitter"></i>
-                                        </a>
-                                        <a href="#">
-                                            <i class="fa fa-google-plus" data-toggle="tooltip" data-placement="bottom" title="Google Plus"></i>
-                                        </a>
-                                        <a href="#">
-                                            <i class="fa fa-youtube" data-toggle="tooltip" data-placement="bottom" title="Youtube"></i>
-                                        </a>
-                                        <a href="#">
-                                            <i class="fa fa-github" data-toggle="tooltip" data-placement="bottom" title="Github"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </aside>
+    <div class="container margeBot20">
+    
+        {% for article in section.articles %}
+        <div class="movie-card">
+            <a href="{{ path('article_show', { 'id': article.id }) }}">
+            <div class="movie-header img-responsive" style='background: url("{{ asset('uploads/images/Article/' ~ article.image) }}");
+            background-size: cover;
+            background-position: 100% 100%;'>
+                </div>
+            </a>
+            <!--movie-header-->
+            <div class="movie-content">
+                <div class="movie-content-header">
+                    <a href="{{ path('article_show', { 'id': article.id }) }}">
+                        <h3 class="movie-title">{{ article.title|raw|striptags }}</h3>
+                    </a>
+                    <div class="imax-logo"></div>
+                </div>
+                <div class="movie-info">
+                    <div class="info-section">
+                        <label><i class="fa fa-calendar"></i> Date de parution</label>
+                        <span>{{ article.date|date('d F Y') }}</span>
+                    </div>
+                    <!--date,time-->
+                    <!--screen-->
+                    <div class="info-section">
+                        <label>Tags <i class="fa fa-tags"></i></label>
+                        <span class="badge badge-info">{{ article.section }}</span>
+                        <span class="badge badge-info">{{ article.category }}</span>
+                    </div>
+                    <div class="info-section">
+                        <label>Commentaires</label>
+                        <span>
+                            <i class="fa fa-comment"></i>
+                        </span>
                     </div>
 
-    {% endfor %}
-</div>
-</div>
+                    {% dump(article) %}
+                    <!--row-->
+                    <div class="user-ditels">
+                    <div class="user-img"><img src="{{ asset('uploads/images/Users/' ~ article.user.imageProfil) }}" class="img-responsive"></div>
+                        <span class="user-full-ditels">
+                        <h3>
+                            <a href="{{ path('show_profile', {'id': article.user.id }) }}">
+                                Auteur : {{ article.user.username }}
+                            </a>
+                        </h3>
+                        <p>
+                            {{ article.user.entreprise}}
+                        </p>
+                        </span>
+                        <div class="social-icon">
+                        <a target="blank" href="{{ article.user.lienSiteWeb}}"><i class="fa fa-globe" data-toggle="tooltip" data-placement="bottom" title="Site web de l'auteur"></i></a>
+					</div>
+                    </div>
+                </div>
+                <div class="movie-content-header margeTop10">
+                    <a class="btn btn-block btn-large btn-regi" href="{{ path('article_show', {'id': article.id }) }}">Lire l'article</a>
+                </div>
+            </div>
+            <!--movie-content-->
+        </div>
+        <!--movie-card-->
+        {% endfor %}
+    </div>
+    <!--container-->
+
 {% endblock %}

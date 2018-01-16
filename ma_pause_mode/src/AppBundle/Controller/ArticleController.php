@@ -35,6 +35,15 @@ class ArticleController extends Controller
         ));
     }
 
+    public function navbarAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $tests = $em->getRepository('AppBundle:Section')->findAll();
+
+        return $this->render('navbar.html.twig', array('tests' => $tests
+        ));
+    }
+
 
     /**
      *@Route("/section/{id}", name="article_section", requirements={"page"="\d+"})
@@ -49,21 +58,7 @@ class ArticleController extends Controller
             'section' => $section,
         ));
     }
-
-
-    /**
-     *@Route("/")
-     */
-    public function navBarAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $navbar = $em->getRepository('AppBundle:Section')->find($id);
-
-        return $this->render('navbar.html.twig', array(
-            'navbar' => $navbar,
-        ));
-    }
+    
 
     /**
      * Creates a new article entity.
@@ -140,7 +135,7 @@ class ArticleController extends Controller
     /**
      * Deletes a article entity.
      *
-     * @Route("/admin//{id}", name="article_delete")
+     * @Route("/admin/{id}", name="article_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Article $article)

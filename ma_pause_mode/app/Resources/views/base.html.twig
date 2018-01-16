@@ -37,14 +37,31 @@
     <link rel="stylesheet" href="{{ asset('css/fontSize.css') }}">
     <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
     <link rel="stylesheet" href="{{ asset('css/padding.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
 </head>
 
 <body>
-
-    {% include('navbar.html.twig') %} {% block body %}{% endblock %} {% block javascripts %}
+    
+    <div id="sidebar">
+        {{ render(controller(
+            'AppBundle:Article:navbar'
+        ))}}
+    </div>
+    
+    {# {% include('navbar.html.twig') %}  #}
+    
+    
+    {% block body %}{% endblock %}
+    
+    
+    {% block javascripts %}
+    
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.js') }}"></script>
+
     {% endblock %}
+
+
 </body>
 
 </html>

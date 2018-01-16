@@ -9,10 +9,12 @@
 <div class="container margeBot25">
 <div class="">
     <div class="row text-center">
-        <h1>Mode</h1>
+        <h1>{{ dump(app) }}</h1>
     </div>
 
 {% for article in section.articles %}
+
+{% dump(article) %}
     
     {# <div class="row margeBot25">
         <ul class="list-inline text-center w3-display-bottommiddle w3-container">

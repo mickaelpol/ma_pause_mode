@@ -2,9 +2,11 @@
 
 {# {% if 'noni_admin_question_' in app.request.attributes.get('_route') %} class="active"{% endif %} #}
 
-{% for section in section %}
-{{ section.id }}
-{% endfor %}
+
+
+
+
+
 
 <div class="container hidden-xs">
     <div class="row">
@@ -16,6 +18,7 @@
 <!-- Début NavBar md et lg -->
 
 {# /////////////////////////////////////////////////// #}
+
 
 
         <nav class="navbar navbar-center navbarMod margeTop5 font20  hidden-sm hidden-xs">
@@ -33,22 +36,13 @@
                             <li class="active">
                                 <a href="{{ path('homepage') }}" class="btn-nav">Accueil</a>
                             </li>
+                            {% for test in tests %}
+
                             <li>
-                                <a href=" {{ path('article_section', { 'id': 1 }) }}" class="btn-nav">Mode</a>
+                                <a href="{{ path('article_section', { 'id': test.id }) }}" class="btn-nav">{{ test.name }}</a>
                             </li>
-                            <li>
-                                <a href="#" class="btn-nav">Tendances</a>
-                            </li>
-                            <li class="dropdown">
-                                <a class="dropdown-toggle btn-nav" data-toggle="dropdown" href="#">Créateurs
-                                    <span class="caret"></span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="#">Près de chez vous !</a>
-                                    </li>
-                                </ul>
-                            </li>
+                            
+                            {% endfor %}
                             <li>
                                 <a href="#" class="btn-nav">A Propos</a>
                             </li>

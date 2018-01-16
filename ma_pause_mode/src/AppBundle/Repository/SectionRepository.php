@@ -2,6 +2,9 @@
 
 namespace AppBundle\Repository;
 
+use Doctrine\ORM\Query\Expr\From;
+
+
 /**
  * SectionRepository
  *
@@ -10,4 +13,15 @@ namespace AppBundle\Repository;
  */
 class SectionRepository extends \Doctrine\ORM\EntityRepository
 {
+
+    // public function squeezeDropdown()
+    // {
+
+    //     $qb = $this->createQueryBuilder('s')
+    //     ->where('s.id < 4')
+    //     ->orWhere('s.id > 5');
+    //     return $qb->getQuery()->getResult();
+
+    // }
+    
 }

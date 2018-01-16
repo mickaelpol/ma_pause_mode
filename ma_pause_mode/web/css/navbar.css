@@ -58,11 +58,11 @@
 @media (min-width: 768px) {
     ul>li .btn-nav {
         color: black;
-        font-size: 19px;        
+        font-size: 17px;        
     }
     ul>li .btn-nav:hover,
     ul>li .btn-nav:focus {
-        font-size: 19px;
+        font-size: 17px;
     }
 }
 @media (max-width: 768px) {

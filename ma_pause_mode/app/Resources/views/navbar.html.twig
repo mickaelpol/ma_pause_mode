@@ -2,12 +2,6 @@
 
 {# {% if 'noni_admin_question_' in app.request.attributes.get('_route') %} class="active"{% endif %} #}
 
-
-
-
-
-
-
 <div class="container hidden-xs">
     <div class="row">
         <img class="center-block img-responsive" src="{{ asset('img/ma-p-m.PNG') }}" width="246" height="253" alt="logo">
@@ -18,8 +12,6 @@
 <!-- Début NavBar md et lg -->
 
 {# /////////////////////////////////////////////////// #}
-
-
 
         <nav class="navbar navbar-center navbarMod margeTop5 font20  hidden-sm hidden-xs">
             <div class="container-fluid text-uppercase">
@@ -36,13 +28,14 @@
                             <li class="active">
                                 <a href="{{ path('homepage') }}" class="btn-nav">Accueil</a>
                             </li>
-                            {% for test in tests %}
 
+                            {% for valeur, section in sectionsId %}
                             <li>
-                                <a href="{{ path('article_section', { 'id': test.id }) }}" class="btn-nav">{{ test.name }}</a>
+                                {% dump(valeur) %}
+                                {# <a href=" {{ path('article_section', { 'id': section.id }) }} " class="btn-nav">{{ section.name }}</a> #}
                             </li>
-                            
                             {% endfor %}
+                            
                             <li>
                                 <a href="#" class="btn-nav">A Propos</a>
                             </li>

@@ -38,9 +38,9 @@ class ArticleController extends Controller
     public function navbarAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $tests = $em->getRepository('AppBundle:Section')->findAll();
+        $sectionsId = $em->getRepository('AppBundle:Section')->findAll();
 
-        return $this->render('navbar.html.twig', array('tests' => $tests
+        return $this->render('navbar.html.twig', array('sectionsId' => $sectionsId
         ));
     }
 

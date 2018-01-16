@@ -57,8 +57,8 @@ class ContactController extends Controller
 
     private function sendEmail($data)
     {
-        $myappContactMail = 'eersel.val@gmail.com';
-        $myappContactPassword = 'azerty';
+        $myappContactMail = 'mickael.devweb@gmail.com';
+        $myappContactPassword = '5MKa$L#nZqpDylNeIg4pvWa8Pe8whU&dL3L*@m^sogALKtcITOy#ntB5EevLRR%dmWfQuO*UKvdFBoq*B4Mowel!9EO7Y0f4Tz^0';
         
         // In this case we'll use the ZOHO mail services.
         // If your service is another, then read the following article to know which smpt code to use and which port
@@ -69,12 +69,12 @@ class ContactController extends Controller
 
         $mailer = \Swift_Mailer::newInstance($transport);
 
-        $message = \Swift_Message::newInstance("Our Code World Contact Form " . $data["subject"])
-            ->setFrom(array($myappContactMail => "Message by " . $data["name"]))
+        $message = \Swift_Message::newInstance("Message via votre formulaire de contact : " . $data["subject"])
+            ->setFrom(array($myappContactMail => "Envoyer par " . $data["name"]))
             ->setTo(array(
                 $myappContactMail => $myappContactMail
             ))
-            ->setBody($data["message"] . "<br> ContactMail :" . $data["email"]);
+            ->setBody($data["message"] . " \n Mail de contact : " . $data["email"]);
 
         return $mailer->send($message);
     }

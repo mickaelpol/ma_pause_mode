@@ -21,13 +21,22 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col-md-12">
             {% if article.date %}
                 <p>article créer le : {{ article.date|date('d-F-Y') }}</p>
             {% endif %}
             {% if article.dateUpdate %}
                 <p>article éditer le : {{ article.dateUpdate|date('d-F-Y à H:i') }}</p>
             {% endif %}
+
+            {# {{dump(article.user)}} #}
+            
+            <p>
+                Auteur de l'article :
+                <a href="{{ path('show_profile', {'id': article.user.id }) }}">
+                    {{ article.user.firstName }} {{ article.user.username }}
+                </a>
+            </p>
         </div>
     </div>
 </div>

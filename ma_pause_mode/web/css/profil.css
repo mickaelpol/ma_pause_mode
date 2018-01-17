@@ -420,6 +420,17 @@ pre.prettyprint {
 }
 
 
+.lienProfile {
+    color: #484848;
+    transition: 300ms;
+}
+
+.lienProfile:hover {
+    text-decoration: none;
+    color: #E6324E;
+}
+
+
 /*       Fix bug for IE      */
 
 @media screen and (-ms-high-contrast: active),
@@ -441,4 +452,5 @@ pre.prettyprint {
         z-index: 5;
         visibility: visible;
     }
+
 }

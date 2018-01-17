@@ -38,7 +38,7 @@ class ArticleController extends Controller
     public function navbarAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $sectionsId = $em->getRepository('AppBundle:Section')->findAll();
+        $sectionsId = $em->getRepository('AppBundle:Section')->squeezeDropdown();
 
         return $this->render('navbar.html.twig', array('sectionsId' => $sectionsId
         ));

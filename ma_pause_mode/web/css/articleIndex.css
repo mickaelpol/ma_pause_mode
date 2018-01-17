@@ -64,13 +64,14 @@ a:hover {
 
 .movie-card {
     background: #ffffff;
-    box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.5);
     width: 100%;
-    max-width: 315px;
-    margin: 2em;
+    /* max-width: 315px; */
+    margin-bottom: 2em;
     border-radius: 10px;
     display: inline-block;
 }
+
 
 .movie-header {
     padding: 0;
@@ -112,7 +113,7 @@ a:hover {
 .movie-card:hover {
     -webkit-transform: scale(1.03);
     transform: scale(1.03);
-    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.08);
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 1);
 }
 
 .movie-content {
@@ -154,7 +155,7 @@ a:hover {
     display: block;
     color: rgba(0, 0, 0, 0.5);
     margin-bottom: .5em;
-    font-size: 9px;
+    font-size: 12px;
 }
 
 .info-section span {
@@ -249,6 +250,7 @@ aside .content-footer>img {
     right: 0px;
     display: none;
     z-index: 1;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 1);
 }
 
 @media (max-width:768px) {

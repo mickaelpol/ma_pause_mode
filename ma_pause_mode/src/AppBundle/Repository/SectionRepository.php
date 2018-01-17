@@ -18,8 +18,8 @@ class SectionRepository extends \Doctrine\ORM\EntityRepository
     {
 
         $qb = $this->createQueryBuilder('s')
-        ->where('s.id')
-        ->orWhere('s.id > 5');
+        ->where('s.id < 3')
+        ->orWhere('s.id <= 5');
         return $qb->getQuery()->getResult();
 
     }

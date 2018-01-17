@@ -1,5 +1,9 @@
 {% block navbar %} {# logo du site #}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
+{% endblock %}
+
 {# {% if 'noni_admin_question_' in app.request.attributes.get('_route') %} class="active"{% endif %} #}
 
 <div class="container hidden-xs">
@@ -13,7 +17,7 @@
 
 {# /////////////////////////////////////////////////// #}
 
-        <nav class="navbar navbar-center navbarMod margeTop5 font20  hidden-sm hidden-xs">
+        <nav class="navbar navbar-center navbarMod margeTop5 font20 bord  hidden-sm hidden-xs">
             <div class="container-fluid text-uppercase">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navLg">
@@ -22,25 +26,58 @@
                         <span class="icon-bar"></span>
                     </button>
                 </div>
-                <div class="col-sm-12 col-lg-9 col-lg-offset-3">
+                <div class="col-lg-12 text-center hidden-md bord">
                     <div class="collapse navbar-collapse" id="navLg">
                         <ul class="nav navbar-nav">
                             <li class="active">
                                 <a href="{{ path('homepage') }}" class="btn-nav">Accueil</a>
                             </li>
 
-                            {% for valeur, section in sectionsId %}
+                            {% for section in sectionsId %}
+
+                            {# parcour des id de la barre de navigation pour afficher que  #}
+                            {% if section.id < 3 %}
                             <li>
-                                {% dump(valeur) %}
-                                {# <a href=" {{ path('article_section', { 'id': section.id }) }} " class="btn-nav">{{ section.name }}</a> #}
+                                <a href=" {{ path('article_section', { 'id': section.id }) }} " class="btn-nav">{{ section.name }}</a>
                             </li>
+                                
+                            {% endif %}
+                            {% dump(section) %}
+
+                            {# Bouton créateur dropdown #}
+                            {% if section.id == 3 %}
+                            <li class="dropdown">
+                                <a href="{{ path('article_section', {'id': section.id}) }}" class="dropdown-toggle btn-nav" data-toggle="dropdown">{{ section.name }}
+                                    <b class="caret"></b>
+                                </a>
+                            {% endif %}
+                                {#  contenu du dropdown #}
+                            {% if section.id == 4 %}
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="{{ path('article_section', {'id': section.id}) }}">{{ section.name }}</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            {# Fin du dropdown créateurs #}
+                            {% endif %}
+
+                            {# bouton voyages de la navbar #}
+                            {% if section.id == 5 %}
+                            <li>
+                                <a href=" {{ path('article_section', { 'id': section.id }) }} " class="btn-nav">{{ section.name }}</a>
+                            </li>
+
+                            {% endif %}
+                            
                             {% endfor %}
+
                             
                             <li>
                                 <a href="#" class="btn-nav">A Propos</a>
                             </li>
                             <li>
-                                <a href="#" class="btn-nav">Contact</a>
+                                <a href="{{ path('app_contact_contact') }}" class="btn-nav">Contact</a>
                             </li>
                             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                     
@@ -154,5 +191,6 @@
 </nav>
 
 {# Fin navbar xs et sm #}
+
 
 {% endblock %}

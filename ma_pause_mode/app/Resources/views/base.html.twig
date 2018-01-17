@@ -32,17 +32,16 @@
     </title>
     <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
     <link rel="icon" type="image/x-icon" href="{{ asset('ico.png') }}" />
-    {% block stylesheets %}{% endblock %}
     <link rel="stylesheet" href="{{ asset('css/marge.css') }}">
     <link rel="stylesheet" href="{{ asset('css/fontSize.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
     <link rel="stylesheet" href="{{ asset('css/padding.css') }}">
     <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
     <link rel="stylesheet" href="{{ asset('font-awesome-4.7.0/css/font-awesome.css') }}">
+    {% block stylesheets %}{% endblock %}
 </head>
 
 <body>
-    
+
     <div id="sidebar">
         {{ render(controller(
             'AppBundle:Article:navbar'
@@ -56,11 +55,12 @@
     {% endblock %}
     
     
-    {% block javascripts %}
-    
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.js') }}"></script>
+    {% block javascripts %}
 
+        <script src="{{ asset('js/dropdownHoverNavbar.js') }}"></script>
+        
     {% endblock %}
 
 

@@ -5,6 +5,20 @@
 {% endblock %}
 
 {% block body %}
+
+
+
+
+<div class="container margeBot25">
+<div class="">
+    <div class="row text-center">
+        <h1>{{ dump(app) }}</h1>
+    </div>
+
+{% for article in section.articles %}
+
+{% dump(article) %}
+
     
     <div class="container margeBot20">
     

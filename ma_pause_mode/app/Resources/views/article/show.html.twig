@@ -1,6 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+<div class="container">
+    <div class="col-sm-12 col-xs-12"> 
+<div class="text-center">
+<img src="{{ asset('uploads/images/Article/' ~ article.image) }}" width="100%"  alt="Image d'article">
+</div>
+</div>
+</div>
+<br>
 
 <div class="container">
             {{article.title|raw}}
@@ -15,7 +23,7 @@
     <div class="row">
         <div class="col-xs-12">
             {% if article.date %}
-                <p>article créer le : {{ article.date|date('d-F-Y à H:i') }}</p>
+                <p>article créer le : {{ article.date|date('d-F-Y') }}</p>
             {% endif %}
             {% if article.dateUpdate %}
                 <p>article éditer le : {{ article.dateUpdate|date('d-F-Y à H:i') }}</p>

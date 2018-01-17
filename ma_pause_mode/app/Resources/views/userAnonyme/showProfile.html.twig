@@ -5,78 +5,97 @@
     <link rel="stylesheet" href="{{ asset('css/profil.css') }}">
 {% endblock %}
 
-<div class="container margeTop5 margeBot10">
-    <div class="jumbotron cadreUser black">
-        <div class="row">
-            <div class="col-md-4 hidden-xs hidden-sm col-lg-2 margeTop15">
-                <img height="300" width="300" src="{{ asset('uploads/images/Users/' ~ user.imageProfil) }}" alt="stack photo" class="">
-            </div>
-            <div class="col-md-6 col-md-offset-1 col-xs-12 col-sm-6 col-sm-offset-3 col-lg-7 col-lg-offset-3">
-                <div class="container">
-                    <h1> {{ user.username }} {{ user.firstName}} </h1>
+<div class="container margeTop10 margeBot20">
+    <div class="row">
+
+            {% dump(user) %}
+            
+            <div class="col-md-8 col-md-offset-2">
+                <div class="card-container manual-flip">
+                    <div class="card">
+                        <div class="front">
+                            <div class="cover">
+                                <img src="https://www.clipartsgram.com/image/129556292-kyz84k3.jpg" />
+                            </div>
+                            <div class="user">
+                                <img class="img-circle" src="{{ asset('uploads/images/Users/' ~ user.imageProfil) }}" />
+                            </div>
+                            <div class="content">
+                                <div class="main">
+                                    <h3 class="name">{{ user.username }}</h3>
+                                    <p class="profession">{{ user.entreprise }}</p>
+                                    <p class="text-center">{{ user.siteWeb }}
+                                        <br>Your chick she so thirsty
+                                        <br>I'm in that two seat Lambo"</p>
+                                </div>
+                                <div class="footer">
+                                    <button class="btn btn-md btn-info" onclick="rotateCard(this)">
+                                        <i class="fa fa-mail-forward"></i> Manual Rotation
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end front panel -->
+                        <div class="back">
+                            <div class="header">
+                                <h5 class="motto">"To be or not to be, this is my awesome motto!"</h5>
+                            </div>
+                            <div class="content">
+                                <div class="main">
+                                    <h4 class="text-center">Job Description</h4>
+                                    <p class="text-center">Web design, Adobe Photoshop, HTML5, CSS3, Corel and many others...</p>
+
+                                    <div class="stats-container">
+                                        <div class="stats">
+                                            <h4>235</h4>
+                                            <p>
+                                                Followers
+                                            </p>
+                                        </div>
+                                        <div class="stats">
+                                            <h4>114</h4>
+                                            <p>
+                                                Following
+                                            </p>
+                                        </div>
+                                        <div class="stats">
+                                            <h4>35</h4>
+                                            <p>
+                                                Projects
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="footer">
+                                <button class="btn btn-simple" rel="tooltip" title="Flip Card" onclick="rotateCard(this)">
+                                    <i class="fa fa-reply"></i> Back
+                                </button>
+                                <div class="social-links text-center">
+                                    <a href="http://deepak646.blogspot.in/" class="facebook">
+                                        <i class="fa fa-facebook fa-fw"></i>
+                                    </a>
+                                    <a href="http://deepak646.blogspot.in/" class="google">
+                                        <i class="fa fa-google-plus fa-fw"></i>
+                                    </a>
+                                    <a href="http://deepak646.blogspot.in/" class="twitter">
+                                        <i class="fa fa-twitter fa-fw"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end back panel -->
+                    </div>
+                    <!-- end card -->
                 </div>
-                <hr>
-                <ul class="container details margeTop10">
-                    <li>
-                        <p>
-                            <span class="glyphicon glyphicon-user" style="width:50px;"></span>{{ user.pseudo }}</p>
-                    </li>
-                    <li>
-                        <p>
-                            <span class="glyphicon glyphicon-earphone one" style="width:50px;"></span>{{ user.phoneNumber }}</p>
-                    </li>
-                    <li>
-                        <p>
-                            <span class="glyphicon glyphicon-envelope one" style="width:50px;"></span>{{user.email}}</p>
-                    </li>
-                    <li>
-                        <p>
-                            <span class="glyphicon glyphicon-map-marker one" style="width:50px;"></span>
-                            {{ user.address }} {{ user.pc }} {{ user.city }}
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            <span class="glyphicon glyphicon-briefcase" style="width:50px;"></span>
-                            {{ user.entreprise }}
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            <span class="glyphicon glyphicon-asterisk" style="width:50px;"></span>
-                            N° Siret {{ user.siret }}
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            <span class="glyphicon glyphicon-new-window one" style="width:50px;"></span>
-                            <a target="blank" href="{{ user.lienSiteWeb }}">{{ user.siteWeb }}</a>
-                        </p>
-                    </li>
-                </ul>
+                <!-- end card-container -->
             </div>
-        </div>
-    </div>
+            <!-- end col sm 3 -->
+    <!-- end row -->
+    <div class="space-200"></div>
+    {% endblock %}
 
-    <!-- Modal -->
-    <div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h3 class="modal-title text-danger text-center">Voulez-vous supprimer votre compte?</h3>
-                </div>
-                <p class="text-danger text-center font15">Cette action est irréversible.</p>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <a class="btn btn-md btn-danger" href=" {{ path('app_user_delete', { 'id': user.id }) }}">Supprimer</a>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-
+    {% block javascripts %}
+    <script src="{{ asset('js/flipCard.js') }}"></script>
     {% endblock %}

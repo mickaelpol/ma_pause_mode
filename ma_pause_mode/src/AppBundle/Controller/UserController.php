@@ -29,4 +29,18 @@ class UserController extends Controller
         
     }
 
+    /**
+     *@Route("/show/{id}", name="show_profile", requirements={"page"="\d+"})
+     */
+    public function showAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $user = $em->getRepository('AppBundle:User')->find($id);
+
+        return $this->render('userAnonyme/showProfile.html.twig', array(
+            'user' => $user,
+        ));
+    }
+
 }

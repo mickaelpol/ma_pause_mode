@@ -14,14 +14,14 @@ use Doctrine\ORM\Query\Expr\From;
 class SectionRepository extends \Doctrine\ORM\EntityRepository
 {
 
-    // public function squeezeDropdown()
-    // {
+    public function squeezeDropdown()
+    {
 
-    //     $qb = $this->createQueryBuilder('s')
-    //     ->where('s.id < 4')
-    //     ->orWhere('s.id > 5');
-    //     return $qb->getQuery()->getResult();
+        $qb = $this->createQueryBuilder('s')
+        ->where('s.id < 3')
+        ->orWhere('s.id <= 5');
+        return $qb->getQuery()->getResult();
 
-    // }
+    }
     
 }

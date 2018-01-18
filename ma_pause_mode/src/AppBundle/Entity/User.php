@@ -4,10 +4,15 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraint as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="usr_user")  
+ * @ORM\Table(name="usr_user")
+ * @Vich\Uploadable 
  */
 class User extends BaseUser
 {
@@ -38,6 +43,7 @@ class User extends BaseUser
      * @var string
      *
      * @ORM\Column(name="usr_pseudo", type="string", length=255, unique=true)
+     * 
      */
     private $pseudo;
 
@@ -58,17 +64,80 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="usr_pc", type="string", length=255)
+     * @ORM\Column(name="usr_pc", type="string", length=255, nullable=true)
      */
     private $pc;
 
     /**
      * One User has Many Articles.
-     * @ORM\OneToMany(targetEntity="Article", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="Article", mappedBy="user", orphanRemoval=true)
      */
     private $articles;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="usr_phone_number", type="string", length=30, nullable=true)
+     */
+    private $phoneNumber;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="usr_entreprise", type="string", length=255)
+     */
+    private $entreprise;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="usr_site_web", type="string", length=255, nullable=true)
+     */
+    private $siteWeb;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="usr_lien_site_web", type="string", length=255, nullable=true)
+     */
+    private $lienSiteWeb;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="usr_image_profil", type="string", length=255, nullable=true)
+     */
+    private $imageProfil;
 
+    /**
+     * @var string
+     *
+     * @Vich\UploadableField(mapping="imageProfils", fileNameProperty="imageProfil")
+     * @var File
+     */
+    private $imageProfilFile;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     * @var \DateTime
+     */
+    private $updatedAt;
+
+    
+
+
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->enabled = false;
+        $this->setEnabled(false);
+        $this->siteWeb = "Site Web Indisponible (Placer votre site web ici)";
+        $this->phoneNumber  = "Téléphone Indisponible";
+        $this->lienSiteWeb = "Lien du Site Web Indisponible (Placer votre site web ici)";
+        
+    }
+    
     /**
      * Get id
      *
@@ -137,6 +206,7 @@ class User extends BaseUser
      */
     public function setAddress($address)
     {
+        
         $this->address = $address;
 
         return $this;
@@ -162,7 +232,7 @@ class User extends BaseUser
     public function setCity($city)
     {
         $this->city = $city;
-
+        
         return $this;
     }
 
@@ -186,7 +256,7 @@ class User extends BaseUser
     public function setPc($pc)
     {
         $this->pc = $pc;
-
+        
         return $this;
     }
 
@@ -258,4 +328,173 @@ class User extends BaseUser
     {
         return $this->articles;
     }
+
+    /**
+     * Set phoneNumber
+     *
+     * @param string $phoneNumber
+     *
+     * @return User
+     */
+    public function setPhoneNumber($phoneNumber)
+    {
+        if(empty($phoneNumber)){
+            $this->phoneNumber = "Téléphone indisponible";
+        } else {
+            $this->phoneNumber = $phoneNumber;
+        }
+        return $this;
+    }
+
+    /**
+     * Get phoneNumber
+     *
+     * @return string
+     */
+    public function getPhoneNumber()
+    {
+        return $this->phoneNumber;
+    }
+
+    /**
+     * Set entreprise
+     *
+     * @param string $entreprise
+     *
+     * @return User
+     */
+    public function setEntreprise($entreprise)
+    {
+        $this->entreprise = $entreprise;
+
+        return $this;
+    }
+
+    /**
+     * Get entreprise
+     *
+     * @return string
+     */
+    public function getEntreprise()
+    {
+        return $this->entreprise;
+    }
+
+    /**
+     * Set siteWeb
+     *
+     * @param string $siteWeb
+     *
+     * @return User
+     */
+    public function setSiteWeb($siteWeb)
+    {
+        if(empty($siteWeb)){
+            $this->siteWeb = "Site indisponible";
+        } else {
+            $this->siteWeb = $siteWeb;
+        }
+        return $this;
+    }
+
+    /**
+     * Get siteWeb
+     *
+     * @return string
+     */
+    public function getSiteWeb()
+    {
+        return $this->siteWeb;
+    }
+    
+
+    /**
+     * Set lienSiteWeb
+     *
+     * @param string $lienSiteWeb
+     *
+     * @return User
+     */
+    public function setLienSiteWeb($lienSiteWeb)
+    {
+        $this->lienSiteWeb = $lienSiteWeb;
+
+        return $this;
+    }
+
+    /**
+     * Get lienSiteWeb
+     *
+     * @return string
+     */
+    public function getLienSiteWeb()
+    {
+        return $this->lienSiteWeb;
+    }
+
+    /**
+     * Set imageProfil
+     *
+     * @param string $imageProfil
+     *
+     * @return User
+     */
+    public function setImageProfil($imageProfil)
+    {
+        $this->imageProfil = $imageProfil;
+
+        return $this;
+
+    }
+
+    /**
+     * Get imageProfil
+     *
+     * @return string
+     */
+    public function getImageProfil()
+    {
+        return $this->imageProfil;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return User
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    public function setImageProfilFile(File $imageProfil = null)
+    {
+        $this->imageProfilFile = $imageProfil;
+
+        if ($imageProfil) {
+           // if 'updatedAt' is not defined in your entity, use another property
+            $this->updatedAt = new \DateTime('now');
+        }
+    }
+
+    public function getImageProfilFile()
+    {
+        return $this->imageProfilFile;
+    }
+    
+    
 }

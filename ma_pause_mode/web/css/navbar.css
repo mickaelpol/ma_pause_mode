@@ -2,8 +2,22 @@
     color: #373737;
     background-color: transparent;
 }
+.btn-navXs {
+    color: black;
+}
 
-
+.navbar-brand {
+    top: -15px;
+    left: -75px;
+    transform: translateX(-20%);
+    position: absolute;
+}
+.navbar-brand>img {
+    background-color: white;
+    width: 20%;
+    height: 250%;
+    border-radius: 50%;
+}
 .span-black {
     background-color: white;
 }
@@ -19,14 +33,17 @@
 .btn-white {
     color: white;
 }
+.btn-black {
+    color: #373737;
+}
 
 .navbarSmall {
-    color: black;
+    color: #373737;
     background-color: transparent;
 }
 
 .btn-nav{
-    color: black;
+    color: #373737;
     text-decoration: none;
 }
 
@@ -39,25 +56,80 @@
 
 
 @media (min-width: 768px) {
-    .navbar-nav.navbar-center {
-        font-size: 5px;
-        position: absolute;
-        left: 50%;
-        transform: translatex(-50%);
+    ul>li .btn-nav {
+        color: black;
+        font-size: 17px;        
+    }
+    ul>li .btn-nav:hover,
+    ul>li .btn-nav:focus {
+        font-size: 17px;
     }
 }
 @media (max-width: 768px) {
+
+    ul>li .btn-nav {
+        color: black;
+        font-size: 13px;      
+    }
+    ul>li .btn-nav:hover,
+    ul>li .btn-nav:focus {
+        font-size: 13px;
+    }
+}
+
+
+@media (max-width: 425px) {
     .navbarMod {
         background-color: #eb0046;
     }
-    .btn-nav {
-        color: #ffffff;
+    ul>li .btn-nav {
+        color: white;
+        font-size: 18px;
     }
     ul>li .btn-nav:hover,
     ul>li .btn-nav:focus{
         color: #ffffff;
         text-decoration: none;
         background-color: #eb0046;
+        font-size: 18px;        
+    }
+
+    body {
+        font-family: 'PT Sans', sans-serif;
+        font-size: 13px;
+        font-weight: 400;
+        color: #4f5d6e;
+        position: relative;
+    }
+
+    .body-wrap {
+        min-height: 700px;
+    }
+
+    .body-wrap {
+        position: relative;
+        z-index: 0;
+    }
+
+    .body-wrap:before,
+    .body-wrap:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: -1;
+        height: 260px;
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(26, 49, 95, 1)), color-stop(100%, rgba(26, 49, 95, 0)));
+        background: linear-gradient(to bottom, rgba(26, 49, 95, 1) 0%, rgba(26, 49, 95, 0) 100%);
+        filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#1a315f', endColorstr='#001a315f', GradientType=0);
+    }
+
+    .body-wrap:after {
+        top: auto;
+        bottom: 0;
+        background: linear-gradient(to bottom, rgba(26, 49, 95, 0) 0%, rgba(26, 49, 95, 1) 100%);
+        filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#001a315f', endColorstr='#1a315f', GradientType=0);
     }
 }
 

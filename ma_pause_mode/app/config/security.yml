@@ -6,11 +6,12 @@ security:
         ROLE_SUPER_ADMIN: ROLE_ADMIN
     providers:
         fos_userbundle:
-            id: fos_user.user_provider.username
+            id: fos_user.user_provider.username_email
     firewalls:
         main:
             pattern: ^/
             form_login:
+                default_target_path: admin
                 provider: fos_userbundle
                 csrf_token_generator: security.csrf.token_manager
             logout:       true

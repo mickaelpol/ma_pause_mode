@@ -1,0 +1,110 @@
+{% extends 'base.html.twig' %}
+
+{% block body %} {% trans_default_domain 'FOSUserBundle' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/profil.css') }}">
+{% endblock %}
+
+<div class="container margeTop10 margeBot20">
+    <div class="row">
+
+            {% dump(user) %}
+            
+            <div class="col-md-8 col-md-offset-2">
+                <div class="card-container manual-flip">
+                    <div class="card">
+                        <div class="front">
+                            <div class="cover">
+                                <img src="https://www.clipartsgram.com/image/129556292-kyz84k3.jpg" />
+                            </div>
+                            <div class="user">
+                                <img class="img-circle" src="{{ asset('uploads/images/Users/' ~ user.imageProfil) }}" />
+                            </div>
+                            <div class="content">
+                                <div class="main text-center">
+                                    <h3 class="name">{{ user.username }} {{ user.firstName }}</h3>
+                                    <p class="profession">{{ user.entreprise }}</p>
+                                    <a class="lienProfile" target="blank" href="{{ user.lienSiteWeb }}"> {{ user.siteWeb }} </a>
+                                </div>
+                                <div class="footer">
+                                    <button class="btn btn-md btn-simple" onclick="rotateCard(this)">
+                                        <i class="fa fa-mail-forward"></i> Plus d'information
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end front panel -->
+                        <div class="back">
+                            <div class="header">
+                                <h5 class="motto">Information sur l'auteur</h5>
+                            </div>
+                            <div class="content">
+                                <div class="main text-center">
+                                    <h3 class="text-center">{{ user.entreprise }}</h3>
+                                    <p class="text-center">n° siret : {{ user.siret }}</p>
+                                    <p class="text-center">{{ user.address }}</p>
+                                    <p class="text-center">{{ user.pc }}</p>
+                                    <p class="text-center">{{ user.city }}</p>
+
+                                    <div class="stats-container margeTop5 margeBot5">
+                                        <div class="stats">
+                                            <h4>
+                                                <a class="lienProfile" href="mailto:{{ user.email }} ?subject=Contact via ma pause mode &body=Votre message ici" class="text-center"><i class="fa fa-envelope-o"></i></a>
+                                            </h4>
+                                            <p>
+                                                Contacter le créateur
+                                            </p>
+                                        </div>
+                                        <div class="stats">
+                                            <h4 class="lienProfile"> {{ user.articles|length }}</h4>
+                                            <p>
+                                                Articles sur le site
+                                            </p>
+                                        </div>
+                                        <div class="stats">
+                                            <h4><i class="fa fa-mobile"></i> {{ user.phoneNumber }}</h4>
+                                            <p>
+                                                Téléphone
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="footer">
+                                <button class="btn btn-simple" rel="tooltip" title="Flip Card" onclick="rotateCard(this)">
+                                    <i class="fa fa-reply"></i> Retour
+                                </button>
+                                <div class="social-links text-center margeTop5">
+                                    <a class="lienProfile" href="http://deepak646.blogspot.in/" class="facebook">
+                                        <i class="fa fa-facebook fa-fw"></i>
+                                    </a>
+                                    <a class="lienProfile" href="http://deepak646.blogspot.in/" class="google">
+                                        <i class="fa fa-google-plus fa-fw"></i>
+                                    </a>
+                                    <a class="lienProfile" href="http://deepak646.blogspot.in/" class="twitter">
+                                        <i class="fa fa-pinterest fa-fw"></i>
+                                    </a>
+                                    <a class="lienProfile" href="http://deepak646.blogspot.in/" class="twitter">
+                                        <i class="fa fa-instagram fa-fw"></i>
+                                    </a>
+                                    <a class="lienProfile" href="http://deepak646.blogspot.in/" class="twitter">
+                                        <i class="fa fa-twitter fa-fw"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end back panel -->
+                    </div>
+                    <!-- end card -->
+                </div>
+                <!-- end card-container -->
+            </div>
+            <!-- end col sm 3 -->
+    <!-- end row -->
+    <div class="space-200"></div>
+    {% endblock %}
+
+    {% block javascripts %}
+    <script src="{{ asset('js/flipCard.js') }}"></script>
+    {% endblock %}

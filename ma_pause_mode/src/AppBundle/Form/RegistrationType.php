@@ -4,6 +4,7 @@ namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class RegistrationType extends AbstractType
 {
@@ -11,12 +12,39 @@ class RegistrationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        ->add('siret', null, array('label' => 'n°siret', 'translation_domain' => 'FOSUserBundle'))
-        ->add('firstName', null, array('label' => 'Prenom', 'translation_domain' => 'FOSUserBundle'))
-        ->add('pseudo', null, array('label' => 'Pseudo', 'translation_domain' => 'FOSUserBundle'))
-        ->add('address', null, array('label' => 'Addresse', 'translation_domain' => 'FOSUserBundle'))
-        ->add('city', null, array('label' => 'Ville', 'translation_domain' => 'FOSUserBundle'))
-        ->add('pc', null, array('label' => 'Code postal', 'translation_domain' => 'FOSUserBundle'));
+        ->add('firstName', textType::class, array('label' => 'prenom', 'attr' => array(
+            'class' => 'form-control'
+            )))
+            ->add('username', null, array('label' => 'nom', 'attr' => array(
+            'class' => 'form-control'
+            )))
+            ->add('pseudo', null , array('label' => 'pseudo', 'attr' => array(
+                'class' => 'form-control'
+            )))
+            ->add('siret', null, array('label' => 'N° Siret', 'attr' => array(
+                'class' => 'form-control'
+            )))
+            ->add('address', null, array('label' => 'Addresse','required' => false, 'attr' => array(
+                'class' => 'form-control'
+            )))
+            ->add('pc', null, array('label' => 'Code Postal','required' => false, 'attr' => array(
+                'class' => 'form-control'
+            )))
+            ->add('city', null, array('label' => 'Ville', 'attr' => array(
+                'class' => 'form-control'
+            )))
+            ->add('entreprise', null, array('label' => 'Entreprise', 'attr' => array(
+                'class' => 'form-control'
+            )))
+            ->add('phoneNumber', null, array('label' => 'Téléphone','required' => false, 'attr' => array(
+                'class' => 'form-control'
+            )))
+            ->add('siteWeb', null, array('label' => 'Nom du Site web','required' => false, 'attr' => array(
+                'class' => 'form-control'
+            )))
+            ->add('lienSiteWeb', null, array('label' => 'Lien du site web','required' => false, 'attr' => array(
+                'class' => 'form-control'
+            )));
 
     }
 

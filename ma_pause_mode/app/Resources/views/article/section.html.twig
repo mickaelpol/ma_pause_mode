@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/articleIndex.css') }}">
+{% endblock %}
+
+{% block body %}
+
+    <div class="container margeBot20">
+
+        {% for article in section.articles %}
+            <div class="col-lg-4">
+                <div class="movie-card">
+                    <a href="{{ path('article_show', { 'id': article.id }) }}">
+                        <div class="movie-header img-responsive" style='background: url("{{ asset('uploads/images/Article/' ~ article.image) }}");
+            background-size: cover;
+            background-position: 100% 100%;'>
+                </div>
+                    </a>
+                    <!--movie-header-->
+                    <div class="movie-content">
+                        <div class="movie-content-header">
+                            <a href="{{ path('article_show', { 'id': article.id }) }}">
+                                <h3 class="movie-title">{{ article.description|raw|striptags }}</h3>
+                            </a>
+                            
+                        </div>
+                        <div class="movie-info">
+                            <div class="info-section">
+                                <label>
+                                    <i class="fa fa-calendar"></i>
+                                    Date de parution</label>
+                                <span>{{ article.date|date('d F Y') }}</span>
+                            </div>
+                            <!--date,time-->
+                            <!--screen-->
+                            <div class="info-section">
+                                <label>Tags
+                                    <i class="fa fa-tags"></i>
+                                </label>
+                                <span class="badge badge-info">{{ article.section }}</span>
+                                <span class="badge badge-info">{{ article.category }}</span>
+                            </div>
+                            <div class="info-section">
+                                <label>Commentaires</label>
+                                <span>
+                                    <i class="fa fa-comment"></i>
+                                </span>
+                            </div>
+
+                            <!--row-->
+                            <div class="user-ditels hidden-sm hidden-md hidden-xs">
+                                <div class="user-img"><img src="{{ asset('uploads/images/Users/' ~ article.user.imageProfil) }}" class="img-responsive"></div>
+                                <span class="user-full-ditels">
+                                    <h3>
+                                        <a href="{{ path('show_profile', {'id': article.user.id }) }}">
+                                            Auteur :
+                                            {{ article.user.firstName }} {{ article.user.username }}
+                                        </a>
+                                    </h3>
+                                    <p>
+                                        {{ article.user.entreprise}}
+                                    </p>
+                                </span>
+                                <div class="social-icon">
+                                    <a target="blank" href="{{ article.user.lienSiteWeb}}">
+                                        <i class="fa fa-globe" data-toggle="tooltip" data-placement="bottom" title="Site web de l'auteur"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="movie-content-header margeTop10">
+                            <a class="btn btn-block btn-large btn-regi" href="{{ path('article_show', {'id': article.id }) }}">Lire l'article</a>
+                        </div>
+                    </div>
+                    <!--movie-content-->
+                </div>
+                <!--movie-card-->
+            </div>
+        {% endfor %}
+    </div>
+    <!--container-->
+
+{% endblock %}
+
+

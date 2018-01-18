@@ -4,6 +4,10 @@
 {
     margin-top: 25%;
 }
+.margeTop20
+{
+    margin-top: 20%;
+}
 .margeTop15
 {
     margin-top: 15%;
@@ -15,6 +19,11 @@
 .margeTop5
 {
     margin-top: 5%;
+}
+
+.margeTop2
+{
+    margin-top: 2%;
 }
 
 /* Fin marge Top */
@@ -43,3 +52,4 @@
 }
 
 /* Fin marge bottom */
+

@@ -1,0 +1,226 @@
+{% trans_default_domain 'FOSUserBundle' %}
+{% block subject %}
+{{ 'registration.email.subject'|trans({'%username%': user.firstname, '%confirmationUrl%': confirmationUrl}) }}
+{% endblock %}
+
+{% block body_text %}
+{% autoescape false %}
+{{ 'registration.email.message'|trans({'%username%': user.username, '%confirmationUrl%': confirmationUrl}) }}
+{% endautoescape %}
+{% endblock %}
+
+{% block body_html %}
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml">&#13; &#13;
+
+<head>&#13;
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />&#13;
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; &#13;&#10;    maximum-scale=1.0;" />&#13; &#13;
+</head>&#13; &#13;
+
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">&#13; &#13; &#13;
+    <!-- Header email -->&#13;
+    <table bgcolor="#F5F5F5" cellpadding="0" cellspacing="0" border="0" width="100%">&#13;
+        <tbody>&#13;
+            <tr>&#13;
+                <td valign="top">&#13;
+                    <rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="mso-width-percent: 1000;">&#13;
+                        <fill type="tile" src="https://i.imgur.com/YJOX1PC.png" color="#7bceeb"></fill>&#13;
+                        <textbox style="mso-fit-shape-to-text: true;" inset="0,0,0,0">&#13;
+                            <div>&#13; &#13;
+                                <table align="center" cellpadding="0" cellspacing="0" border="0" width="590px">&#13;
+                                    <tbody>&#13; &#13;
+                                        <tr>&#13;
+                                            <td height="30" style="font-size: 30px; line-height: 30px;"> </td>&#13;
+                                        </tr>&#13;
+                                        <tr>&#13;
+                                            <td align="center" style="text-align: center;">&#13;
+                                                <a target="blank" href="http://127.0.0.1:8000/">&#13;
+                                                    <img src="https://image.noelshack.com/fichiers/2018/02/7/1515892254-ma-p-m.png" width="200px" alt="logo" border="0" />&#13;
+                                                </a>&#13;
+                                            </td>&#13;
+                                        </tr>&#13; &#13;
+                                        <tr>&#13;
+                                            <td align="center" style="font-family: 'Questrial', Helvetica, sans-serif; text-align: center; font-size: 40px; color: #E7405A; mso-line-height-rule: exactly; line-height: 28px;">&#13; Bienvenue sur ma pause mode&#13;
+                                            </td>&#13;
+                                        </tr>&#13;
+                                        <tr>&#13;
+                                            <td height="30" style="font-size: 30px; line-height: 30px;"> </td>&#13;
+                                        </tr>&#13; &#13;
+                                        <tr>&#13;
+                                            <td align="center" style="font-family: 'Questrial', Helvetica, sans-serif; text-align: center; color: #E7405A; mso-line-height-rule: exactly; line-height: 26px;">&#13; Ma pause mode, blog regroupant des articles de mode et de voyages, je vous
+                                                souhaite une execellente visite&#13;
+                                            </td>&#13;
+                                        </tr>&#13;
+                                        <tr>&#13;
+                                            <td height="30" style="font-size: 30px; line-height: 50px;"> </td>&#13;
+                                        </tr>&#13; &#13;
+                                    </tbody>&#13;
+                                </table>&#13; &#13;
+                            </div>&#13;
+                        </textbox>&#13;
+                    </rect>&#13;
+                </td>&#13;
+            </tr>&#13;
+        </tbody>&#13;
+    </table>&#13; &#13;
+    <!-- fin header -->&#13; &#13;
+    <!-- body de l'email -->&#13; &#13;
+    <table bgcolor="#FFFFFF" cellpadding="0" cellspacing="0" border="0" width="100%">&#13;
+        <tbody>&#13;
+            <tr>&#13;
+                <td valign="top">&#13;
+                    <rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="mso-width-percent: 1000;">&#13;
+                        <fill type="tile" src="https://i.imgur.com/YJOX1PC.png" color="#7bceeb"></fill>&#13;
+                        <textbox style="mso-fit-shape-to-text: true;" inset="0,0,0,0">&#13;
+                            <div>&#13; &#13;
+                                <table align="center" cellpadding="0" cellspacing="0" border="0" width="590px">&#13;
+                                    <tbody>&#13; &#13;
+                                        <tr>&#13;
+                                            <td height="30" style="font-size: 30px; line-height: 30px;"> </td>&#13;
+                                        </tr>&#13; &#13;
+                                        <tr>&#13;
+                                            <td align="center" style="font-family: 'Questrial', Helvetica, sans-serif; text-align: center; color: #E7405A; mso-line-height-rule: exactly; line-height: 26px; font-size: 40px;">&#13;
+                                                Bienvenue {{ user.firstname }} {{ user.username }}
+                                                &#13;
+                                            </td>&#13;
+                                        </tr>&#13;
+                                        <tr>&#13;
+                                            <td height="30" style="font-size: 30px; line-height: 50px;"> </td>&#13;
+                                        </tr>&#13;
+                                        <tr>&#13;
+                                            <td align="center">&#13;
+                                                <table align="center" width="40" cellpadding="0" cellspacing="0" border="0" bgcolor="#E7405A">&#13;
+                                                    <tbody>&#13;
+                                                        <tr>&#13;
+                                                            <td height="4" style="font-size: 4px; line-height: 4px;"> </td>&#13;
+                                                        </tr>&#13;
+                                                    </tbody>&#13;
+                                                </table>&#13;
+                                            </td>&#13;
+                                        </tr>&#13;
+                                        <tr>&#13;
+                                            <td height="30" style="font-size: 30px; line-height: 50px;"> </td>&#13;
+                                        </tr>&#13; &#13;
+                                        <tr>&#13;
+                                            <td align="center" style="font-family: 'Questrial', Helvetica, sans-serif; text-align: center; color: #E7405A; mso-line-height-rule: exactly; line-height: 26px;">&#13; 
+                                                {{ 'registration.email.message'|trans({'%username%': user.username, '%confirmationUrl%': confirmationUrl}) }}<br>
+                                                <p>Patientez 12h à 24h après votre validation</p>
+                                                <p>L'administrateur du site doit valider votre inscription</p>
+                                                <p>Merci de votre compréhension</p>
+                                                &#13;
+
+                                            </td>&#13;
+                                        </tr>&#13;
+                                        <tr>&#13;
+                                            <td height="30" style="font-size: 30px; line-height: 50px;"> </td>&#13;
+                                        </tr>&#13; &#13;
+                                    </tbody>&#13;
+                                </table> &#13;
+                            </div>&#13;
+                        </textbox>&#13;
+                    </rect>&#13;
+                </td>&#13;
+            </tr>&#13;
+        </tbody>&#13;
+    </table>&#13; &#13;
+    <!-- fin body de l'email -->&#13; &#13;
+    <!-- bloc 3 -->&#13; &#13;
+    <table bgcolor="#F5F5F5" cellpadding="0" cellspacing="0" border="0" width="100%">&#13;
+        <tbody>&#13;
+            <tr>&#13;
+                <td height="30" style="font-size: 30px; line-height: 50px;"> </td>&#13;
+            </tr>&#13;
+            <tr>&#13;
+                <td>&#13;
+                    <table align="center" cellpadding="0" cellspacing="0" border="0" width="590">&#13; &#13;
+                        <tr>&#13;
+                            <td>&#13;
+                                <table width="170" align="left" cellspacing="0" cellpadding="0">&#13;
+                                    <tbody>&#13;
+                                        <tr>&#13;
+                                            <td align="center">&#13;
+                                                <a target="blank" href="https://www.facebook.com/mapausemode/">&#13;
+                                                    <img src="https://image.noelshack.com/fichiers/2018/02/7/1515895018-if-facebook-2613268.png" alt="facebook" width="40" />&#13;
+                                                </a>&#13;
+                                            </td>&#13;
+                                        </tr>&#13;
+                                        <tr>&#13;
+                                            <td height="30" style="font-size: 30px; line-height: 30px;"> </td>&#13;
+                                        </tr>&#13;
+                                        <tr>&#13;
+                                            <td align="center" style="font-family: 'Questrial', Helvetica, sans-serif; text-align: center; color: #E7405A; mso-line-height-rule: exactly; line-height: 24px; font-size: 14px;">&#13; Rejoignez moi sur facebook !&#13;
+                                            </td>&#13;
+                                        </tr>&#13;
+                                        <tr>&#13;
+                                            <td height="30" style="font-size: 30px; line-height: 30px;"> </td>&#13;
+                                        </tr>&#13;
+                                    </tbody>&#13;
+                                </table>&#13; &#13;
+                                <table align="left" width="40" cellpadding="0" cellspacing="0">&#13;
+                                    <tr>&#13;
+                                        <td height="30" style="font-size: 30px; line-height: 30px;"> </td>&#13;
+                                    </tr>&#13;
+                                </table>&#13; &#13;
+                                <table width="170" align="left" cellspacing="0" cellpadding="0">&#13;
+                                    <tbody>&#13;
+                                        <tr>&#13;
+                                            <td align="center">&#13;
+                                                <a target="blank" href="https://www.facebook.com/mapausemode/">&#13;
+                                                    <img src="https://image.noelshack.com/fichiers/2018/02/7/1515895018-if-facebook-2613268.png" alt="facebook" width="40" />&#13;
+                                                </a>&#13;
+                                            </td>&#13;
+                                        </tr>&#13;
+                                        <tr>&#13;
+                                            <td height="30" style="font-size: 30px; line-height: 30px;"> </td>&#13;
+                                        </tr>&#13;
+                                        <tr>&#13;
+                                            <td align="center" style="font-family: 'Questrial', Helvetica, sans-serif; text-align: center; color: #E7405A; mso-line-height-rule: exactly; line-height: 24px; font-size: 14px;">&#13; Rejoignez moi sur facebook !&#13;
+                                            </td>&#13;
+                                        </tr>&#13;
+                                        <tr>&#13;
+                                            <td height="30" style="font-size: 30px; line-height: 30px;"> </td>&#13;
+                                        </tr>&#13;
+                                    </tbody>&#13;
+                                </table>&#13; &#13;
+                                <table align="left" width="40" cellpadding="0" cellspacing="0">&#13;
+                                    <tr>&#13;
+                                        <td height="30" style="font-size: 30px; line-height: 50px;"> </td>&#13;
+                                    </tr>&#13;
+                                </table>&#13; &#13;
+                                <table width="170" align="left" cellspacing="0" cellpadding="0">&#13;
+                                    <tbody>&#13;
+                                        <tr>&#13;
+                                            <td align="center">&#13;
+                                                <a target="blank" href="https://www.facebook.com/mapausemode/">&#13;
+                                                    <img src="https://image.noelshack.com/fichiers/2018/02/7/1515895018-if-facebook-2613268.png" alt="facebook" width="40" />&#13;
+                                                </a>&#13;
+                                            </td>&#13;
+                                        </tr>&#13;
+                                        <tr>&#13;
+                                            <td height="30" style="font-size: 30px; line-height: 30px;"> </td>&#13;
+                                        </tr>&#13;
+                                        <tr>&#13;
+                                            <td align="center" style="font-family: 'Questrial', Helvetica, sans-serif; text-align: center; color: #E7405A; mso-line-height-rule: exactly; line-height: 24px; font-size: 14px;">&#13; Rejoignez moi sur facebook !&#13;
+                                            </td>&#13;
+                                        </tr>&#13;
+                                    </tbody>&#13;
+                                </table>&#13; &#13;
+                            </td>&#13;
+                        </tr>&#13;
+                        <tr>&#13;
+                            <td height="30" style="font-size: 30px; line-height: 30px;"> </td>&#13;
+                        </tr>&#13; &#13;
+                    </table>&#13;
+                </td>&#13;
+            </tr>&#13;
+        </tbody>&#13;
+    </table>&#13; &#13;
+    <!-- fin bloc 3 -->&#13; &#13; &#13;
+</body>&#13; &#13;
+
+</html>
+
+{% endblock %}

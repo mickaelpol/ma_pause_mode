@@ -3,8 +3,13 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% block fos_user_content %}
-    <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
+<div class="container bg-info">
+    <h3 class="text-center text-info">
+        Un utilisateur c'est inscrit sur le site<br>
+        veuillez consulter le panel admin pour activer son compte
+    </h3>
     {% if targetUrl %}
-    <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
+    <p class="text-center"><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
     {% endif %}
+</div>
 {% endblock fos_user_content %}

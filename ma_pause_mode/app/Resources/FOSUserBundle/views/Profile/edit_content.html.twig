@@ -1,0 +1,306 @@
+{% block body %}
+
+{% trans_default_domain 'FOSUserBundle' %} 
+
+<div class="container cadreUser paddG5 margeTop5 margeBot5 black">
+    <div class="row">
+        <div class="col-xs-12 col-sm-10">
+
+                <fieldset>
+
+                    {#  Form Name  #}
+                    <h2 class="page-header">Modifier mes informations</h2>
+
+                    {#  Text input #}
+
+                    {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit form-horizontal margeTop10' } }) }}
+
+
+                    <div class="form-group">
+                        <label class="col-md-8 col-md-offset-2" for="username">{{ form_label(form.username) }}</label>
+                        <div class="col-md-8 col-md-offset-2">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="glyphicon glyphicon-user">
+                                    </i>
+                                </div>
+                                {{ form_widget(form.username, { 'attr': { 'class': 'form-control input-md'}}) }}
+                            </div>
+                        </div>
+                    </div>
+
+                    {#  Text input #}
+                    <div class="form-group">
+                        <label class="col-md-8 col-md-offset-2" for="prenom">{{ form_label(form.firstname) }}</label>
+                        <div class="col-md-8 col-md-offset-2">
+
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="glyphicon glyphicon-user"></i>
+
+                                </div>
+                                {{ form_widget(form.firstname, { 'attr': { 'class': 'form-control input-md'}}) }}
+                            </div>
+                        </div>
+                    </div>
+
+
+                    {#  Text input #}
+                    <div class="form-group">
+                        <label class="col-md-8 col-md-offset-2" for="pseudo">{{ form_label(form.pseudo) }}</label>
+                        <div class="col-md-8 col-md-offset-2">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="glyphicon glyphicon-user"></i>
+
+                                </div>
+                                {{ form_widget(form.pseudo, { 'attr': { 'class': 'form-control input-md'}}) }}
+                            </div>
+                            {% do form.pseudo.setRendered %} 
+                            {% if not form.pseudo.vars.valid %} 
+                            {% for error in form.pseudo.vars.errors %}
+                    
+                            <span class="text-danger">
+                                {{ error.message }}
+                            </span>
+                    
+                            {% endfor %} {% endif %}
+                        </div>
+                    </div>
+                    
+                    {#  Text input #}
+                    <div class="form-group">
+                        <label class="col-md-8 col-md-offset-2" for="addresse">{{ form_label(form.address) }}</label>
+                        <div class="col-md-8 col-md-offset-2">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="glyphicon glyphicon-home"></i>
+
+                                </div>
+                                {{ form_widget(form.address, { 'attr': { 'class': 'form-control input-md'}}) }}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    {#  Text input #}
+                    <div class="form-group">
+                        <label class="col-md-8 col-md-offset-2" for="ville">{{ form_label(form.city) }}</label>
+                        <div class="col-md-8 col-md-offset-2">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="glyphicon glyphicon-home"></i>
+
+                                </div>
+                                {{ form_widget(form.city, { 'attr': { 'class': 'form-control input-md'}}) }}
+                            </div>
+
+                        </div>
+                    </div>
+                    
+                    {#  Text input #}
+                    <div class="form-group">
+                        <label class="col-md-8 col-md-offset-2" for="codePostal">{{ form_label(form.pc) }}</label>
+                        <div class="col-md-8 col-md-offset-2">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="glyphicon glyphicon-home"></i>
+
+                                </div>
+                                {{ form_widget(form.pc, { 'attr': { 'class': 'form-control input-md'}}) }}
+                            </div>
+
+                        </div>
+                    </div>
+
+                    {# Text input #}
+                    <div class="form-group">
+                        <label class="col-md-8 col-md-offset-2" for="entreprise">{{ form_label(form.entreprise) }}</label>
+                        <div class="col-md-8 col-md-offset-2">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="glyphicon glyphicon-briefcase"></i>
+                    
+                                </div>
+                                {{ form_widget(form.entreprise, { 'attr': { 'class': 'form-control input-md'}}) }}
+                            </div>
+                    
+                        </div>
+                    </div>
+                    
+                    {# Text input #}
+                    <div class="form-group">
+                        <label class="col-md-8 col-md-offset-2" for="entreprise">{{ form_label(form.siteWeb) }}</label>
+                        <div class="col-md-8 col-md-offset-2">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="glyphicon glyphicon-globe"></i>
+                    
+                                </div>
+                                {{ form_widget(form.siteWeb, { 'attr': { 'class': 'form-control input-md'}}) }}
+                            </div>
+                    
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-8 col-md-offset-2" for="Email Address">{{ form_label(form.lienSiteWeb) }}</label>
+                        <div class="col-md-8 col-md-offset-2">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="glyphicon glyphicon-globe"></i>
+                    
+                                </div>
+                                {{ form_widget(form.lienSiteWeb, { 'attr': {'class': 'form-control input-md'}}) }}
+                            </div>
+                            {% do form.lienSiteWeb.setRendered %} 
+                            {% if not form.lienSiteWeb.vars.valid %} 
+                            {% for error in form.lienSiteWeb.vars.errors %}
+                    
+                            <span class="text-danger">
+                                {{ error.message }}
+                            </span>
+                    
+                            {% endfor %} {% endif %}
+                    
+                        </div>
+                    </div>
+                    
+                    {# Text input #}
+                    <div class="form-group">
+                        <label class="col-md-8 col-md-offset-2" for="entreprise">{{ form_label(form.siret) }}</label>
+                        <div class="col-md-8 col-md-offset-2">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="glyphicon glyphicon-briefcase"></i>
+                    
+                                </div>
+                                {{ form_widget(form.siret, { 'attr': { 'class': 'form-control input-md'}}) }}
+                            </div>
+                            {% do form.siret.setRendered %} 
+                            {% if not form.siret.vars.valid %} 
+                            {% for error in form.siret.vars.errors %}
+                    
+                            <span class="text-danger">
+                                {{ error.message }}
+                            </span>
+                    
+                            {% endfor %} {% endif %}
+                        </div>
+                    </div>
+                    
+                    {# Text input #}
+                    <div class="form-group">
+                        <label class="col-md-8 col-md-offset-2" for="entreprise">{{ form_label(form.phoneNumber) }}</label>
+                        <div class="col-md-8 col-md-offset-2">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="glyphicon glyphicon-earphone"></i>
+                    
+                                </div>
+                                {{ form_widget(form.phoneNumber, { 'attr': { 'class': 'form-control input-md'}}) }}
+                            </div>
+                            {% do form.phoneNumber.setRendered %} 
+                            {% if not form.phoneNumber.vars.valid %} 
+                            {% for error in form.phoneNumber.vars.errors %}
+                    
+                            <span class="text-danger">
+                                {{ error.message }}
+                            </span>
+                    
+                            {% endfor %} {% endif %}
+                        </div>
+                    </div>
+
+
+
+                    {#  Text input #}
+                    <div class="form-group">
+                        <label class="col-md-8 col-md-offset-2" for="Email Address">{{ form_label(form.email) }}</label>
+                        <div class="col-md-8 col-md-offset-2">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="glyphicon glyphicon-envelope"></i>
+
+                                </div>
+                                {{ form_widget(form.email, { 'attr': {'class': 'form-control input-md'}}) }}
+                            </div>
+                            {% do  form.email.setRendered %}
+                                {% if not form.email.vars.valid %}
+
+                                    {% for error in form.email.vars.errors %}
+
+                                        <span class="text-danger">
+                                            {{ error.message }}
+                                        </span>
+                                    
+                                    {% endfor %}
+                                
+                                {% endif %}
+
+                        </div>
+                    </div>
+                    
+                    {#  Text input #}
+                    <div class="form-group">
+                        <label class="col-md-8 col-md-offset-2" for="Email Address">{{ form_label(form.current_password) }}</label>
+                        <div class="col-md-8 col-md-offset-2">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="glyphicon glyphicon-lock"></i>
+
+                                </div>
+                                {{ form_widget(form.current_password, { 'attr': {'class': 'form-control input-md'}}) }}
+                            </div>
+                            {% do  form.current_password.setRendered %}
+                                {% if not form.current_password.vars.valid %}
+
+                                    {% for error in form.current_password.vars.errors %}
+
+                                        <span class="text-danger">
+                                            {{ error.message }}
+                                        </span>
+                                    
+                                    {% endfor %}
+                                
+                                {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-8 col-md-offset-2"></label>
+                        <div class="col-md-8 col-md-offset-2">
+                            <div>
+                                <label class="black" for="">{{ form_label(form.imageProfilFile) }}</label>
+                                {{ form_widget(form.imageProfilFile) }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-8 col-md-offset-2"></label>
+                        <div class="col-md-8 col-md-offset-2">
+                            <div>
+                                <input class="btn btn-block btn-success" type="submit" value="{{ 'profile.edit.submit'|trans }}" />
+                            </div>
+                        </div>
+                    </div>
+                    
+
+                </fieldset>
+            </div>
+            
+            <div class="col-sm-2 col-md-2 hidden-xs hidden-sm">
+                <img src="{{ asset('uploads/images/Users/' ~ app.user.imageProfil) }}" class="img-responsive img-thumbnail">
+            </div>
+
+            {{ form_end(form) }}
+
+
+    </div>
+</div>
+
+    
+    
+{% endblock %}
+
+

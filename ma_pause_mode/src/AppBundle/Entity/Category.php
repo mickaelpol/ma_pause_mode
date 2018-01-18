@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Category
@@ -24,23 +25,19 @@ class Category
     /**
      * @var string
      *
-     * @ORM\Column(name="cat_man", type="string", length=255, unique=true)
+     * @ORM\Column(name="cat_name", type="string", length=255, unique=true)
      */
-    private $man;
+    private $name;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="cat_women", type="string", length=255, unique=true)
+     * @ORM\OneToMany(targetEntity="Article", mappedBy="category")
      */
-    private $women;
+    private $articles;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="cat_child", type="string", length=255, unique=true)
-     */
-    private $child;
+    public function __construct()
+    {
+        $this->articles = new ArrayCollection();
+    }
 
 
     /**
@@ -54,75 +51,69 @@ class Category
     }
 
     /**
-     * Set man
+     * Set name
      *
-     * @param string $man
+     * @param string $name
      *
      * @return Category
      */
-    public function setMan($man)
+    public function setName($name)
     {
-        $this->man = $man;
+        $this->name = $name;
 
         return $this;
     }
 
     /**
-     * Get man
+     * Get name
      *
      * @return string
      */
-    public function getMan()
+    public function getName()
     {
-        return $this->man;
+        return $this->name;
     }
 
+    
+
     /**
-     * Set women
+     * Add article
      *
-     * @param string $women
+     * @param \AppBundle\Entity\Article $article
      *
      * @return Category
      */
-    public function setWomen($women)
+    public function addArticle(\AppBundle\Entity\Article $article)
     {
-        $this->women = $women;
+        $this->articles[] = $article;
 
         return $this;
     }
 
     /**
-     * Get women
+     * Remove article
      *
-     * @return string
+     * @param \AppBundle\Entity\Article $article
      */
-    public function getWomen()
+    public function removeArticle(\AppBundle\Entity\Article $article)
     {
-        return $this->women;
+        $this->articles->removeElement($article);
     }
 
     /**
-     * Set child
+     * Get articles
      *
-     * @param string $child
-     *
-     * @return Category
+     * @return \Doctrine\Common\Collections\Collection
      */
-    public function setChild($child)
+    public function getArticles()
     {
-        $this->child = $child;
-
-        return $this;
+        return $this->articles;
     }
 
-    /**
-     * Get child
-     *
-     * @return string
-     */
-    public function getChild()
+    public function __toString()
     {
-        return $this->child;
+        return $this->getName();
     }
+
+    
 }
-

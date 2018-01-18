@@ -3,9 +3,13 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Article;
+use AppBundle\Entity\User;
+use AppBundle\Entity\Section;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Article controller.
@@ -31,10 +35,35 @@ class ArticleController extends Controller
         ));
     }
 
+    public function navbarAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $sectionsId = $em->getRepository('AppBundle:Section')->squeezeDropdown();
+
+        return $this->render('navbar.html.twig', array('sectionsId' => $sectionsId
+        ));
+    }
+
+
+    /**
+     *@Route("/section/{id}", name="article_section", requirements={"page"="\d+"})
+     */
+    public function sectionAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $section = $em->getRepository('AppBundle:Section')->find($id);
+
+        return $this->render('article/section.html.twig', array(
+            'section' => $section,
+        ));
+    }
+    
+
     /**
      * Creates a new article entity.
      *
-     * @Route("/new", name="article_new")
+     * @Route("/admin/new", name="article_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
@@ -45,6 +74,11 @@ class ArticleController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $user = $this->getUser()->getId();
+            $usr = $this->getDoctrine()
+                ->getRepository(User::class)
+                ->find($user);
+            $article->setUser($usr);
             $em->persist($article);
             $em->flush();
 
@@ -76,7 +110,7 @@ class ArticleController extends Controller
     /**
      * Displays a form to edit an existing article entity.
      *
-     * @Route("/{id}/edit", name="article_edit")
+     * @Route("/admin/{id}/edit", name="article_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Article $article)
@@ -88,7 +122,7 @@ class ArticleController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('article_edit', array('id' => $article->getId()));
+            return $this->redirectToRoute('article_show', array('id' => $article->getId()));
         }
 
         return $this->render('article/edit.html.twig', array(
@@ -101,7 +135,7 @@ class ArticleController extends Controller
     /**
      * Deletes a article entity.
      *
-     * @Route("/{id}", name="article_delete")
+     * @Route("/admin/{id}", name="article_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Article $article)
@@ -133,4 +167,5 @@ class ArticleController extends Controller
             ->getForm()
         ;
     }
+
 }

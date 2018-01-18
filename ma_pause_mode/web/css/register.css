@@ -5,11 +5,34 @@
 }
 
 .btn-regi:hover {
-    
+    background-color: #a10131;
     color: white;
     
 }
 
 .titre-regi{
     margin-bottom: 3%;
+}
+
+.panel-default {
+    border-color: #eb0046;
+}
+
+.panel-default>.panel-heading {
+    color: #ffffff;
+    background-color: #eb0046;
+    border-color: #dddddd;
+}
+
+.panel-default>.panel-heading+.panel-collapse>.panel-body {
+    border-top-color: #dddddd;
+}
+
+.panel-default>.panel-heading .badge {
+    color: #f5f5f5;
+    background-color: #333333;
+}
+
+.panel-default>.panel-footer+.panel-collapse>.panel-body {
+    border-bottom-color: #dddddd;
 }

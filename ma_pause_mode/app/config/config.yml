@@ -7,7 +7,8 @@ imports:
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: fr
-
+    app.path.article_images: /uploads/images/Article
+    app.path.image_profils: /uploads/images/Users
 framework:
     #esi: ~
     translator: { fallbacks: ['%locale%'] }
@@ -63,9 +64,12 @@ doctrine:
 # Swiftmailer Configuration
 swiftmailer:
     transport: '%mailer_transport%'
+    auth_mode: '%mailer_auth_mode%'
     host: '%mailer_host%'
+    port: '%mailer_port%'
     username: '%mailer_user%'
     password: '%mailer_password%'
+    encryption: '%mailer_encryption%'
     spool: { type: memory }
 
 assetic:
@@ -141,9 +145,27 @@ fos_user:
     from_email:
         address: "%mailer_user%"
         sender_name: "%mailer_user%"
+    service:
+        mailer: fos_user.mailer.twig_swift
     registration:
+        confirmation:
+            enabled: true
+            from_email:
+                address: noreply@monsiteweb.com
+                sender_name: Ma pause mode 
+            template: email/registration.html.twig
         form:
             type: AppBundle\Form\RegistrationType
+    resetting:
+        email:
+            from_email:
+                address:        resetting@example.com
+                sender_name:    Demo Resetting
+            template: email/reset.html.twig
+
+    profile:
+        form:
+            type: AppBundle\Form\ProfileType
 
 ivory_ck_editor:
     configs:
@@ -166,9 +188,92 @@ ivory_ck_editor:
             my_toolbar_2: [ ["Source","Preview","Templates", 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo',"-"], "/", ['Bold', 'Italic', 'Underline', "Strike", "-", 'NumberedList', 'BulletedList', 'Blockquote', "-", 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl',"-", 'Link', 'Unlink', 'Anchor', "-", 'Image', 'Table', 'HorizontalRule', 'SpecialChar', 'Smiley'], "/", ['Styles', 'Format', 'Font', 'FontSize', 'TextColor', "-", "Maximize", 'ShowBlocks'] ]
 
 easy_admin:
+    
+    list:
+        actions:
+            - { name: 'show', icon: 'search' }
+            - { name: 'edit', icon: 'pencil' }
+        max_results: 31
+    site_name: '<a href="/"><div class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Ma pause mode</div></a>'
+    assets:
+        css:
+            - '/bundles/css/navbar.css'
+        js:
+            - '/bundles/js/bootstrap.js'
+    design:
+        brand_color: '#eb0046'
+        form_theme: 'vertical'
     entities:
-        - AppBundle\Entity\Article
-        - AppBundle\Entity\Category
-        - AppBundle\Entity\Comment
-        - AppBundle\Entity\Section
-        - AppBundle\Entity\User
+        User:
+            class: AppBundle\Entity\User
+            list:
+                fields: 
+                    - username
+                    - { property: 'username', label: 'Nom' }
+                    - firstName
+                    - { property: 'firstName', label: 'Prénom' }
+                    - pseudo
+                    - { property: 'pseudo', label: 'Pseudo' }
+                    - email
+                    - { property: 'email', label: 'Email' }
+                    - city
+                    - { property: 'city', label: 'Ville' }
+                    - lastLogin
+                    - { property: 'lastLogin', label: 'Dernière connexion' }
+                    - enabled
+                    - { property: 'enabled', label: 'Valide' }
+        Category:
+            class: AppBundle\Entity\Category
+            list:
+                fields:
+                    - name   
+            show:
+                fields:
+                    - name
+            form:
+                fields: 
+                    - name
+        Comment:
+            class: AppBundle\Entity\Comment
+        Section: 
+            class: AppBundle\Entity\Section
+            list:
+                fields:
+                    - name   
+            show:
+                fields:
+                    - name
+            form:
+                fields: 
+                    - name
+        Article:
+            class: AppBundle\Entity\Article
+            list:
+                fields:
+                    - title
+                    - date
+                    - category
+                    - section
+                    - user
+                    - { property: 'image', type: 'image', base_path: '%app.path.article_images%' }
+            show:
+                fields:
+                    - { property: 'image', type: 'image', base_path: '%app.path.article_images%' } 
+            form:
+                fields: 
+                    - category
+                    - section
+                    - description
+                    - { property: 'title', type: 'ckeditor' }
+                    - { property: 'content', type: 'ckeditor', type_options: { 'config_name': 'my_config_2' }}
+                    - { property: 'imageFile', type: 'file' }
+
+vich_uploader:
+    db_driver: orm        
+    mappings:
+        image:
+            uri_prefix:         '%app.path.article_images%'
+            upload_destination: '%kernel.root_dir%/../web/uploads/images/Article'   
+        imageProfils:
+            uri_prefix:         '%app.path.image_profils%'
+            upload_destination: '%kernel.root_dir%/../web/uploads/images/Users'   

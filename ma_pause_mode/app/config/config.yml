@@ -277,3 +277,4 @@ vich_uploader:
         imageProfils:
             uri_prefix:         '%app.path.image_profils%'
             upload_destination: '%kernel.root_dir%/../web/uploads/images/Users'   
+

@@ -41,36 +41,31 @@
                             <div class="content">
                                 <div class="main text-center">
                                     <h3 class="text-center">{{ user.entreprise }}</h3>
-                                    <p class="text-center">n° siret : {{ user.siret }} </p>
-                                    <p class="text-center">Addresse : {{ user.address }} </p>
-                                    <p class="text-center">Ville : {{ user.pc}} {{ user.city }} </p>
-                                    <a class="lienProfile" href="mailto:{{ user.email }} ?subject=Contact via ma pause mode &body=Votre message ici" class="text-center">Addresse mail : {{ user.email }} </a>
+                                    <p class="text-center">n° siret : {{ user.siret }}</p>
+                                    <p class="text-center">{{ user.address }}</p>
+                                    <p class="text-center">{{ user.pc }}</p>
+                                    <p class="text-center">{{ user.city }}</p>
 
-                                    <div class="stats-container">
+                                    <div class="stats-container margeTop5 margeBot5">
                                         <div class="stats">
-                                            <h4> {{ user.articles|length }}</h4>
+                                            <h4>
+                                                <a class="lienProfile" href="mailto:{{ user.email }} ?subject=Contact via ma pause mode &body=Votre message ici" class="text-center"><i class="fa fa-envelope-o"></i></a>
+                                            </h4>
+                                            <p>
+                                                Contacter le créateur
+                                            </p>
+                                        </div>
+                                        <div class="stats">
+                                            <h4 class="lienProfile"> {{ user.articles|length }}</h4>
                                             <p>
                                                 Articles sur le site
                                             </p>
                                         </div>
                                         <div class="stats">
-                                            <div class="social-links text-center">
-                                                <a class="lienProfile" href="http://deepak646.blogspot.in/" class="facebook">
-                                                    <i class="fa fa-facebook fa-fw"></i>
-                                                </a>
-                                                <a class="lienProfile" href="http://deepak646.blogspot.in/" class="google">
-                                                    <i class="fa fa-google-plus fa-fw"></i>
-                                                </a>
-                                                <a class="lienProfile" href="http://deepak646.blogspot.in/" class="twitter">
-                                                    <i class="fa fa-pinterest fa-fw"></i>
-                                                </a>
-                                                <a class="lienProfile" href="http://deepak646.blogspot.in/" class="twitter">
-                                                    <i class="fa fa-instagram fa-fw"></i>
-                                                </a>
-                                                <a class="lienProfile" href="http://deepak646.blogspot.in/" class="twitter">
-                                                    <i class="fa fa-twitter fa-fw"></i>
-                                                </a>
-                                            </div>
+                                            <h4><i class="fa fa-mobile"></i> {{ user.phoneNumber }}</h4>
+                                            <p>
+                                                Téléphone
+                                            </p>
                                         </div>
                                     </div>
 
@@ -78,9 +73,25 @@
                             </div>
                             <div class="footer">
                                 <button class="btn btn-simple" rel="tooltip" title="Flip Card" onclick="rotateCard(this)">
-                                    <i class="fa fa-reply"></i> Back
+                                    <i class="fa fa-reply"></i> Retour
                                 </button>
-                                
+                                <div class="social-links text-center margeTop5">
+                                    <a class="lienProfile" href="http://deepak646.blogspot.in/" class="facebook">
+                                        <i class="fa fa-facebook fa-fw"></i>
+                                    </a>
+                                    <a class="lienProfile" href="http://deepak646.blogspot.in/" class="google">
+                                        <i class="fa fa-google-plus fa-fw"></i>
+                                    </a>
+                                    <a class="lienProfile" href="http://deepak646.blogspot.in/" class="twitter">
+                                        <i class="fa fa-pinterest fa-fw"></i>
+                                    </a>
+                                    <a class="lienProfile" href="http://deepak646.blogspot.in/" class="twitter">
+                                        <i class="fa fa-instagram fa-fw"></i>
+                                    </a>
+                                    <a class="lienProfile" href="http://deepak646.blogspot.in/" class="twitter">
+                                        <i class="fa fa-twitter fa-fw"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                         <!-- end back panel -->

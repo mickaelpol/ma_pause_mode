@@ -28,6 +28,14 @@
 {
     font-size: 15px;
 }
+.font10
+{
+    font-size: 10px;
+}
+.font5
+{
+    font-size: 5px;
+}
 
 
 
@@ -36,3 +44,9 @@
         font-size: 15px;
     }
 }
+@media (min-width: 1024px) and (max-width: 1024px) {
+    .font15 {
+        font-size: 10px;
+    }
+}
+

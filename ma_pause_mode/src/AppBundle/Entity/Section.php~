@@ -30,10 +30,19 @@ class Section
     private $name;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="sec_enabled", type="integer", length=255, unique=false)
+     */
+    private $enabled;
+
+
+    /**
      * @ORM\OneToMany(targetEntity="Article", mappedBy="section")
      */
     private $articles;
 
+    
     public function __construct()
     {
         $this->articles = new ArrayCollection();
@@ -78,4 +87,13 @@ class Section
         return $this->getName();
     }
     
+    /**
+     * Get articles
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getArticles()
+    {
+        return $this->articles;
+    }
 }

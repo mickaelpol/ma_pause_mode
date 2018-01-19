@@ -14,6 +14,13 @@ use Symfony\Component\HttpFoundation\File\File;
  * @ORM\Table(name="usr_user")
  * @UniqueEntity(fields={"pseudo"}, message="ce pseudo est déjà utilisée.")
  * @UniqueEntity(fields={"siret"}, message="ce n° de siret est déjà utilisée.")
+ * @UniqueEntity(fields={"phoneNumber"}, message="ce n° de téléphone est déjà utilisée.")
+ * @UniqueEntity(fields={"lienSiteWeb"}, message="ce lien est déjà utilisée.")
+ * @UniqueEntity(fields={"facebook"}, message="ce lien facebook est déjà utilisée.")
+ * @UniqueEntity(fields={"instagram"}, message="ce lien instagram est déjà utilisée.")
+ * @UniqueEntity(fields={"twitter"}, message="ce lien twitter est déjà utilisée.")
+ * @UniqueEntity(fields={"pinterest"}, message="ce lien pinterest est déjà utilisée.")
+ * @UniqueEntity(fields={"google"}, message="ce lien google est déjà utilisée.")
  * @Vich\Uploadable 
  */
 class User extends BaseUser

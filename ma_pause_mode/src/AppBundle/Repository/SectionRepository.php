@@ -23,5 +23,12 @@ class SectionRepository extends \Doctrine\ORM\EntityRepository
         return $qb->getQuery()->getResult();
 
     }
+
+    public function displayAccueil()
+    {
+        $qb = $this->createQueryBuilder('s')
+        ->where('s.enabled = 1');
+        return $qb->getQuery()->getResult();
+    }
     
 }

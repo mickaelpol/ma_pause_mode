@@ -14,8 +14,6 @@ use Symfony\Component\HttpFoundation\File\File;
  * @ORM\Table(name="usr_user")
  * @UniqueEntity(fields={"pseudo"}, message="ce pseudo est déjà utilisée.")
  * @UniqueEntity(fields={"siret"}, message="ce n° de siret est déjà utilisée.")
- * @UniqueEntity(fields={"phoneNumber"}, message="ce n° de téléphone est déjà utilisée.")
- * @UniqueEntity(fields={"lienSiteWeb"}, message="ce lien est déjà utilisée.")
  * @UniqueEntity(fields={"facebook"}, message="ce lien facebook est déjà utilisée.")
  * @UniqueEntity(fields={"instagram"}, message="ce lien instagram est déjà utilisée.")
  * @UniqueEntity(fields={"twitter"}, message="ce lien twitter est déjà utilisée.")
@@ -86,7 +84,7 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="usr_phone_number", type="string", length=30, nullable=true, unique=true)
+     * @ORM\Column(name="usr_phone_number", type="string", length=30, nullable=true)
      */
     private $phoneNumber;
     
@@ -108,7 +106,7 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="usr_lien_site_web", type="string", length=255, nullable=true, unique=true)
+     * @ORM\Column(name="usr_lien_site_web", type="string", length=255, nullable=true)
      */
     private $lienSiteWeb;
     

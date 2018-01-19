@@ -12,6 +12,15 @@ use Symfony\Component\HttpFoundation\File\File;
 /**
  * @ORM\Entity
  * @ORM\Table(name="usr_user")
+ * @UniqueEntity(fields={"pseudo"}, message="ce pseudo est déjà utilisée.")
+ * @UniqueEntity(fields={"siret"}, message="ce n° de siret est déjà utilisée.")
+ * @UniqueEntity(fields={"phoneNumber"}, message="ce n° de téléphone est déjà utilisée.")
+ * @UniqueEntity(fields={"lienSiteWeb"}, message="ce lien est déjà utilisée.")
+ * @UniqueEntity(fields={"facebook"}, message="ce lien facebook est déjà utilisée.")
+ * @UniqueEntity(fields={"instagram"}, message="ce lien instagram est déjà utilisée.")
+ * @UniqueEntity(fields={"twitter"}, message="ce lien twitter est déjà utilisée.")
+ * @UniqueEntity(fields={"pinterest"}, message="ce lien pinterest est déjà utilisée.")
+ * @UniqueEntity(fields={"google"}, message="ce lien google est déjà utilisée.")
  * @Vich\Uploadable 
  */
 class User extends BaseUser
@@ -77,7 +86,7 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="usr_phone_number", type="string", length=30, nullable=true)
+     * @ORM\Column(name="usr_phone_number", type="string", length=30, nullable=true, unique=true)
      */
     private $phoneNumber;
     
@@ -94,11 +103,12 @@ class User extends BaseUser
      * @ORM\Column(name="usr_site_web", type="string", length=255, nullable=true)
      */
     private $siteWeb;
-    
+
+
     /**
      * @var string
      *
-     * @ORM\Column(name="usr_lien_site_web", type="string", length=255, nullable=true)
+     * @ORM\Column(name="usr_lien_site_web", type="string", length=255, nullable=true, unique=true)
      */
     private $lienSiteWeb;
     
@@ -122,6 +132,41 @@ class User extends BaseUser
      * @var \DateTime
      */
     private $updatedAt;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="usr_facebook", type="string", length=255, nullable=true, unique=true)
+     */
+    private $facebook;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="usr_instagram", type="string", length=255, nullable=true, unique=true)
+     */
+    private $instagram;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="usr_twitter", type="string", length=255, nullable=true, unique=true)
+     */
+    private $twitter;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="usr_pinterest", type="string", length=255, nullable=true, unique=true)
+     */
+    private $pinterest;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="usr_google", type="string", length=255, nullable=true, unique=true)
+     */
+    private $google;
 
     
 
@@ -497,4 +542,124 @@ class User extends BaseUser
     }
     
     
+
+    /**
+     * Set facebook
+     *
+     * @param string $facebook
+     *
+     * @return User
+     */
+    public function setFacebook($facebook)
+    {
+        $this->facebook = $facebook;
+
+        return $this;
+    }
+
+    /**
+     * Get facebook
+     *
+     * @return string
+     */
+    public function getFacebook()
+    {
+        return $this->facebook;
+    }
+
+    /**
+     * Set instagram
+     *
+     * @param string $instagram
+     *
+     * @return User
+     */
+    public function setInstagram($instagram)
+    {
+        $this->instagram = $instagram;
+
+        return $this;
+    }
+
+    /**
+     * Get instagram
+     *
+     * @return string
+     */
+    public function getInstagram()
+    {
+        return $this->instagram;
+    }
+
+    /**
+     * Set twitter
+     *
+     * @param string $twitter
+     *
+     * @return User
+     */
+    public function setTwitter($twitter)
+    {
+        $this->twitter = $twitter;
+
+        return $this;
+    }
+
+    /**
+     * Get twitter
+     *
+     * @return string
+     */
+    public function getTwitter()
+    {
+        return $this->twitter;
+    }
+
+    /**
+     * Set pinterest
+     *
+     * @param string $pinterest
+     *
+     * @return User
+     */
+    public function setPinterest($pinterest)
+    {
+        $this->pinterest = $pinterest;
+
+        return $this;
+    }
+
+    /**
+     * Get pinterest
+     *
+     * @return string
+     */
+    public function getPinterest()
+    {
+        return $this->pinterest;
+    }
+
+    /**
+     * Set google
+     *
+     * @param string $google
+     *
+     * @return User
+     */
+    public function setGoogle($google)
+    {
+        $this->google = $google;
+
+        return $this;
+    }
+
+    /**
+     * Get google
+     *
+     * @return string
+     */
+    public function getGoogle()
+    {
+        return $this->google;
+    }
 }

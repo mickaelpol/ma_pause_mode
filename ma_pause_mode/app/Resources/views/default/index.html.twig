@@ -38,7 +38,7 @@
                             {{ section.name}}
                         </h3>
                     </div>
-                    <ul>
+                    <ul class="list-unstyled">
                         {% set j = 2 %}
                         {% if section.articles | length < 3 %}
                             {% set j = section.articles | length - 1 %}
@@ -46,7 +46,14 @@
                         {% if j != -1 %}
                             {% for i in 0..j %}
                                 <li>
-                                    {{ section.articles|reverse[i].title|raw }}
+                                    <ul class="list-inline vcenter">
+                                        <li>
+                                            <img src="{{ asset('uploads/images/Article/' ~ section.articles|reverse[i].image|raw) }}" class="img-responsive test img-rounded" alt="photo article">
+                                        </li>
+                                        <li>
+                                            {{ section.articles|reverse[i].title|raw }}
+                                        </li>
+                                    </ul>
                                 </li>
                             {% endfor %}
                         {% endif %}

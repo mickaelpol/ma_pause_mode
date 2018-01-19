@@ -7,3 +7,17 @@
     width: 750px;
     height: 200px;
 }
+
+.puce{
+    list-style: none;
+}
+
+.test{
+    width: 100px;
+    height: 100px;
+}
+
+.vcenter{
+    display: flex;
+    align-items: center;
+}

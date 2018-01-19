@@ -25,7 +25,14 @@ class DefaultController extends Controller
             "sections" => $sections
         ));
     }
-
-
-
+    /**
+     * @Route("/mentions", name="mentions")
+     */
+    public function mentionsAction()
+    {
+        // replace this example code with whatever you need
+        return $this->render('default/mentions.html.twig', [
+            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
+        ]);
+    }
 }

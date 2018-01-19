@@ -86,19 +86,19 @@
                                 <i class="fa fa-reply"></i> Retour
                             </button>
                             <div class="social-links text-center margeTop5">
-                                <a class="lienProfile" href="http://deepak646.blogspot.in/" class="facebook">
+                                <a target="blank" class="lienProfile" href="{{ user.facebook }}" class="facebook">
                                     <i class="fa fa-facebook fa-fw"></i>
                                 </a>
-                                <a class="lienProfile" href="http://deepak646.blogspot.in/" class="google">
+                                {# <a target="blank" class="lienProfile" href="{{ user.google }}" class="google">
                                     <i class="fa fa-google-plus fa-fw"></i>
-                                </a>
-                                <a class="lienProfile" href="http://deepak646.blogspot.in/" class="twitter">
+                                </a> #}
+                                <a target="blank" class="lienProfile" href="{{ user.pinterest }}" class="twitter">
                                     <i class="fa fa-pinterest fa-fw"></i>
                                 </a>
-                                <a class="lienProfile" href="http://deepak646.blogspot.in/" class="twitter">
+                                <a target="blank" class="lienProfile" href="{{ user.instagram }}" class="twitter">
                                     <i class="fa fa-instagram fa-fw"></i>
                                 </a>
-                                <a class="lienProfile" href="http://deepak646.blogspot.in/" class="twitter">
+                                <a target="blank" class="lienProfile" href="{{ user.twitter }}" class="twitter">
                                     <i class="fa fa-twitter fa-fw"></i>
                                 </a>
                             </div>
@@ -137,4 +137,18 @@
         <!-- end col sm 3 -->
         <!-- end row -->
         <div class="space-200"></div>
+
+        {# Bouton de retour en arrière #}
+        <div class="container">
+            <div class="row margeBot5">
+                <div class="col-md-4">
+                    <form>
+                        <button class="btn btn-md btn-default" type="button" onclick="history.go(-1)">
+                            <i class="fa fa-arrow-circle-left"></i> Retour</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {# Fin Bouton de retour en arrière #}
+        
         {% endblock %}     

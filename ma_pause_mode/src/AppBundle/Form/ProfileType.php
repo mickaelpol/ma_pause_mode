@@ -15,10 +15,10 @@ class ProfileType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('firstname', null, array('label' => 'firstname', 'attr' => array(
+            ->add('firstname', null, array('label' => 'Prenom', 'attr' => array(
             'class' => 'form-control'
             )))
-            ->add('username', null, array('label' => 'username', 'attr' => array(
+            ->add('username', null, array('label' => 'Nom', 'attr' => array(
             'class' => 'form-control'
             )))
             ->add('pseudo', null , array('label' => 'pseudo', 'attr' => array(
@@ -48,12 +48,17 @@ class ProfileType extends AbstractType
             ->add('lienSiteWeb', null, array('label' => 'Lien du site web','required' => false, 'attr' => array(
                 'class' => 'form-control'
             )))
-            ->add('imageProfilFile', VichFileType::class, array(
+            ->add('imageProfilFile', FileType::class, array(
                 'label' => 'Photo de profil', 'required' => false
-            ));
+            ))
+            ->add('facebook', null , array('label' => 'Lien de votre facebook', 'required' => false))
+            ->add('instagram', null , array('label' => 'Lien de votre instagram', 'required' => false))
+            ->add('twitter', null , array('label' => 'Lien de votre twitter', 'required' => false))
+            ->add('pinterest', null , array('label' => 'Lien de votre pinterest', 'required' => false))
+            ->add('google', null , array('label' => 'Lien de votre google +', 'required' => false));
     }
 
-    public function getParent() 
+    public function getParent()
     {
         return 'FOS\UserBundle\Form\Type\ProfileFormType';
 

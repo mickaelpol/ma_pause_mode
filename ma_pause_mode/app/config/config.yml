@@ -239,6 +239,10 @@ easy_admin:
             class: AppBundle\Entity\Section
             list:
                 fields:
+                    - name
+                    - enabled
+            list:
+                fields:
                     - name   
             show:
                 fields:

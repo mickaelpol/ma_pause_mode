@@ -1174,6 +1174,7 @@
                 "User management"
             ],
             "time": "2017-11-29 17:01:21"
+<<<<<<< HEAD
         },
         {
             "name": "imagine/imagine",
@@ -1232,6 +1233,8 @@
                 "image processing"
             ],
             "time": "2017-05-16 10:31:22"
+=======
+>>>>>>> 04c3dca846b355907ec4859a514f63265c46643a
         },
         {
             "name": "incenteev/composer-parameter-handler",
@@ -1286,16 +1289,16 @@
         },
         {
             "name": "javiereguiluz/easyadmin-bundle",
-            "version": "v1.17.8",
+            "version": "v1.17.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/javiereguiluz/EasyAdminBundle.git",
-                "reference": "5aa65f8e3bcf975f04a6efd237bfe43fcea5d8e5"
+                "reference": "2060f916eb4ca1365edc51c3b682263783737220"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/javiereguiluz/EasyAdminBundle/zipball/5aa65f8e3bcf975f04a6efd237bfe43fcea5d8e5",
-                "reference": "5aa65f8e3bcf975f04a6efd237bfe43fcea5d8e5",
+                "url": "https://api.github.com/repos/javiereguiluz/EasyAdminBundle/zipball/2060f916eb4ca1365edc51c3b682263783737220",
+                "reference": "2060f916eb4ca1365edc51c3b682263783737220",
                 "shasum": ""
             },
             "require": {
@@ -1370,7 +1373,11 @@
                 "backend",
                 "generator"
             ],
+<<<<<<< HEAD
             "time": "2018-01-14 11:50:22"
+=======
+            "time": "2018-01-15T09:15:38+00:00"
+>>>>>>> 04c3dca846b355907ec4859a514f63265c46643a
         },
         {
             "name": "jdorn/sql-formatter",
@@ -1549,6 +1556,7 @@
                 "minification"
             ],
             "time": "2016-11-11 18:43:20"
+<<<<<<< HEAD
         },
         {
             "name": "liip/imagine-bundle",
@@ -1650,6 +1658,8 @@
                 "transformation"
             ],
             "time": "2017-09-09 03:53:30"
+=======
+>>>>>>> 04c3dca846b355907ec4859a514f63265c46643a
         },
         {
             "name": "monolog/monolog",
@@ -2312,7 +2322,13 @@
                 }
             ],
             "description": "A security checker for your composer.lock",
+<<<<<<< HEAD
             "time": "2018-01-11 05:54:03"
+=======
+
+            "time": "2018-01-11T05:54:03+00:00"
+
+>>>>>>> 04c3dca846b355907ec4859a514f63265c46643a
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -3225,7 +3241,12 @@
             "keywords": [
                 "templating"
             ],
+<<<<<<< HEAD
             "time": "2017-09-27 18:10:31"
+=======
+
+            "time": "2017-09-27T18:10:31+00:00"
+>>>>>>> 04c3dca846b355907ec4859a514f63265c46643a
         },
         {
             "name": "vich/uploader-bundle",
@@ -3312,7 +3333,12 @@
                 "file uploads",
                 "upload"
             ],
+<<<<<<< HEAD
             "time": "2017-12-09 13:34:29"
+=======
+            "time": "2017-12-09T13:34:29+00:00"
+
+>>>>>>> 04c3dca846b355907ec4859a514f63265c46643a
         }
     ],
     "packages-dev": [

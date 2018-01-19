@@ -1,11 +1,58 @@
 {% extends 'base.html.twig' %}
 
-
-
-{% block body %}
-    
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/img.css') }}">
+    <link rel="stylesheet" href="{{ asset('marge/img.css') }}">
 {% endblock %}
 
-{% block stylesheets %}
+{% block body %}
 
+    <div class="col-sm-offset-3 col-sm-6">
+        <div class="col-sm-12">
+            <img src="{{ asset('uploads/images/Article/' ~ articles|first.image) }}" class="img-responsive firstImg img-rounded" alt="">
+            <div class="caption">
+                {{ articles|first.title|raw }}
+            </div>
+        </div>
+
+        {% for article in articles %}
+
+            {% if loop.first == false %}
+                <div class="col-sm-6">
+
+                    <img src="{{ asset('uploads/images/Article/' ~ article.image) }}" class="img-responsive secondImg img-rounded" alt="">
+                    <div class="caption">
+                        {{ article.title|raw }}
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+
+                {% for section in sections %}
+                    <div class='page-header'>
+                        <h3>
+                            {{ section.name}}
+                        </h3>
+                    </div>
+                    <ul>
+                        {% set j = 2 %}
+                        {% if section.articles | length < 3 %}
+                            {% set j = section.articles | length - 1 %}
+                        {% endif %}
+                        {% if j != -1 %}
+                            {% for i in 0..j %}
+                                <li>
+                                    {{ section.articles|reverse[i].title|raw }}
+                                </li>
+                            {% endfor %}
+                        {% endif %}
+                    </ul>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 {% endblock %}

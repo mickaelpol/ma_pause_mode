@@ -13,9 +13,9 @@
                 <div class="movie-card">
                     <a href="{{ path('article_show', { 'id': article.id }) }}">
                         <div class="movie-header img-responsive" style='background: url("{{ asset('uploads/images/Article/' ~ article.image) }}");
-           background-size: cover;
-           background-position: 100% 100%;'>
-               </div>
+            background-size: cover;
+            background-position: 100% 100%;'>
+                </div>
                     </a>
                     <!--movie-header-->
                     <div class="movie-content">
@@ -23,7 +23,7 @@
                             <a href="{{ path('article_show', { 'id': article.id }) }}">
                                 <h3 class="movie-title">{{ article.description|raw|striptags }}</h3>
                             </a>
-                            <div class="imax-logo"></div>
+                            
                         </div>
                         <div class="movie-info">
                             <div class="info-section">
@@ -48,15 +48,14 @@
                                 </span>
                             </div>
 
-                            {% dump(article) %}
                             <!--row-->
-                            <div class="user-ditels">
+                            <div class="user-ditels hidden-sm hidden-md hidden-xs">
                                 <div class="user-img"><img src="{{ asset('uploads/images/Users/' ~ article.user.imageProfil) }}" class="img-responsive"></div>
                                 <span class="user-full-ditels">
                                     <h3>
                                         <a href="{{ path('show_profile', {'id': article.user.id }) }}">
                                             Auteur :
-                                            {{ article.user.username }}
+                                            {{ article.user.firstName }} {{ article.user.username }}
                                         </a>
                                     </h3>
                                     <p>
@@ -83,3 +82,5 @@
     <!--container-->
 
 {% endblock %}
+
+

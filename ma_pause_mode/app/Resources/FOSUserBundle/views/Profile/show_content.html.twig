@@ -1,93 +1,140 @@
-{% block body %}
-{% trans_default_domain 'FOSUserBundle' %}
+{% block body %} {% trans_default_domain 'FOSUserBundle' %}
 
+<div class="container margeTop10 margeBot20">
+    <div class="row">
 
-<div class="fos_user_user_show">
-<div class="container margeTop5 margeBot10">
-    <div class="jumbotron cadreUser black">
-        <div class="row">
-            <div class="col-md-4 hidden-xs hidden-sm col-lg-2 margeTop15">
-                <img height="300" width="300" src="{{ asset('uploads/images/Users/' ~ user.imageProfil) }}" alt="stack photo" class="">
-            </div>
-            <div class="col-md-6 col-md-offset-1 col-xs-12 col-sm-6 col-sm-offset-3 col-lg-7 col-lg-offset-3">
-                <div class="container">
-                    <h1> {{ user.username }} {{ user.firstName}} </h1>
+        {% dump(user) %}
+
+        <div class="col-md-8 col-md-offset-2">
+            <div class="card-container manual-flip">
+                <div class="card">
+                    <div class="front">
+                        <div class="cover">
+                            <img src="https://www.clipartsgram.com/image/129556292-kyz84k3.jpg" />
+                        </div>
+                        <div class="user">
+                            <img class="img-circle" src="{{ asset('uploads/images/Users/' ~ user.imageProfil) }}" />
+                        </div>
+                        <div class="content">
+                            <div class="main text-center">
+                                <h3 class="name">{{ user.username }} {{ user.firstName }}</h3>
+                                <p class="profession">{{ user.entreprise }}</p>
+                                <a class="lienProfile" target="blank" href="{{ user.lienSiteWeb }}"> {{ user.siteWeb }} </a>
+                            </div>
+                            <div class="footer">
+                                <button class="btn btn-md btn-simple" onclick="rotateCard(this)">
+                                    <i class="fa fa-mail-forward"></i> Plus d'information
+                                </button>
+                            </div>
+                            <div class="col-xs-12">
+                                    <div class="col-md-4 col-sm-4 margeTop5">
+                                        <a class="btn btn-block btn-info black font15" title="Editer mon profil" class="aSansBleu text-center" href=" {{ path('fos_user_profile_edit') }} ">Editer mon profil</a>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 margeTop5">
+                                        <a class="btn btn-block btn-info black font15" href=" {{ path('fos_user_change_password') }} " title="Changez mot passe" class="aSansBleu">Changez le mot de passe</a>
+                                    </div>
+                                <div class="col-md-4 col-sm-4 margeTop5">
+                                    <a class="btn btn-block btn-danger black font15" title="Supprimer mon compte" type="button" class="aSansBleu" data-toggle="modal"
+                                        data-target="#myModal">Supprimer mon compte</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end front panel -->
+                    <div class="back">
+                        <div class="header">
+                            <h5 class="motto">Information sur l'auteur</h5>
+                        </div>
+                        <div class="content">
+                            <div class="main text-center">
+                                <h3 class="text-center">{{ user.entreprise }}</h3>
+                                <p class="text-center">n° siret : {{ user.siret }}</p>
+                                <p class="text-center">{{ user.address }}</p>
+                                <p class="text-center">{{ user.pc }}</p>
+                                <p class="text-center">{{ user.city }}</p>
+
+                                <div class="stats-container margeTop5 margeBot5">
+                                    <div class="stats">
+                                        <h4>
+                                            <a class="lienProfile" href="mailto:{{ user.email }} ?subject=Contact via ma pause mode &body=Votre message ici" class="text-center">
+                                                <i class="fa fa-envelope-o"></i>
+                                            </a>
+                                        </h4>
+                                        <p>
+                                            Contacter le créateur
+                                        </p>
+                                    </div>
+                                    <div class="stats">
+                                        <h4 class="lienProfile"> {{ user.articles|length }}</h4>
+                                        <p>
+                                            Articles sur le site
+                                        </p>
+                                    </div>
+                                    <div class="stats">
+                                        <h4>
+                                            <i class="fa fa-mobile"></i> {{ user.phoneNumber }}</h4>
+                                        <p>
+                                            Téléphone
+                                        </p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="footer">
+                            <button class="btn btn-simple" rel="tooltip" title="Flip Card" onclick="rotateCard(this)">
+                                <i class="fa fa-reply"></i> Retour
+                            </button>
+                            <div class="social-links text-center margeTop5">
+                                <a class="lienProfile" href="http://deepak646.blogspot.in/" class="facebook">
+                                    <i class="fa fa-facebook fa-fw"></i>
+                                </a>
+                                <a class="lienProfile" href="http://deepak646.blogspot.in/" class="google">
+                                    <i class="fa fa-google-plus fa-fw"></i>
+                                </a>
+                                <a class="lienProfile" href="http://deepak646.blogspot.in/" class="twitter">
+                                    <i class="fa fa-pinterest fa-fw"></i>
+                                </a>
+                                <a class="lienProfile" href="http://deepak646.blogspot.in/" class="twitter">
+                                    <i class="fa fa-instagram fa-fw"></i>
+                                </a>
+                                <a class="lienProfile" href="http://deepak646.blogspot.in/" class="twitter">
+                                    <i class="fa fa-twitter fa-fw"></i>
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <!-- end back panel -->
                 </div>
-                <hr>
-                <ul class="container details margeTop10">
-                    <li>
-                        <p>
-                            <span class="glyphicon glyphicon-user" style="width:50px;"></span>{{ user.pseudo }}</p>
-                    </li>
-                    <li>
-                        <p>
-                            <span class="glyphicon glyphicon-earphone one" style="width:50px;"></span>{{ user.phoneNumber }}</p>
-                    </li>
-                    <li>
-                        <p>
-                            <span class="glyphicon glyphicon-envelope one" style="width:50px;"></span>{{user.email}}</p>
-                    </li>
-                    <li>
-                        <p>
-                            <span class="glyphicon glyphicon-map-marker one" style="width:50px;"></span>
-                            {{ user.address }} {{ user.pc }} {{ user.city }}
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            <span class="glyphicon glyphicon-briefcase" style="width:50px;"></span>
-                            {{ user.entreprise }}
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            <span class="glyphicon glyphicon-asterisk" style="width:50px;"></span>
-                            N° Siret {{ user.siret }}
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            <span class="glyphicon glyphicon-new-window one" style="width:50px;"></span>
-                            <a target="blank" href="{{ user.lienSiteWeb }}">{{ user.siteWeb }}</a>
-                        </p>
-                    </li>
-                </ul>
+                <!-- end card -->
+            </div>
+            <!-- end card-container -->
+        </div>
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+        
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header alert alert-danger">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title text-center text-uppercase">Suppression du compte</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p class="text-center text-danger font20">êtes vous certain de vouloir supprimer votre compte ?</p>
+                        <p class="text-center text-danger font20">Cette action est irreversible!</p>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="{{ path('app_user_delete', {'id': user.id }) }}" class="btn btn-success btn-block">
+                            Supprimer mon compte
+                        </a>
+                        <button type="button" class="btn btn-danger btn-block" data-dismiss="modal">Fermer</button>
+                    </div>
+                </div>
+        
             </div>
         </div>
-        <div class="row margeTop5">
-            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                <a class="btn btn-block btn-info black" title="Editer mon profil" class="aSansBleu text-center" href=" {{ path('fos_user_profile_edit') }} ">Editer mon profil</a>
-                <br>
-            </div>
-            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                <a class="btn btn-block btn-info black" href=" {{ path('fos_user_change_password') }} " title="Changez mot passe" class="aSansBleu">Changez le mot de passe</a>
-                <br>
-            </div>
-            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                <a class="btn btn-block btn-danger black" title="Supprimer mon compte" type="button" class="aSansBleu" data-toggle="modal" data-target="#myModal">Supprimer mon compte</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog">
-    
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h3 class="modal-title text-danger text-center">Voulez-vous supprimer votre compte?</h3>
-                </div>
-                <p class="text-danger text-center font15">Cette action est irréversible.</p>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <a class="btn btn-md btn-danger" href=" {{ path('app_user_delete', { 'id': user.id }) }}">Supprimer</a>
-                </div>
-            </div>
-    
-        </div>
-    </div>
-
-
-{% endblock %}
+        <!-- end col sm 3 -->
+        <!-- end row -->
+        <div class="space-200"></div>
+        {% endblock %}     

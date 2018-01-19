@@ -30,10 +30,19 @@ class Section
     private $name;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="sec_enabled", type="integer", length=255, unique=false)
+     */
+    private $enabled;
+
+
+    /**
      * @ORM\OneToMany(targetEntity="Article", mappedBy="section")
      */
     private $articles;
 
+    
     public function __construct()
     {
         $this->articles = new ArrayCollection();
@@ -86,5 +95,53 @@ class Section
     public function getArticles()
     {
         return $this->articles;
+    }
+
+    /**
+     * Set enabled
+     *
+     * @param integer $enabled
+     *
+     * @return Section
+     */
+    public function setEnabled($enabled)
+    {
+        $this->enabled = $enabled;
+
+        return $this;
+    }
+
+    /**
+     * Get enabled
+     *
+     * @return integer
+     */
+    public function getEnabled()
+    {
+        return $this->enabled;
+    }
+
+    /**
+     * Add article
+     *
+     * @param \AppBundle\Entity\Article $article
+     *
+     * @return Section
+     */
+    public function addArticle(\AppBundle\Entity\Article $article)
+    {
+        $this->articles[] = $article;
+
+        return $this;
+    }
+
+    /**
+     * Remove article
+     *
+     * @param \AppBundle\Entity\Article $article
+     */
+    public function removeArticle(\AppBundle\Entity\Article $article)
+    {
+        $this->articles->removeElement($article);
     }
 }

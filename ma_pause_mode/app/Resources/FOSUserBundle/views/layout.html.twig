@@ -3,6 +3,7 @@
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('css/profil.css') }}"> 
     <link rel="stylesheet" href="{{ asset('css/register.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/profil.css') }}">
 {% endblock %}
 
 {% block body %}
@@ -23,4 +24,8 @@
             
             {% endblock fos_user_content %}
         </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/flipCard.js') }}"></script> 
 {% endblock %}

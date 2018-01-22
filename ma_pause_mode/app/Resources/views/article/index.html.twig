@@ -14,26 +14,6 @@
 
     {% for article in articles %}
     
-    {# <div class="row margeBot25">
-        <ul class="list-inline text-center w3-display-bottommiddle w3-container">
-            <li>
-                <a href="{{ path('article_show', { 'id': article.id }) }}">
-                    <img src="{{ asset('uploads/images/Article/' ~ article.image) }}" height="300px" width="800px">
-                </a>
-            </li>
-            <li>
-                <p class="w3-display-bottommiddle w3-container">
-                    {{ article.title|raw }}
-                </p>
-            </li>
-            <li>{{ article.description }}</li>
-            <li>{% if article.date %}{{ article.date|date('Y-m-d H:i:s') }}{% endif %}</li>
-            <li>{% if article.dateUpdate %}{{ article.dateUpdate|date('Y-m-d H:i:s') }}{% endif %}</li>
-            <li></li>
-        </ul>
-    </div> #}
-
-    
     <div class="container">
         <div class="row">
             <div class="col-lg-8">

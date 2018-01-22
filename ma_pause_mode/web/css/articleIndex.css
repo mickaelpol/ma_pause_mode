@@ -59,7 +59,6 @@ a:hover {
     margin-right: auto;
     -webkit-box-pack: center;
     -ms-flex-pack: center;
-    justify-content: center;
 }
 
 .movie-card {
@@ -177,14 +176,6 @@ a:hover {
 
 /* ///////////////////////////////////////////////////////////  */
 
-.btn-default {
-    color: #333;
-    background-color: #009688;
-    border-color: #009688;
-    border-radius: 0px;
-    color: #fff;
-}
-
 #blog-section {
     margin-top: 40px;
     margin-bottom: 80px;
@@ -295,14 +286,14 @@ aside .content-footer>img {
 .social-icon {
     background-color: #fff;
     margin-top: 10px;
-    padding-right: 20px;
     text-align: right;
+
 }
 
 .social-icon>a {
     font-size: 20px;
     text-decoration: none;
-    padding: 5px;
+    padding: 2px;
 }
 
 .social-icon a:nth-of-type(1) {

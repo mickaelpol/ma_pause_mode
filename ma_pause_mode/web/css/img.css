@@ -1,27 +1,31 @@
-.firstImg{
+.firstImg {
     width: 1500px;
     height: 300px;
 }
 
-.secondImg{
+.secondImg {
     width: 750px;
     height: 200px;
 }
 
-.puce{
+.puce {
     list-style: none;
 }
 
-.test{
+.test {
     width: 100px;
     height: 100px;
 }
 
-.vcenter{
+.vcenter {
     display: flex;
     align-items: center;
 }
 
-.avantPush{
+.avantPush {
     color: blue;
+}
+
+.color {
+    color: #eb0046;
 }

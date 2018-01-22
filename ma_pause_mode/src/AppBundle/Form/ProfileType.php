@@ -55,7 +55,8 @@ class ProfileType extends AbstractType
             ->add('instagram', null , array('label' => 'Lien de votre instagram', 'required' => false))
             ->add('twitter', null , array('label' => 'Lien de votre twitter', 'required' => false))
             ->add('pinterest', null , array('label' => 'Lien de votre pinterest', 'required' => false))
-            ->add('google', null , array('label' => 'Lien de votre google +', 'required' => false));
+            ->add('google', null , array('label' => 'Lien de votre google +', 'required' => false))
+            ->add('youtube', null , array('label' => 'Lien de votre youtube', 'required' => false));
     }
 
     public function getParent()

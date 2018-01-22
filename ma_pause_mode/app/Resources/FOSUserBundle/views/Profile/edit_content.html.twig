@@ -408,6 +408,32 @@ margeTop10' } }) }}
                 </div>
                 {# Fin input google + #}
                 
+                
+                {# Input youtube #}
+                <div class="col-md-6 ">
+                    <h4 for="pinterest">{{ form_label(form.youtube) }}</h4>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class="glyphicon glyphicon-user">
+                            </i>
+                        </div>
+                        {{ form_widget(form.youtube, { 'attr': { 'class': 'form-control input-md'}}) }}
+                    </div>
+
+                    {# Affichage des erreurs youtube #}
+                    {% do form.youtube.setRendered %} 
+                        {% if not form.youtube.vars.valid %} 
+                        {% for error in form.youtube.vars.errors %}
+                
+                        <p class="font15 alert alert-danger text-danger">
+                            {{ error.message }}
+                        </p>
+                    {% endfor %} {% endif %}
+                    {# Fin Affichage des erreurs youtube #}
+                    
+                </div>
+                {# Fin input youtube #}
+                
             </div>
             {# Fin section reseaux sociaux #}
             

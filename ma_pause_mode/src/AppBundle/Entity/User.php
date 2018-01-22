@@ -166,6 +166,13 @@ class User extends BaseUser
      */
     private $google;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="usr_youtube", type="string", length=255, nullable=true, unique=true)
+     */
+    private $youtube;
+
     
 
 
@@ -659,5 +666,29 @@ class User extends BaseUser
     public function getGoogle()
     {
         return $this->google;
+    }
+
+    /**
+     * Set youtube
+     *
+     * @param string $youtube
+     *
+     * @return User
+     */
+    public function setYoutube($youtube)
+    {
+        $this->youtube = $youtube;
+
+        return $this;
+    }
+
+    /**
+     * Get youtube
+     *
+     * @return string
+     */
+    public function getYoutube()
+    {
+        return $this->youtube;
     }
 }

@@ -50,7 +50,7 @@
 
                             <!--row-->
                             <div class="user-ditels hidden-sm hidden-md hidden-xs">
-                                <div class="user-img"><img src="{{ asset('uploads/images/Users/' ~ article.user.imageProfil) }}" class="img-responsive"></div>
+                                <div class="user-img"><img src="{{ asset('uploads/images/Users/' ~ article.user.imageProfil) }}" class="img-responsive" height="80" width="80"></div>
                                 <span class="user-full-ditels">
                                     <h3>
                                         <a href="{{ path('show_profile', {'id': article.user.id }) }}">
@@ -63,9 +63,61 @@
                                     </p>
                                 </span>
                                 <div class="social-icon">
-                                    <a target="blank" href="{{ article.user.lienSiteWeb}}">
-                                        <i class="fa fa-globe" data-toggle="tooltip" data-placement="bottom" title="Site web de l'auteur"></i>
-                                    </a>
+                                    {% if article.user.lienSiteWeb is not empty %}
+
+                                        <a target="blank" href="{{ article.user.lienSiteWeb}}">
+                                            <i class="fa fa-globe" data-toggle="tooltip" data-placement="bottom" title="Site web de l'auteur"></i>
+                                        </a>
+
+                                    {% endif %}
+
+                                    {% if article.user.facebook is not empty %}
+                                    
+                                        <a target="blank" href="{{ article.user.facebook}}">
+                                            <i class="fa fa-facebook" data-toggle="tooltip" data-placement="bottom" title="Facebook"></i>
+                                        </a>
+                                    
+                                    {% endif %}
+
+                                    {% if article.user.twitter is not empty %}
+
+                                        <a target="blank" href="{{ article.user.twitter}}">
+                                            <i class="fa fa-twitter" data-toggle="tooltip" data-placement="bottom" title="Twitter"></i>
+                                        </a>
+                                    
+                                    {% endif %}
+
+                                    {% if article.user.google is not empty %}
+
+                                        <a target="blank" href="{{ article.user.google}}">
+                                            <i class="fa fa-google-plus" data-toggle="tooltip" data-placement="bottom" title="Google Plus"></i>
+                                        </a>
+                                    
+                                    {% endif %}
+
+                                    {% if article.user.instagram is not empty %}
+
+                                        <a target="blank" href="{{ article.user.instagram}}">
+                                            <i class="fa fa-instagram" data-toggle="tooltip" data-placement="bottom" title="instagram"></i>
+                                        </a>
+                                    
+                                    {% endif %}
+
+                                    {% if article.user.pinterest is not empty %}
+
+                                        <a target="blank" href="{{ article.user.pinterest}}">
+                                            <i class="fa fa-pinterest" data-toggle="tooltip" data-placement="bottom" title="pinterest"></i>
+                                        </a>
+                                    
+                                    {% endif %}
+
+                                    {% if article.user.youtube is not empty %}
+
+                                        <a target="blank" href="{{ article.user.youtube}}">
+                                            <i class="fa fa-youtube" data-toggle="tooltip" data-placement="bottom" title="Youtube"></i>
+                                        </a>
+                                    
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
@@ -80,7 +132,18 @@
         {% endfor %}
     </div>
     <!--container-->
-
+    {# Bouton de retour en arrière #}
+    <div class="container margeTop5">
+        <div class="row margeBot5">
+            <div class="col-md-4">
+                <form>
+                    <button class="btn btn-md btn-default" type="button" onclick="history.go(-1)">
+                        <i class="fa fa-arrow-circle-left"></i> Retour</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {# Fin Bouton de retour en arrière #}
 {% endblock %}
 
 

@@ -1,0 +1,104 @@
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
+{% endblock %}
+
+
+{% block footer %}
+
+
+<!--FOOTER 2-->
+<div class="page-headerPink"></div>
+<footer class="footer2">
+    <div class="footer">
+        <div class="container-fluid">
+            <div class="row margeTop2">
+                <nav class="col-md-4 col-sm-8 col-xs-12">
+                    <div class="col-xs-12">
+                        <ul class="social-network social-circle">
+                            <li>
+                                <a target="blank" href="https://www.facebook.com/mapausemode/" class="icoFacebook" title="Facebook">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a target="blank" href="https://www.instagram.com/mapausemode/?hl=fr" class="icoInstagram" title="Instagram">
+                                    <i class="fa fa-instagram"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a target="blank" href="https://twitter.com/mapausemode" class="icoTwitter" title="Twitter">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a target="blank" href="https://www.pinterest.fr/mapausemode/" class="icoPinterest" title="Pinterest">
+                                    <i class="fa fa-pinterest"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a target="blank" href="https://www.linkedin.com/in/sonia-pellegrin-625b9930/" class="icoLinkedin" title="Linkedin">
+                                    <i class="fa fa-linkedin"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a target="blank" href="#" class="icoYoutube" title="Youtube">
+                                    <i class="fa fa-youtube"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a target="blank" href="https://plus.google.com/+blogmapausemode" class="icoGoogle" title="Google +">
+                                    <i class="fa fa-google-plus"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+
+                <nav class="col-md-4 col-md-offset-4 col-sm-4 col-xs-12">
+                    <h3 class="text-center">
+                        S'inscrire à la newsletters
+                    </h3>
+                    <form>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Email Address">
+                            <div class="input-group-btn">
+                                <button class="btn btn-pink" type="submit">
+                                    <span>Suscribe</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </nav>
+
+            </div>
+            <!--/.row-->
+        </div>
+        <!--/.container-->
+    </div>
+    <!--/.footer-->
+<style>
+    
+    
+</style>
+    <div class="footer-bottom">
+        <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3 bord">
+                        <h3 class="text-center">Copyright 2018 © Blog Ma pause mode</h3>
+                    </div>
+                    <div class="col-md-2">
+                        <img class="img-responsive iconeFooter center-block" src="{{ asset('img/ma-p-m.PNG') }}" width="50" height="50" alt="logo">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <h4 class="text-center"><a href="{{ path('mentions') }}">Mentions légales</a></h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/.footer-bottom-->
+</footer>
+
+{% endblock %}

@@ -53,10 +53,10 @@ div .linkDisabled:hover, .linkDisabled:focus {
 
 
 @import url('https://fonts.googleapis.com/css?family=Arima+Madurai:100,200,300,400,500,700,800,900');
-body {
-    margin-top: 60px;
+.viewProfil, .police {
     font-size: 20px;
 }
+
 
 .btn:hover,
 .btn:focus,
@@ -385,7 +385,7 @@ pre.prettyprint {
     font-size: 16px;
 }
 
-.navbar-brand-logo {
+/* .navbar-brand-logo {
     padding: 0;
 }
 
@@ -410,7 +410,7 @@ pre.prettyprint {
 
 .navbar-default .navbar-brand-logo .brand {
     color: #555;
-}
+} */
 
 .img-circle {
 

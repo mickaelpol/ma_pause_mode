@@ -37,36 +37,33 @@
     <link rel="stylesheet" href="{{ asset('css/padding.css') }}">
     <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
     <link rel="stylesheet" href="{{ asset('font-awesome-4.7.0/css/font-awesome.css') }}">
-    {% block stylesheets %}{% endblock %}
+    <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
+    {% block stylesheets %}
+    {% endblock %}
 </head>
 
 <body>
-
     <div id="sidebar">
         {{ render(controller(
             'AppBundle:Article:navbar'
         ))}}
     </div>
+
     
     {# {% include('navbar.html.twig') %}  #}
     
     
-    {% block body %}
-
-    {% endblock %}
+    {% block body %}{% endblock %}
 
     
-    
-    <script src="{{ asset('js/jquery.min.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.js') }}"></script>
-    <script src="{{ asset('js/btnNavbar.js') }}"></script>
-    <script src="{{ asset('js/dropdownHoverNavbar.js') }}"></script>
-    {% block javascripts %}
-
-        
-    {% endblock %}
-
-
 </body>
+{% block footer %}
+    {% include('footer.html.twig') %}
+{% endblock %}
+
+<script src="{{ asset('js/jquery.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap.js') }}"></script>
+<script src="{{ asset('js/btnNavbar.js') }}"></script>
+<script src="{{ asset('js/dropdownHoverNavbar.js') }}"></script> {% block javascripts %} {% endblock %}
 
 </html>

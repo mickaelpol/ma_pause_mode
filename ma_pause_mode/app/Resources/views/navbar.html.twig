@@ -1,195 +1,128 @@
-{% block navbar %} {# logo du site #}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
+
 {% endblock %}
 
-{# {% if 'noni_admin_question_' in app.request.attributes.get('_route') %} class="active"{% endif %} #}
+{% block navbar %} {# logo du site #}
+
+
+
 
 <div class="container hidden-xs">
-    <div class="row">
-        <img class="center-block img-responsive" src="{{ asset('img/ma-p-m.PNG') }}" width="246" height="253" alt="logo">
+    <div class="row center-block">
+        <img class="img-responsive center-block" src="{{ asset('img/ma-p-m.PNG') }}" width="246" height="253" alt="logo">
     </div>
 </div>
 {# fin logo du site #}
 
 <!-- Début NavBar md et lg -->
 
+
 {# /////////////////////////////////////////////////// #}
-
-        <nav class="navbar navbar-center navbarMod margeTop5 font20 bord  hidden-sm hidden-xs">
-            <div class="container-fluid text-uppercase">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navLg">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
-                <div class="col-lg-12 text-center hidden-md bord">
-                    <div class="collapse navbar-collapse" id="navLg">
-                        <ul class="nav navbar-nav">
-                            <li class="active">
-                                <a href="{{ path('homepage') }}" class="btn-nav">Accueil</a>
-                            </li>
-
-                            {% for section in sectionsId %}
-
-                            {# parcour des id de la barre de navigation pour afficher que  #}
-                            {% if section.id < 3 %}
-                            <li>
-                                <a href=" {{ path('article_section', { 'id': section.id }) }} " class="btn-nav">{{ section.name }}</a>
-                            </li>
-                                
-                            {% endif %}
-
-                            {# Bouton créateur dropdown #}
-                            {% if section.id == 3 %}
-                            <li class="dropdown">
-                                <a href="{{ path('article_section', {'id': section.id}) }}" class="dropdown-toggle btn-nav" data-toggle="dropdown">{{ section.name }}
-                                    <b class="caret"></b>
-                                </a>
-                            {% endif %}
-                                {#  contenu du dropdown #}
-                            {% if section.id == 4 %}
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="{{ path('article_section', {'id': section.id}) }}">{{ section.name }}</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            {# Fin du dropdown créateurs #}
-                            {% endif %}
-
-                            {# bouton voyages de la navbar #}
-                            {% if section.id == 5 %}
-                            <li>
-                                <a href=" {{ path('article_section', { 'id': section.id }) }} " class="btn-nav">{{ section.name }}</a>
-                            </li>
-
-                            {% endif %}
-                            
-                            {% endfor %}
-
-                            
-                            <li>
-                                <a href="#" class="btn-nav">A Propos</a>
-                            </li>
-                            <li>
-                                <a href="{{ path('app_contact_contact') }}" class="btn-nav">Contact</a>
-                            </li>
-                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                    
-                            <li class="dropdown">
-                                <a class="dropdown-toggle btn-nav" data-toggle="dropdown" href="#">{{ app.user.username }}
-                                    <span class="caret"></span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a class="btn-nav" href=" {{ path('fos_user_profile_show') }} ">Mon Profil</a>
-                                    </li>
-                                    {% if is_granted('ROLE_SUPER_ADMIN') %}
-                                    <li>
-                                        <a class="btn-nav" href=" {{ path('easyadmin') }} ">Administrer le site</a>
-                                    </li>
-                                    {% endif %}
-                                    <li>
-                                        <a href="{{ path('fos_user_security_logout') }}" class="btn-nav">
-                                            {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            {% else %}
-                            <li>
-                                <a href="{{ path('fos_user_security_login') }}" class="btn-nav">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
-                            </li>
-                            {% endif %}
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </nav>
-
-
-
-{# Fin navbar md et lg #}
-
-{# Debut navbar xs et sm #}
-
-<nav class="navbar navbarMod hidden-lg hidden-md">
-    <div class="container-fluid text-uppercase">
+<div class="container-fluid mobile">
+<nav class="navbar">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle navbarMod butonBord" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar span-black"></span>
-                <span class="icon-bar span-black"></span>
-                <span class="icon-bar span-black"></span>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-3">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar span-white"></span>
+                <span class="icon-bar span-white"></span>
+                <span class="icon-bar span-white"></span>
             </button>
             <a class="navbar-brand visible-xs" href="{{ path('homepage') }}">
                 <img class="center-block img-responsive" src="{{ asset('img/ma-p-m.PNG') }}" alt="logo">
             </a>
         </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav">
-                    <li class="active">
-                        <a class="btn-nav" href=" {{ path('homepage') }} ">Accueil</a>
-                    </li>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="navbar-collapse-3">
+            <ul class="nav centered nav-justified text-uppercase">
+                <li class="active">
+                    <a href="{{ path('homepage') }}" class="btn-nav">Accueil</a>
+                </li>
+                
+                {% for section in sectionsId %} {# parcour des id de la barre de navigation pour afficher que #} {% if section.id
+                < 3 %}
                     <li>
-                        <a class="btn-nav" href="#">Mode</a>
+                    <a href=" {{ path('article_section', { 'id': section.id }) }} " class="btn-nav">{{ section.name }}</a>
                     </li>
-                    <li>
-                        <a class="btn-nav" href="#">Tendances</a>
-                    </li>
+                
+                    {% endif %} {# Bouton créateur dropdown #} {% if section.id == 3 %}
                     <li class="dropdown">
-                        <a class="dropdown-toggle btn-nav" data-toggle="dropdown" href="#">Créateurs
-                            <span class="caret"></span>
+                        <a href="{{ path('article_section', {'id': section.id}) }}" class="dropdown-toggle btn-nav" data-toggle="dropdown">{{ section.name }}
+                            <b class="caret"></b>
                         </a>
+                        {% endif %} {# contenu du dropdown #} {% if section.id == 4 %}
                         <ul class="dropdown-menu">
                             <li>
-                                <a class="btn-nav" href="#">Près de chez vous !</a>
+                                <a class="black" href="{{ path('article_section', {'id': section.id}) }}">{{ section.name }}</a>
                             </li>
                         </ul>
                     </li>
-                    <li>
-                        <a class="btn-nav" href="#">A Propos</a>
-                    </li>
-                    <li>
-                        <a class="btn-nav" href="{{ path('app_contact_contact') }}">Contact</a>
-                    </li>
-                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                        <li class="dropdown">
-                            <a class="dropdown-toggle btn-nav" data-toggle="dropdown" href="#">{{ app.user.username }}
-                                <span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a class="btn-nav" href="#">Mon Profil</a>
-                                </li>
-                                {% if is_granted('ROLE_SUPER_ADMIN') %}
-                                    <li>
-                                        <a class="btn-nav" href=" {{ path('easyadmin') }} ">Administrer le site</a>
-                                    </li>
-                                {% endif %}
-                                <li>
-                                    <a href="{{ path('fos_user_security_logout') }}" class="btn-nav">
-                                        {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        {% else %}
+                    {# Fin du dropdown créateurs #} {% endif %} {# bouton voyages de la navbar #} {% if section.id == 5 %}
+                <li>
+                    <a href=" {{ path('article_section', { 'id': section.id }) }} " class="btn-nav">{{ section.name }}</a>
+                </li>
+            
+                {% endif %} {% endfor %}
+            
+            
+                <li>
+                    <a href="#" class="btn-nav">A Propos</a>
+                </li>
+                <li>
+                    <a href="{{ path('app_contact_contact') }}" class="btn-nav">Contact</a>
+                </li>
+            
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            
+                <li class="dropdown">
+                    <a class="dropdown-toggle btn-nav" data-toggle="dropdown" href="#">{{ app.user.username }}
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
                         <li>
-                            <a href="{{ path('fos_user_security_login') }}" class="btn-nav">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+                            <a class="btn-nav black" href=" {{ path('fos_user_profile_show') }} ">Mon Profil</a>
+                        </li>
+                        {% if is_granted('ROLE_SUPER_ADMIN') %}
+                        <li>
+                            <a class="btn-nav black" href=" {{ path('easyadmin') }} ">Administrer le site</a>
                         </li>
                         {% endif %}
-                        </a>
+                        <li>
+                            <a href="{{ path('fos_user_security_logout') }}" class="btn-nav black">
+                                {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                {% else %}
+                <li>
+                    <a href="{{ path('fos_user_security_login') }}" class="btn-nav">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+                </li>
+                {% endif %}
+                <li>
+                    <a class="btn btn-default btn-outline btn-circle collapsed" data-toggle="collapse" href="#nav-collapse3" aria-expanded="false"
+                        aria-controls="nav-collapse3">Search</a>
+                </li>
+                <ul class="collapse nav-collapse slide-down" id="nav-collapse3">
+                    <form class="navbar-form" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control rond" placeholder="Search" />
+                        </div>
+                        <button type="submit" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                        </button>
+                    </form>
                 </ul>
-            </div>
+                </ul>
         </div>
+        <!-- /.navbar-collapse -->
     </div>
+    <!-- /.container -->
 </nav>
-
-{# Fin navbar xs et sm #}
-
+<!-- /.navbar -->
+</div>
 
 {% endblock %}

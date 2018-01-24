@@ -1,6 +1,6 @@
 {% block body %} {% trans_default_domain 'FOSUserBundle' %}
 
-<div class="container margeTop10 margeBot20">
+<div class="container viewProfil margeTop10 margeBot5">
     <div class="row">
 
         {% dump(user) %}
@@ -12,7 +12,11 @@
                             <img src="https://www.clipartsgram.com/image/129556292-kyz84k3.jpg" />
                         </div>
                         <div class="user">
-                            <img class="img-circle" src="{{ asset('uploads/images/Users/' ~ user.imageProfil) }}" />
+                            {% if user.imageProfil is not empty %}
+                                <img class="img-circle" src="{{ asset('uploads/images/Users/' ~ user.imageProfil) }}" />
+                            {% else %}
+                                <img class="img-circle" src="{{ asset('img/image_neutre_defaut.png') }}" />                            
+                            {% endif %}
                         </div>
                         <div class="content">
                             <div class="main text-center">
@@ -166,7 +170,6 @@
         </div>
         <!-- end col sm 3 -->
         <!-- end row -->
-        <div class="space-200"></div>
 
         {# Bouton de retour en arrière #}
         <div class="container">
@@ -180,5 +183,7 @@
             </div>
         </div>
         {# Fin Bouton de retour en arrière #}
+    </div>
+</div>
         
-        {% endblock %}     
+        {% endblock  %}     

@@ -20,7 +20,12 @@ margeTop10' } }) }}
 
             {# Input changement et affichage photo #}
             <div class="col-lg-4">
-                <img src="{{ asset('uploads/images/Users/' ~ app.user.imageProfil) }}" alt="image de profil" class="img-responsive img-thumbnail">
+                {% if app.user.imageProfil is not empty %}
+                    <img class="img-circle img-responsive img-thumbnail" src="{{ asset('uploads/images/Users/' ~ app.user.imageProfil) }}" alt="image de profil"/>
+                {% else %}
+                    <img class="img-circle img-responsive img-thumbnail" src="{{ asset('img/image_neutre_defaut.png') }}" />                            
+                {% endif %}
+                {# <img src="{{ asset('uploads/images/Users/' ~ app.user.imageProfil) }}" > #}
                 <div class="input-group image-preview margeTop5">
                     <input type="text" class="form-control image-preview-filename" disabled="disabled">
                     <!-- don't give a name === doesn't send on POST/GET -->

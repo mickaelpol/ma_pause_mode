@@ -444,9 +444,6 @@ button.accordion.active:after {
     color: #fff;
 }
 
-.form-control {
-    border-radius: 0px;
-}
 
 .btn-warning {
     border-radius: 0px;

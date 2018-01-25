@@ -23,13 +23,14 @@
 </script>
 </script>
 {# Fin script cookie #}
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>
-        {% block title %}Ma-Pause-Mode{% endblock %}
-    </title>
+    {% block head %}
+        <title>
+            {% block title %}{% endblock %}
+        </title>
+    {% endblock %}
     <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
     <link rel="icon" type="image/x-icon" href="{{ asset('ico.png') }}" />
     <link rel="stylesheet" href="{{ asset('css/marge.css') }}">
@@ -38,9 +39,9 @@
     <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
     <link rel="stylesheet" href="{{ asset('font-awesome-4.7.0/css/font-awesome.css') }}">
     <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
-    {% block stylesheets %}
-    {% endblock %}
+    {% block stylesheets %}{% endblock %}
 </head>
+
 
 <body>
     <div id="sidebar">

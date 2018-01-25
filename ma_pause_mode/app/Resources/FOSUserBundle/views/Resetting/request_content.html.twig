@@ -4,7 +4,11 @@
 
 {% endblock %}
 
-<div class="container paddG2 black">
+<title>
+    Mot de passe perdu
+</title>
+
+<div class="container paddG2 black font20">
 
     <form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request">
         <div class="col-xs-12 col-sm-8 col-sm-offset-2">
@@ -12,7 +16,7 @@
                 <div class="panel-heading text-center">Mot de passe perdu</div>
                 <div class="panel-body text-center">
                     <label for="username">{{ 'resetting.request.username'|trans }}</label>
-                    <input class="form-control" type="text" id="username" name="username" required="required" />
+                    <input class="form-control font20" type="text" id="username" name="username" required="required" />
                     <div class="margeTop5">
                         <input class="btn btn-regi btn-block" type="submit" value="{{ 'resetting.request.submit'|trans }}" />
                     </div>

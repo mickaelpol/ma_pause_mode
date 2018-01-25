@@ -1,5 +1,12 @@
 {% extends 'base.html.twig' %}
 
+
+    {% block title %}
+        Ma pause mode 
+    {% endblock %}
+
+
+
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('css/img.css') }}">
     <link rel="stylesheet" href="{{ asset('css/articleIndex.css') }}">
@@ -67,6 +74,10 @@
             </div>
         </div>
 
+        <style>
+        
+        </style>
+        
         {% for section in sections %}
         <div class="row">
             <div class='page-header'>
@@ -80,8 +91,8 @@
             {% endif %} 
             {% if j != -1 %} 
             {% for i in 0..j %}
-            <div class="col-lg-4">
-                <img src="{{ asset('uploads/images/Article/' ~ section.articles|reverse[i].image|raw) }}" class="img-responsive center-block img-rounded margeBot5" alt="photo article">
+            <div class="col-lg-4 super">
+                <img src="{{ asset('uploads/images/Article/' ~ section.articles|reverse[i].image|raw) }}" class="img-responsive center-block  img-rounded margeBot5" alt="photo article">
                 
                 <a href="{{ path('article_show', { 'id': section.articles|reverse[i].id }) }}">
                     <h3 class="text-center lienProfile">

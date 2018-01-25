@@ -1,9 +1,13 @@
-{% extends 'base.html.twig' %}
+{% extends "base.html.twig" %}
 
-{% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('css/profil.css') }}"> 
-    <link rel="stylesheet" href="{{ asset('css/register.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/editProfil.css') }}">
+{% block head %} 
+
+    {% block title %}{% endblock %} 
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/profil.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/register.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/editProfil.css') }}"> 
+    {% endblock %} 
 {% endblock %}
 
 {% block body %}
@@ -13,7 +17,7 @@
             {% for type, messages in app.session.flashbag.all() %}
                 {% for message in messages %}
                     <div class="flash-{{ type }}">
-                        <p class="text-center text-info">{{ message }}</p>
+                        <p class="text-center text-info font20">{{ message }}</p>
                     </div>
                 {% endfor %}
             {% endfor %}
@@ -30,4 +34,4 @@
     <script src="{{ asset('js/flipCard.js') }}"></script> 
     <script src="{{ asset('js/uploadImageEdit.js') }}"></script>
 
-{% endblock %}
+{% endblock %} 

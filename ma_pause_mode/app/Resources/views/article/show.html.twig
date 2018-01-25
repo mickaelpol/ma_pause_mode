@@ -1,5 +1,10 @@
 {% extends 'base.html.twig' %}
 
+    {% block title %}
+        Article {{ article.title|raw|striptags }}
+    {% endblock %}
+
+
 {% block body %}
 
 <div class="container margeTop5">

@@ -20,7 +20,7 @@ class DefaultController extends Controller
     public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $articles = $em->getRepository("AppBundle:Article")->findBy(array(),
+        $articles = $em->getRepository("AppBundle:Article")->findBy(array("enabled" => 1),
         array("date" => "DESC"), 3);
 
         $em = $this->getDoctrine()->getManager();

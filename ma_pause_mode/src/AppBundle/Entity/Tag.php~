@@ -1,0 +1,80 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use AppBundle\Entity\Article;
+use AppBundle\Entity\Category;
+
+/**
+ * Tag
+ *
+ * @ORM\Table(name="tag")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\TagRepository")
+ */
+class Tag
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="quantité", type="integer")
+     */
+    private $quantité;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Article", inversedBy="tags")
+     * @ORM\JoinColumn(name="article_oid", referencedColumnName="art_oid")
+     */
+    private $articles;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="tags")
+     * @ORM\JoinColumn(name="category_oid", referencedColumnName="cat_oid")
+     */
+    private $categorys;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set quantité
+     *
+     * @param integer $quantité
+     *
+     * @return Tag
+     */
+    public function setQuantité($quantité)
+    {
+        $this->quantité = $quantité;
+
+        return $this;
+    }
+
+    /**
+     * Get quantité
+     *
+     * @return int
+     */
+    public function getQuantité()
+    {
+        return $this->quantité;
+    }
+}
+

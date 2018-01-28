@@ -7,19 +7,22 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\HttpFoundation\File\File;
 
 
+
+
+
 /**
- * APropos
+ * Press
  *
- * @ORM\Table(name="a_propos")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\AProposRepository")
+ * @ORM\Table(name="pre_press")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\PressRepository")
  * @Vich\Uploadable
  */
-class APropos
+class Press
 {
     /**
      * @var int
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="pre_id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -28,33 +31,25 @@ class APropos
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=255, nullable=true)
+     * @ORM\Column(name="pre_title", type="string", length=255, nullable=true)
      */
     private $title;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="content", type="text", nullable=true)
+     * @ORM\Column(name="pre_content", type="text", nullable=true)
      */
     private $content;
 
-
     /**
-     * @var int
-     *
-     * @ORM\Column(name="apr_enabled", type="integer", nullable=true, length=255, unique=false)
-     */
-    private $enabled;
-
-    /**
-     * @ORM\Column(name="image", nullable=true, type="string", length=255)
+     * @ORM\Column(name="pre_image", type="string", length=255)
      * @var string
      */
     private $image;
 
     /**
-     * @Vich\UploadableField(mapping="propos_images", fileNameProperty="image")
+     * @Vich\UploadableField(mapping="presse_images", fileNameProperty="image")
      * @var File
      */
     private $imageFile;
@@ -66,14 +61,21 @@ class APropos
     private $updatedAt;
 
 
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="pre_enabled", type="integer", nullable=true, length=255, unique=false)
+     */
+    private $enabled;
+    
+    
+    
 
     public function setImageFile(File $image = null)
     {
         $this->imageFile = $image;
 
-
         if ($image) {
-            // if 'updatedAt' is not defined in your entity, use another property
             $this->updatedAt = new \DateTime('now');
         }
     }
@@ -94,6 +96,8 @@ class APropos
     }
 
 
+
+
     /**
      * Get id
      *
@@ -109,7 +113,7 @@ class APropos
      *
      * @param string $title
      *
-     * @return APropos
+     * @return Press
      */
     public function setTitle($title)
     {
@@ -133,7 +137,7 @@ class APropos
      *
      * @param string $content
      *
-     * @return APropos
+     * @return Press
      */
     public function setContent($content)
     {
@@ -152,28 +156,27 @@ class APropos
         return $this->content;
     }
 
-
     /**
-     * Set enabled
+     * Set updatedAt
      *
-     * @param integer $enabled
+     * @param \DateTime $updatedAt
      *
-     * @return APropos
+     * @return Press
      */
-    public function setEnabled($enabled)
+    public function setUpdatedAt($updatedAt)
     {
-        $this->enabled = $enabled;
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }
 
     /**
-     * Get enabled
+     * Get updatedAt
      *
-     * @return integer
+     * @return \DateTime
      */
-    public function getEnabled()
+    public function getUpdatedAt()
     {
-        return $this->enabled;
+        return $this->updatedAt;
     }
 }

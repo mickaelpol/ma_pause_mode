@@ -10,4 +10,10 @@ namespace AppBundle\Repository;
  */
 class PressRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function displayPress()
+    {
+        $qb = $this->createQueryBuilder('s')
+            ->where('s.enabled = 1');
+        return $qb->getQuery()->getResult();
+    }
 }

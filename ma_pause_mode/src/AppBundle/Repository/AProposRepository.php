@@ -10,4 +10,10 @@ namespace AppBundle\Repository;
  */
 class AProposRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function displayAPropos()
+    {
+        $qb = $this->createQueryBuilder('s')
+            ->where('s.enabled = 1');
+        return $qb->getQuery()->getResult();
+    }
 }

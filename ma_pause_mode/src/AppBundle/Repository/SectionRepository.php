@@ -3,6 +3,8 @@
 namespace AppBundle\Repository;
 
 use Doctrine\ORM\Query\Expr\From;
+use AppBundle\Entity\Article;
+
 
 
 /**
@@ -30,5 +32,13 @@ class SectionRepository extends \Doctrine\ORM\EntityRepository
         ->where('s.enabled = 1');
         return $qb->getQuery()->getResult();
     }
+
+    public function displaySection()
+    {
+        $qb = $this->createQueryBuilder('s')
+        ->where('s.enabled = 1');
+        return $qb->getQuery()->getResult();
+    }
+
     
 }

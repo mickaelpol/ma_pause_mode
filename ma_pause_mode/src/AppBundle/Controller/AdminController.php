@@ -31,6 +31,7 @@ class AdminController extends BaseAdminController
 
 
 
+
     protected function newAction()
     {
         $this->dispatch(EasyAdminEvents::PRE_NEW);

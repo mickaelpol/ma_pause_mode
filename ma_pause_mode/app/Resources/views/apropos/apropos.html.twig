@@ -1,10 +1,41 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-{% for apropo in apropos %}
 
-{{ apropos.title }}
 
-{% endfor %}
+<div id="apropos" class="container">
+        {% for apropo in apropos %}
+        {% dump(apropo) %}
+        
+        <h1>A propos</h1>
+        {{ apropo.title|raw }}
+        <br>
+        <p> {{ apropo.content|raw }} </p>
+        <img src="{{ asset('uploads/images/apropos/' ~ apropo.image) }}" alt=""> 
+        
+        {% endfor %}
+</div>
+
+
+
+
+<div id="presses" class="container"> 
+        {% for press in presses %}
+        {% dump(press) %} 
+
+        <h1> Presse </h1> 
+        {{ press.title|raw }} 
+        <br> <p>{{ press.content|raw }}</p> 
+        <img src="{{ asset('uploads/images/presses/' ~ press.image) }}" alt="">
+        
+        {% endfor %} 
+</div> 
+
 
 {% endblock %}
+
+
+
+
+
+

@@ -29,15 +29,8 @@ class Category
      */
     private $name;
 
-    /**
-     * @ORM\OneToMany(targetEntity="Article", mappedBy="category")
-     */
-    private $articles;
 
-    public function __construct()
-    {
-        $this->articles = new ArrayCollection();
-    }
+    
 
 
     /**
@@ -74,46 +67,10 @@ class Category
         return $this->name;
     }
 
-    
-
-    /**
-     * Add article
-     *
-     * @param \AppBundle\Entity\Article $article
-     *
-     * @return Category
-     */
-    public function addArticle(\AppBundle\Entity\Article $article)
-    {
-        $this->articles[] = $article;
-
-        return $this;
-    }
-
-    /**
-     * Remove article
-     *
-     * @param \AppBundle\Entity\Article $article
-     */
-    public function removeArticle(\AppBundle\Entity\Article $article)
-    {
-        $this->articles->removeElement($article);
-    }
-
-    /**
-     * Get articles
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getArticles()
-    {
-        return $this->articles;
-    }
-
     public function __toString()
     {
-        return $this->getName();
+        return $this->name;
     }
 
-    
+
 }

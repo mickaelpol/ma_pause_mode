@@ -9,6 +9,9 @@ parameters:
     locale: fr
     app.path.article_images: /uploads/images/Article
     app.path.image_profils: /uploads/images/Users
+    app.path.presse_images: /uploads/images/presses
+    app.path.propos_images: /uploads/images/apropos
+
 framework:
     #esi: ~
     translator: { fallbacks: ['%locale%'] }
@@ -203,11 +206,90 @@ easy_admin:
     design:
         brand_color: '#eb0046'
         form_theme: 'vertical'
+        menu:
+            - label: 'Gerer le blog'
+              icon: 'list-ul'
+              children:
+                  - { entity: 'Article', icon: 'th-list', label: 'Liste des articles'}
+                  - { entity: 'Category', icon: 'tag', label: 'Liste des tags'}
+                  - { entity: 'Section', icon: 'sticky-note', label: 'Liste des pages'}
+                  - { entity: 'Presse', icon: 'sticky-note', label: 'Pages presse'}
+                  - { entity: 'APropos', icon: 'sticky-note', label: 'Pages a propos'}
+
+            - label: 'Gerer les utilisateurs'
+              icon: 'user-circle'
+              children:
+                  - { entity: 'User', icon: 'users', label: 'Liste des utilisateurs'}
+                #   - { entity: 'Category', icon: 'tag', label: 'Liste des tags'}
+                #   - { entity: 'Section', icon: 'sticky-note', label: 'Liste des pages'}
+
+                
+
     entities:
+        # ///////////////////////////////////////// Section article Easy admin /////////////////////////////////////////////////
+        Article:
+            class: AppBundle\Entity\Article
+            list:
+                title: 'liste des articles'
+                fields:
+                    - { property: 'title', label: 'titre' }
+                    - { property: 'enabled', label: 'en ligne', type: "toggle" }
+                    - date
+                    - { property: "categories", label: "Tags"}
+                    - section
+                    - user
+                    - { property: 'image', type: 'image', base_path: '%app.path.article_images%' }
+            show:
+                title: 'Article %%entity_id%%'
+                fields:
+                    - section
+                    - categories
+                    - title
+                    - content
+                    - date
+                    - user
+                    - { property: 'image', type: 'image', base_path: '%app.path.article_images%' } 
+            form:
+            new:
+                title: "Création d'un article"
+                fields: 
+                    - { type: 'section', label: "Selection de la category et choix de la page d'apparition", icon: 'pencil', css_class: 'alert-info' } 
+                    - { property: "section", label: "Page de l'article"}                    
+                    - { property: "categories" }
+                    - description
+                    - { property: 'imageFile', type: 'file', label: "Image d'accroche" }
+                    - { type: 'section', label: "Contenu de l'article", icon: 'pencil', css_class: 'alert-info' }                    
+                    - { property: 'title',  type: 'ckeditor', label: 'titre' }
+                    - { property: 'content', label: "contenu de l'article", cc_class: 'bg-primary' , type: 'ckeditor', type_options: { 'config_name': 'my_config_2' }}
+                    - { property: 'enabled', label: 'en ligne', type: "checkbox", require: false }
+                    
+            edit:
+                title: "Modification de l'article %%entity_id%%"
+                fields: 
+                    - { type: 'section', label: "Selection de la categorie et choix de la page d'apparition", icon: 'pencil', css_class: 'alert-info' } 
+                    - section
+                    - categories
+                    - description
+                    - { property: 'imageFile', type: 'file', label: "Image d'accroche" }
+                    - { type: 'section', label: "Contenu de l'article", icon: 'pencil', css_class: 'alert-info' }                    
+                    - { property: 'title',  type: 'ckeditor', label: 'titre' }
+                    - { property: 'content', label: "contenu de l'article", cc_class: 'bg-primary' , type: 'ckeditor', type_options: { 'config_name': 'my_config_2' }}
+
+# /////////////////////////////////////// fin section article esay admin bundle ///////////////////////////////////////////////////////////////
+        Section:
+            class: AppBundle\Entity\Section
+            list:
+                fields: 
+                    - name
+                    - articles
+                    - enabled
+                    - { property: 'enabled', label: "Apparait sur l'accueil", type: 'toggle' }
+    
         User:
             class: AppBundle\Entity\User
             list:
                 fields: 
+                    - { property: 'imageProfil', type: 'image', base_path: '%app.path.image_profils%' }
                     - username
                     - { property: 'username', label: 'Nom' }
                     - firstName
@@ -221,7 +303,41 @@ easy_admin:
                     - lastLogin
                     - { property: 'lastLogin', label: 'Dernière connexion' }
                     - enabled
+                    - { property: 'enabled', label: 'Valide', }
+            
+            show:
+                fields:
+                    - { property: 'imageProfil', type: 'image', base_path: '%app.path.image_profils%' }
+                    - username
+                    - { property: 'username', label: 'Nom' }
+                    - firstName
+                    - { property: 'firstName', label: 'Prénom' }
+                    - pseudo
+                    - { property: 'pseudo', label: 'Pseudo' }
+                    - email
+                    - { property: 'email', label: 'Email' }
+                    - address
+                    - { property: 'address', label: 'Adresse' }
+                    - city
+                    - { property: 'city', label: 'Ville' }
+                    - entreprise
+                    - { property:  'entreprise', label: 'Entreprise'}
+                    - siret
+                    - { property: 'siret', label: 'Numéro de siret'}
+                    - lastLogin
+                    - { property: 'lastLogin', label: 'Dernière connexion' }
+                    - enabled
                     - { property: 'enabled', label: 'Valide' }
+            form:
+                fields: 
+                    - imageProfil
+                    - username
+                    - { property: 'username', label: 'Nom' }
+                    - firstName
+                    - { property: 'firstName', label: 'Prénom' }
+                    - { property: 'roles', type: 'choice', type_options: { multiple: true, choices: {  'Créateurs': 'ROLE_ADMIN', 'Administrateur du site': 'ROLE_SUPER_ADMIN' } } }
+                
+                    
         Category:
             class: AppBundle\Entity\Category
             list:
@@ -235,42 +351,48 @@ easy_admin:
                     - name
         Comment:
             class: AppBundle\Entity\Comment
-        Section: 
-            class: AppBundle\Entity\Section
-            list:
-                fields:
-                    - name
-                    - enabled
-            list:
-                fields:
-                    - name   
-            show:
-                fields:
-                    - name
-            form:
-                fields: 
-                    - name
-        Article:
-            class: AppBundle\Entity\Article
+
+        Presse:
+            class: AppBundle\Entity\Press
             list:
                 fields:
                     - title
-                    - date
-                    - category
-                    - section
-                    - user
-                    - { property: 'image', type: 'image', base_path: '%app.path.article_images%' }
-            show:
-                fields:
-                    - { property: 'image', type: 'image', base_path: '%app.path.article_images%' } 
+                    - content
+                    - { property: 'enabled', label: 'en ligne', type: "toggle" }                    
+                    - { property: 'image', type: 'image', base_path: '%app.path.presse_images%' }
             form:
                 fields: 
-                    - category
-                    - section
-                    - description
+                    - { property: 'imageFile', type: 'vich_image' }
+                    - title
+                    - content
                     - { property: 'title', type: 'ckeditor' }
                     - { property: 'content', type: 'ckeditor', type_options: { 'config_name': 'my_config_2' }}
-                    - { property: 'imageFile', type: 'file' }
+                    - { property: 'enabled', label: 'en ligne', type: "checkbox", require: false }                    
+                    
+            show:
+                fields:
+                    - title
+                    - content
+                    - { property: 'image', type: 'image', base_path: '%app.path.presse_images%' }
+
+        APropos:
+            class: AppBundle\Entity\APropos
+            form:
+                fields: 
+                    - { property: 'imageFile', type: 'vich_image', label: "image de couverture" }                    
+                    - title
+                    - content
+                    - { property: 'title', type: 'ckeditor' }
+                    - { property: 'content', type: 'ckeditor', type_options: { 'config_name': 'my_config_2' }}
+            list:
+                fields:
+                    - title
+                    - content
+                    - { property: 'image', type: 'image', base_path: '%app.path.propos_images%' }                    
+                    - { property: 'enabled', label: 'en ligne', type: "toggle" }                    
+
+
+
 
 vich_uploader:
     db_driver: orm        
@@ -280,5 +402,10 @@ vich_uploader:
             upload_destination: '%kernel.root_dir%/../web/uploads/images/Article'   
         imageProfils:
             uri_prefix:         '%app.path.image_profils%'
-            upload_destination: '%kernel.root_dir%/../web/uploads/images/Users'   
-
+            upload_destination: '%kernel.root_dir%/../web/uploads/images/Users'
+        presse_images:
+            uri_prefix:         '%app.path.presse_images%'
+            upload_destination: '%kernel.root_dir%/../web/uploads/images/presses'
+        propos_images:
+            uri_prefix:         '%app.path.propos_images%'
+            upload_destination: '%kernel.root_dir%/../web/uploads/images/apropos'

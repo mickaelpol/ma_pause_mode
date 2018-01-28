@@ -3,19 +3,26 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
+
+
+
+
 
 /**
  * Press
  *
- * @ORM\Table(name="press")
+ * @ORM\Table(name="pre_press")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\PressRepository")
+ * @Vich\Uploadable
  */
 class Press
 {
     /**
      * @var int
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="pre_id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -24,23 +31,71 @@ class Press
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=255, nullable=true)
+     * @ORM\Column(name="pre_title", type="string", length=255, nullable=true)
      */
     private $title;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="content", type="text", nullable=true)
+     * @ORM\Column(name="pre_content", type="text", nullable=true)
      */
     private $content;
 
     /**
+     * @ORM\Column(name="pre_image", type="string", length=255)
      * @var string
-     *
-     * @ORM\Column(name="image", type="string", length=255, nullable=true)
      */
     private $image;
+
+    /**
+     * @Vich\UploadableField(mapping="presse_images", fileNameProperty="image")
+     * @var File
+     */
+    private $imageFile;
+
+    /**
+     * @ORM\Column(type="datetime")
+     * @var \DateTime
+     */
+    private $updatedAt;
+
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="pre_enabled", type="integer", nullable=true, length=255, unique=false)
+     */
+    private $enabled;
+    
+    
+    
+
+    public function setImageFile(File $image = null)
+    {
+        $this->imageFile = $image;
+
+        if ($image) {
+            $this->updatedAt = new \DateTime('now');
+        }
+    }
+
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+
 
 
     /**
@@ -102,26 +157,50 @@ class Press
     }
 
     /**
-     * Set image
+     * Set updatedAt
      *
-     * @param string $image
+     * @param \DateTime $updatedAt
      *
      * @return Press
      */
-    public function setImage($image)
+    public function setUpdatedAt($updatedAt)
     {
-        $this->image = $image;
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }
 
     /**
-     * Get image
+     * Get updatedAt
      *
-     * @return string
+     * @return \DateTime
      */
-    public function getImage()
+    public function getUpdatedAt()
     {
-        return $this->image;
+        return $this->updatedAt;
+    }
+
+    /**
+     * Set enabled
+     *
+     * @param integer $enabled
+     *
+     * @return Press
+     */
+    public function setEnabled($enabled)
+    {
+        $this->enabled = $enabled;
+
+        return $this;
+    }
+
+    /**
+     * Get enabled
+     *
+     * @return integer
+     */
+    public function getEnabled()
+    {
+        return $this->enabled;
     }
 }

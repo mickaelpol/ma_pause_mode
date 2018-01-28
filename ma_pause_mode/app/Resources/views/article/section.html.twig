@@ -44,7 +44,13 @@
                                     <i class="fa fa-tags"></i>
                                 </label>
                                 <span class="badge badge-info">{{ article.section }}</span>
-                                <span class="badge badge-info">{{ article.category }}</span>
+                                {# <span class="badge badge-info">{{ article.categories }}</span> #}
+                                {% for tag in article.categories %}
+
+                                <span class="badge badge-info">{{ tag }}</span>                                    
+                                    
+                                {% endfor %}
+                                
                             </div>
                             <div class="info-section">
                                 <label>Commentaires</label>

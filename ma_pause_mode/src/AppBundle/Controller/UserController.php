@@ -4,6 +4,8 @@ namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use AppBundle\Entity\User;
+use Symfony\Component\HttpFoundation\Request;
 
 class UserController extends Controller
 {
@@ -42,5 +44,6 @@ class UserController extends Controller
             'user' => $user,
         ));
     }
+
 
 }

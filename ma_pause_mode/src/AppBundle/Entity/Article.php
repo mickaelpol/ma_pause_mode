@@ -6,6 +6,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints\DateTime;
+use Doctrine\Common\Collections\ArrayCollection;
+
 
 /**
  * Article
@@ -93,11 +95,23 @@ class Article
     private $section;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Category", inversedBy="articles")
-     * @ORM\JoinColumn(name="cat_oid", referencedColumnName="cat_oid")
+     * @ORM\ManyToMany(targetEntity="Category", cascade={"persist"})
+     * Many Users have Many Groups.
+     * Many Articles have Many Categories.
+     * @ORM\ManyToMany(targetEntity="Category")
+     * @ORM\JoinTable(name="articles_categories",
+     *      joinColumns={@ORM\JoinColumn(name="art_oid", referencedColumnName="art_oid")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="cat_oid", referencedColumnName="cat_oid")}
+     *      )
      */
-    private $category;
+    private $categories;
 
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="art_enabled", type="integer", nullable=true, length=255, unique=false)
+     */
+    private $enabled;
     
 
     
@@ -105,8 +119,13 @@ class Article
     public function __construct()
     {
         $this->date = new \DateTime('now');
+        $this->categories = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->categories;
+    }
 
     /**
      * Get id
@@ -336,27 +355,56 @@ class Article
         return $this->section;
     }
 
+
+
+    // //////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+    // Notez le singulier, on ajoute une seule catégorie à la fois
+    public function addCategory(Category $category)
+    {
+    // Ici, on utilise l'ArrayCollection vraiment comme un tableau
+        $this->categories[] = $category;
+
+        return $this;
+    }
+
+    public function removeCategory(Category $category)
+    {
+    // Ici on utilise une méthode de l'ArrayCollection, pour supprimer la catégorie en argument
+        $this->categories->removeElement($category);
+    }
+
+    // Notez le pluriel, on récupère une liste de catégories ici !
+    public function getCategories()
+    {
+        return $this->categories;
+    }
+
+
+
     /**
-     * Set category
+     * Set enabled
      *
-     * @param \AppBundle\Entity\Category $category
+     * @param integer $enabled
      *
      * @return Article
      */
-    public function setCategory(\AppBundle\Entity\Category $category = null)
+    public function setEnabled($enabled)
     {
-        $this->category = $category;
+        $this->enabled = $enabled;
 
         return $this;
     }
 
     /**
-     * Get category
+     * Get enabled
      *
-     * @return \AppBundle\Entity\Category
+     * @return integer
      */
-    public function getCategory()
+    public function getEnabled()
     {
-        return $this->category;
+        return $this->enabled;
     }
 }

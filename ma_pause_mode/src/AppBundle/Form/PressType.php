@@ -10,11 +10,10 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
-use AppBundle\Entity\Category;
 
 
 
-class ArticleType extends AbstractType
+class PressType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -22,30 +21,24 @@ class ArticleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('title', CKEditorType::class, array(
-            'label' => 'Titre de l\'article',
+            'label' => 'Titre de l\'article de presse',
             'config_name' => 'my_config_1',
         ))
 
-        ->add('content', CKEditorType::class, array(
-            'label' => 'Contenu de l\'article',
-            'config_name' => 'my_config_2',
-        ))
-        ->add('description', TextType::class , array('label' => 'Description de l\'article'))
-            ->add('category', 'collection', [
-                'type' => new ArrayCollection(),
-                'allow_add' => true,
-                'allow_delete' => true
-            ]);
-        
+            ->add('content', CKEditorType::class, array(
+                'label' => 'Contenu de l\'article de presse',
+                'config_name' => 'my_config_2',
+            ));
+
     }
-    
+
     /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Article'
+            'data_class' => 'AppBundle\Entity\Press'
         ));
     }
 
@@ -54,7 +47,7 @@ class ArticleType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_article';
+        return 'appbundle_press';
     }
 
 

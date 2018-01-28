@@ -30,14 +30,21 @@ class Category
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="Article", mappedBy="category")
+     * @ORM\ManyToMany(targetEntity="Article", mappedBy="categorys")
      */
     private $articles;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Tag", mappedBy="category")
+     */
+    private $tags;
+    
+
     public function __construct()
     {
-        $this->articles = new ArrayCollection();
+        $this->articles = new ArrayCollectio();
     }
+    
 
 
     /**
@@ -74,8 +81,39 @@ class Category
         return $this->name;
     }
 
-    public function __toString()
+
+
+    /**
+     * Add article
+     *
+     * @param \AppBundle\Entity\Article $article
+     *
+     * @return Category
+     */
+    public function addArticle(\AppBundle\Entity\Article $article)
     {
-        return $this->getName();
+        $this->articles[] = $article;
+
+        return $this;
+    }
+
+    /**
+     * Remove article
+     *
+     * @param \AppBundle\Entity\Article $article
+     */
+    public function removeArticle(\AppBundle\Entity\Article $article)
+    {
+        $this->articles->removeElement($article);
+    }
+
+    /**
+     * Get articles
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getArticles()
+    {
+        return $this->articles;
     }
 }

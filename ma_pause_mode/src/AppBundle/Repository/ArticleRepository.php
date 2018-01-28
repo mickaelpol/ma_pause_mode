@@ -10,5 +10,12 @@ namespace AppBundle\Repository;
  */
 class ArticleRepository extends \Doctrine\ORM\EntityRepository
 {
+
+    public function displayEnabled()
+    {
+        $qb = $this->createQueryBuilder('a')
+            ->where('a.enabled = 1');
+        return $qb->getQuery()->getResult();
+    }
     
 }
